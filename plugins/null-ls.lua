@@ -12,11 +12,11 @@ return function()
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
   local diagnostics = null_ls.builtins.diagnostics
   local code_actions = null_ls.builtins.code_actions
+  local hover = null_ls.builtins.hover
   null_ls.setup {
     debug = false,
     sources = {
       -- Set a formatter
-      formatting.rufo,
       formatting.stylua,
       formatting.autopep8,
       formatting.prettierd.with {
@@ -25,7 +25,6 @@ return function()
         },
       },
       -- Set a linter
-      diagnostics.rubocop,
       -- Eslint
       code_actions.eslint_d.with {
         prefer_local = "node_modules/.bin",
@@ -36,6 +35,8 @@ return function()
       formatting.eslint_d.with {
         prefer_local = "node_modules/.bin",
       },
+      -- dictionary
+      hover.dictionary,
     },
     -- NOTE: You can remove this on attach function to disable format on save
     on_attach = function(client)
