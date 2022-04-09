@@ -1,5 +1,5 @@
 local utils = require "user.core.polish.utils"
-local opts = utils.opts
+local opts = { noremap = true, silent = true }
 local map = utils.map
 local kmap = utils.kmap
 local nunmap = utils.nunmap
