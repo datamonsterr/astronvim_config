@@ -35,9 +35,10 @@ return {
       k = { "<cmd>Telescope keymaps<CR>", "Keys" },
       h = { "<cmd>Telescope help_tags<CR>", "Help" },
       n = { "<cmd>Telescope notify<CR>", "Notification" },
-      m = { "<cmd>Telescope man_pages<CR>", "Man" },
+      M = { "<cmd>Telescope man_pages<CR>", "Man" },
       r = { "<cmd>Telescope registers<CR>", "Registers" },
       s = { "<cmd>Telescope<cr>", "Telescope" },
+      m = { "<cmd>Telescope marks<CR>", "Marks" },
     },
     d = {
       name = "Debugger",

@@ -43,7 +43,7 @@ return function()
       disabled_filetypes = { "dashboard" },
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
-      globalstatus = vim.fn.has "nvim-0.7" == 1,
+      globalstatus = true,
       theme = detect_theme "onedark",
     },
     sections = {
