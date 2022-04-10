@@ -1,8 +1,7 @@
-local utils = require "user.core.polish.utils"
 local opts = { noremap = true, silent = true }
-local map = utils.map
-local kmap = utils.kmap
-local nunmap = utils.nunmap
+local map = vim.api.nvim_set_keymap
+local kmap = vim.keymap.set
+local unmap = vim.keymap.del
 -- Set key bindings
 map("n", "<A-k>", "<cmd>m .-2<CR>", opts)
 map("n", "<A-j>", "<cmd>m .+1<CR>", opts)
@@ -23,10 +22,11 @@ kmap("i", "<C-s>", vim.diagnostic.open_float)
 map("n", "f", ":HopChar1CurrentLine<cr>", opts)
 map("n", "F", ":HopChar2<cr>", opts)
 -- Unmap
-nunmap "<leader>fw"
-nunmap "<leader>fo"
-nunmap "<leader>ff"
-nunmap "<leader>fh"
-nunmap "<leader>fb"
-nunmap "<leader>c"
-nunmap "<leader>w"
+-- nunmap "<leader>fw"
+unmap("n", "<leader>fw")
+unmap("n", "<leader>fo")
+unmap("n", "<leader>ff")
+unmap("n", "<leader>fh")
+unmap("n", "<leader>fb")
+unmap("n", "<leader>c")
+unmap("n", "<leader>w")

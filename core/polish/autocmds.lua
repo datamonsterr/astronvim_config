@@ -1,7 +1,6 @@
-local utils = require "user.core.polish.utils"
-local group = utils.group
-local cmd = utils.cmd
-local set = utils.set
+local group = vim.api.nvim_create_augroup
+local cmd = vim.api.nvim_create_autocmd
+local set = vim.opt
 -- Set autocommands
 group("packer_conf", {})
 cmd("BufWritePost", {

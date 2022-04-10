@@ -1,5 +1,4 @@
-local utils = require "user.core.polish.utils"
-local set = utils.set
+local set = vim.opt
 local g = vim.g
 
 set.relativenumber = true
