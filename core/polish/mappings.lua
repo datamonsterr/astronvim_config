@@ -15,8 +15,10 @@ map("i", "!", "!<c-g>u", opts)
 map("i", "?", "?<c-g>u", opts)
 map("v", "<A-j>", ":m '>+1<cr>gv=gv", opts)
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", opts)
+map("n", "<C-w>x", ":WinShift swap<cr>", opts)
 kmap("n", "<C-s>", vim.diagnostic.open_float)
 kmap("i", "<C-s>", vim.diagnostic.open_float)
+
 -- Hop
 map("n", "f", ":HopChar1CurrentLine<cr>", opts)
 map("n", "F", ":HopChar2<cr>", opts)

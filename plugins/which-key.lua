@@ -4,9 +4,10 @@ return {
     ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
     ["."] = { "<cmd>NeoRoot<cr>", "Set Root" },
     ["q"] = { ":Bdelete!<cr>", "Quit Buffer" },
-    ["c"] = { ":lua require('nvim-window').pick()<cr>", "Choose Win" },
+    ["j"] = { ":lua require('nvim-window').pick()<cr>", "Jump Win" },
     ["u"] = { ":MundoToggle<cr>", "Undo List" },
     ["w"] = { ":WinShift<cr>:set nocursoline<cr>", "WinShift" },
+    ["c"] = { ":VCoolor<cr>", "Color" },
     f = {
       name = "Focus",
       t = { ":FocusToggle<cr>", "Toggle" },

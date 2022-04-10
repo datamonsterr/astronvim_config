@@ -28,3 +28,9 @@ cmd("BufWinEnter", {
     set.shiftwidth = 4
   end,
 })
+-- cmd("BufWinEnter", {
+--   desc = "for global status",
+--   callback = function()
+--     set.laststatus = 3
+--   end,
+-- })

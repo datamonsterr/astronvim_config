@@ -1,15 +1,15 @@
 return {
   {
     "nyngwang/NeoRoot.lua",
-    event = "BufWinenter",
+    cmd = "NeoRoot",
   },
   {
     "simnalamburt/vim-mundo",
-    event = "BufWinEnter",
+    cmd = "MundoToggle",
   },
   {
     "https://gitlab.com/yorickpeterse/nvim-window.git",
-    event = "BufWinEnter",
+    module = "nvim-window",
     config = function()
       require("nvim-window").setup {
         normal_hl = "WinJumpColor",
@@ -28,7 +28,10 @@ return {
   {
     "phaazon/hop.nvim",
     branch = "v1", -- optional but strongly recommended
-    event = "BufWinEnter",
+    cmd = {
+      "HopChar1CurrentLine",
+      "HopChar2",
+    },
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
       require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
@@ -36,7 +39,16 @@ return {
   },
   {
     "beauwilliams/focus.nvim",
-    event = "BufWinEnter",
+    cmd = {
+      "FocusSplitNicely",
+      "FocusToggle",
+      "FocusSplitRight",
+      "FocusSplitLeft",
+      "FocusSplitBottom",
+      "FocusSplitTop",
+      "FocusSplitMaximise",
+      "FocusSplitEqualise",
+    },
     config = function()
       require("focus").setup {
         excluded_filetypes = { "toggleterm", "Mundo", "TelescopePrompt", "MundoDiff" },
@@ -46,15 +58,18 @@ return {
   },
   {
     "ray-x/lsp_signature.nvim",
-    event = "BufRead",
+    event = "InsertEnter",
     config = function()
       require("lsp_signature").setup()
     end,
   },
-  { "KabbAmine/vCoolor.vim", event = "BufRead" },
+  {
+    "KabbAmine/vCoolor.vim",
+    cmd = "VCoolor",
+  },
   {
     "mfussenegger/nvim-dap",
-    event = "BufRead",
+    module = "dap",
     config = require "user.plugins.nvim-dap",
   },
   {
@@ -64,6 +79,7 @@ return {
   },
   {
     "sindrets/winshift.nvim",
+    cmd = "WinShift",
     config = require "user.plugins.WinShift",
   },
 }
