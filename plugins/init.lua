@@ -62,4 +62,8 @@ return {
     after = "nvim-dap",
     config = require "user.plugins.nvim-dapui",
   },
+  {
+    "sindrets/winshift.nvim",
+    config = require "user.plugins.WinShift",
+  },
 }
