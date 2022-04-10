@@ -32,9 +32,9 @@ return function()
       diagnostics.eslint_d.with {
         prefer_local = "node_modules/.bin",
       },
-      formatting.eslint_d.with {
-        prefer_local = "node_modules/.bin",
-      },
+      -- formatting.eslint_d.with {
+      --   prefer_local = "node_modules/.bin",
+      -- },
       -- dictionary
       hover.dictionary,
     },
