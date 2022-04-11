@@ -1,5 +1,6 @@
 local map = vim.keymap.set
-local unmap = vim.keymap.del
+local opts = { silent = true }
+-- local unmap = vim.keymap.del
 -- Set key bindings
 map("n", "<A-k>", "<cmd>m .-2<CR>")
 map("n", "<A-j>", "<cmd>m .+1<CR>")
@@ -15,13 +16,5 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv")
 map("n", "<C-w>x", ":WinShift swap<cr>")
 map("n", "<C-s>", vim.diagnostic.open_float)
 map("i", "<C-s>", vim.diagnostic.open_float)
-map("n", "f", ":HopChar1CurrentLine<cr>")
-map("n", "F", ":HopChar2<cr>")
--- Unmap
-unmap("n", "<leader>fw")
-unmap("n", "<leader>fo")
-unmap("n", "<leader>ff")
-unmap("n", "<leader>fh")
-unmap("n", "<leader>fb")
-unmap("n", "<leader>c")
-unmap("n", "<leader>w")
+map("n", "f", ":HopChar1CurrentLine<cr>", opts)
+map("n", "F", ":HopChar2<cr>", opts)

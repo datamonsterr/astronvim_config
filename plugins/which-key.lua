@@ -59,5 +59,63 @@ return {
       w = { "<cmd>lua require'dapui'.float_element('watches')<cr>", "Watches" },
       x = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Inspect" },
     },
+    n = {
+      name = "Notes",
+      b = {
+        function()
+          require "zk.commands" "ZkBacklinks"()
+        end,
+        "Backlink Picker",
+      },
+      d = {
+        function()
+          require "zk.commands" "ZkCd"()
+        end,
+        "Change Directory",
+      },
+      r = {
+        function()
+          require "zk.commands" "ZkIndex"()
+        end,
+        "Refresh Index",
+      },
+      l = {
+        function()
+          require "zk.commands" "ZkLinks"()
+        end,
+        "Link Picker",
+      },
+      s = {
+        function()
+          require("zk.commands").get "ZkNotes" { sort = { "modified" } }
+        end,
+        "Search",
+      },
+      n = {
+        function()
+          require("zk.commands").get "ZkNew" { dir = "personal", title = vim.fn.input "Title: " }
+        end,
+        "New Personal Note",
+      },
+      N = {
+        function()
+          require("zk.commands").get "ZkNew" { dir = "work", title = vim.fn.input "Title: " }
+        end,
+        "New Work Note",
+      },
+      t = {
+        function()
+          require("zk.commands").get "ZkTags"()
+        end,
+        "Tags",
+      },
+      i = { "<Plug>(simple-todo-new-list-item)", "Insert Todo" },
+      I = { "<Plug>(simple-todo-new-list-item-start-of-line)", "Convert to Todo" },
+      o = { "<Plug>(simple-todo-below)", "Insert Todo Below" },
+      O = { "<Plug>(simple-todo-above)", "Insert Todo Above" },
+      x = { "<Plug>(simple-todo-mark-as-done)", "Mark Done" },
+      X = { "<Plug>(simple-todo-mark-as-undone)", "Mark Undone" },
+      ["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
+    },
   },
 }
