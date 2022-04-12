@@ -1,14 +1,12 @@
 return {
 	-- Add bindings to the normal mode <leader> mappings
 	register_n_leader = {
-		["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
 		["."] = { "<cmd>NeoRoot<cr>", "Set Root" },
 		["q"] = { ":Bdelete!<cr>", "Quit Buffer" },
 		["j"] = { ":lua require('nvim-window').pick()<cr>", "Jump Win" },
 		["u"] = { ":MundoToggle<cr>", "Undo List" },
-		["w"] = { ":WinShift<cr>:set nocursoline<cr>", "WinShift" },
-		["c"] = { ":VCoolor<cr>", "Color" },
-		["<CR>"] = { "/<++><cr>:nohlsearch<cr>cw", "Edit placeholder" },
+		["w"] = { ":WinShift<cr>", "WinShift" },
+		["o"] = { nil },
 		f = {
 			name = "Focus",
 			t = { ":FocusToggle<cr>", "Toggle" },
@@ -60,22 +58,27 @@ return {
 			w = { "<cmd>lua require'dapui'.float_element('watches')<cr>", "Watches" },
 			x = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Inspect" },
 		},
-		n = {
-			name = "Notes",
+		z = {
+			name = "Zk",
 			b = { ":ZkBacklinks<cr>", "Backlink Picker" },
 			d = { "ZkCd<cr>", "Change Directory" },
 			r = { ":ZkIndex<cr>", "Refresh Index" },
 			l = { ":ZkLinks<cr>", "Link Picker" },
 			s = { ":ZkNotes {sort={'modified'}}<cr>", "Search" },
-			n = { ':ZkNew { dir = "personal", title = vim.fn.input("Title: ") }<cr>', "New Personal Note" },
-			N = { ':ZkNew {dir = "work", title = vim.fn.input("Title: ") }<cr>', "New Work Note" },
+			p = { ':ZkNew { dir = "personal", title = vim.fn.input("Title: ") }<cr>', "Personal Note" },
+			w = { ':ZkNew {dir = "work", title = vim.fn.input("Title: ") }<cr>', "Work Note" },
 			t = { ":ZkTags<cr>", "Tags" },
+		},
+		m = {
+			name = "Markdown",
 			i = { "<Plug>(simple-todo-new-list-item)", "Insert Todo" },
 			I = { "<Plug>(simple-todo-new-list-item-start-of-line)", "Convert to Todo" },
 			o = { "<Plug>(simple-todo-below)", "Insert Todo Below" },
 			O = { "<Plug>(simple-todo-above)", "Insert Todo Above" },
 			["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
 			g = { ":Glow<cr>", "Glow" },
+			["<CR>"] = { "/<++><cr>:nohlsearch<cr>cw", "Edit placeholder" },
+			p = { ":MarkdownPreviewToggle<cr>", "Preview" },
 		},
 	},
 }

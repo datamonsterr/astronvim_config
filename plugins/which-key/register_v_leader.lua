@@ -1,7 +1,7 @@
 return {
 	["/"] = { "Comments" },
-	n = {
-		name = "Notes",
+	z = {
+		name = "Zk",
 		s = { ":'<,'>ZkMatch<cr>", "Search" },
 		n = {
 			":'<,'>ZkNewFromTitleSelection { dir = 'personal' }<cr>",
@@ -19,6 +19,6 @@ return {
 			":'<,'>ZkNewFromContentSelection { dir = 'personal', title = vim.fn.input('Title: ') }<cr>",
 			"New Personal Note From Content",
 		},
-		["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
 	},
+	["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
 }
