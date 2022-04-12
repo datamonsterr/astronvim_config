@@ -8,6 +8,7 @@ return {
     ["u"] = { ":MundoToggle<cr>", "Undo List" },
     ["w"] = { ":WinShift<cr>:set nocursoline<cr>", "WinShift" },
     ["c"] = { ":VCoolor<cr>", "Color" },
+    ["<CR>"] = { "/<++><cr>cw", "Edit placeholder" },
     f = {
       name = "Focus",
       t = { ":FocusToggle<cr>", "Toggle" },
@@ -116,6 +117,7 @@ return {
       x = { "<Plug>(simple-todo-mark-as-done)", "Mark Done" },
       X = { "<Plug>(simple-todo-mark-as-undone)", "Mark Undone" },
       ["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
+      g = { ":Glow<cr>", "Glow" },
     },
   },
 }

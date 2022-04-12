@@ -26,5 +26,13 @@ return function(h)
   h.rainbowcol6 = { bold = true, fg = C.green }
   h.rainbowcol7 = { bold = true, fg = C.yellow }
   h.NormalFloat = { link = "Normal" }
+  -- Markdown
+  h.markdownTSTitle = { fg = C.blue }
+  h.markdownTSLiteral = { fg = C.green }
+  h.markdownTSPunctSpecial = { fg = C.red }
+  h.markdownTSURI = { fg = C.purple }
+  h.markdownTSStrong = { bold = true, fg = C.cyan }
+  h.markdownTSEmphasis = { italic = true, fg = C.cyan }
+
   return h
 end

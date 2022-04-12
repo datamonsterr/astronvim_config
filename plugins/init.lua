@@ -102,4 +102,5 @@ return {
       vim.g.simple_todo_map_keys = false
     end,
   },
+  { "ellisonleao/glow.nvim" },
 }

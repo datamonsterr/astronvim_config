@@ -1,6 +1,7 @@
 local group = vim.api.nvim_create_augroup
 local cmd = vim.api.nvim_create_autocmd
 local set = vim.opt
+local g = vim.g
 -- Set autocommands
 group("packer_conf", {})
 cmd("BufWritePost", {
