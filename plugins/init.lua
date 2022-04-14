@@ -83,22 +83,6 @@ return {
 		config = require("user.plugins.WinShift"),
 	},
 	{
-		"mickael-menu/zk-nvim",
-		cmd = {
-			"ZkIndex",
-			"ZkLinks",
-			"ZkCd",
-			"ZkMatch",
-			"ZkBacklinks",
-			"ZkTags",
-			"ZkNotes",
-			"ZkNew",
-			"ZkNewFromContentSelection",
-			"ZkNewFromTitleSelection",
-		},
-		config = require("user.plugins.zk"),
-	},
-	{
 		"vitalk/vim-simple-todo",
 		-- keys = {
 		-- 	"<Plug>(simple-todo-above)",

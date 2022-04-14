@@ -58,17 +58,6 @@ return {
 			w = { "<cmd>lua require'dapui'.float_element('watches')<cr>", "Watches" },
 			x = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Inspect" },
 		},
-		z = {
-			name = "Zk",
-			b = { ":ZkBacklinks<cr>", "Backlink Picker" },
-			d = { "ZkCd<cr>", "Change Directory" },
-			r = { ":ZkIndex<cr>", "Refresh Index" },
-			l = { ":ZkLinks<cr>", "Link Picker" },
-			s = { ":ZkNotes {sort={'modified'}}<cr>", "Search" },
-			p = { ':ZkNew { dir = "personal", title = vim.fn.input("Title: ") }<cr>', "Personal Note" },
-			w = { ':ZkNew {dir = "work", title = vim.fn.input("Title: ") }<cr>', "Work Note" },
-			t = { ":ZkTags<cr>", "Tags" },
-		},
 		m = {
 			name = "Markdown",
 			i = { "<Plug>(simple-todo-new-list-item)", "Insert Todo" },
