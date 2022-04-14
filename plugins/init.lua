@@ -4,10 +4,6 @@ return {
 		cmd = "NeoRoot",
 	},
 	{
-		"simnalamburt/vim-mundo",
-		cmd = "MundoToggle",
-	},
-	{
 		"https://gitlab.com/yorickpeterse/nvim-window.git",
 		module = "nvim-window",
 		config = function()
