@@ -82,39 +82,4 @@ return {
 		cmd = "WinShift",
 		config = require("user.plugins.WinShift"),
 	},
-	{
-		"vitalk/vim-simple-todo",
-		-- keys = {
-		-- 	"<Plug>(simple-todo-above)",
-		-- 	"<Plug>(simple-todo-below)",
-		-- 	"<Plug>(simple-todo-mark-as-done)",
-		-- 	"<Plug>(simple-todo-mark-as-undone)",
-		-- 	"<Plug>(simple-todo-mark-switch)",
-		-- 	"<Plug>(simple-todo-new-list-item)",
-		-- 	"<Plug>(simple-todo-new-list-item-start-of-line)",
-		-- },
-		ft = "markdown",
-		setup = function()
-			vim.g.simple_todo_map_keys = false
-		end,
-	},
-	{
-		"ellisonleao/glow.nvim",
-		ft = "markdown",
-		config = function() end,
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		key = {
-			"<Plug>MarkdownPreview",
-			"<Plug>MarkdownPreviewStop",
-			"<Plug>MarkdownPreviewToggle",
-		},
-		ft = "markdown",
-		setup = function()
-			vim.g.mkdp_refresh_slow = 1
-			vim.g.mkdp_browser = "qutebrowser"
-			vim.g.mkdp_page_title = ""
-		end,
-	},
 }

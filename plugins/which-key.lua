@@ -58,16 +58,5 @@ return {
 			w = { "<cmd>lua require'dapui'.float_element('watches')<cr>", "Watches" },
 			x = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Inspect" },
 		},
-		m = {
-			name = "Markdown",
-			i = { "<Plug>(simple-todo-new-list-item)", "Insert Todo" },
-			I = { "<Plug>(simple-todo-new-list-item-start-of-line)", "Convert to Todo" },
-			o = { "<Plug>(simple-todo-below)", "Insert Todo Below" },
-			O = { "<Plug>(simple-todo-above)", "Insert Todo Above" },
-			["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
-			g = { ":Glow<cr>", "Glow" },
-			["<CR>"] = { "/<++><cr>:nohlsearch<cr>cw", "Edit placeholder" },
-			p = { ":MarkdownPreviewToggle<cr>", "Preview" },
-		},
 	},
 }
