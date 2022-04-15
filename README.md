@@ -12,5 +12,5 @@ But I recommend doing the second method for easily reinstallation.
 Install my config, use:
 
 ```bash
-  git pull https://github.com/datamonsterr/astrovim_config ~/.config/astronvim/lua/user
+  git clone https://github.com/datamonsterr/astrovim_config ~/.config/astronvim/lua/user
 ```
