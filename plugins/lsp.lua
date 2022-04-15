@@ -18,15 +18,5 @@ return {
 				offsetEncoding = "utf-8",
 			},
 		},
-		zk = {
-			default_config = {
-				cmd = { "zk", "lsp" },
-				filetypes = { "markdown" },
-				root_dir = function()
-					return vim.loop.cwd()
-				end,
-				settings = {},
-			},
-		},
 	},
 }

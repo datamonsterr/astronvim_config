@@ -40,6 +40,57 @@ return {
 			r = { "<cmd>Telescope registers<CR>", "Registers" },
 			s = { "<cmd>Telescope<cr>", "Telescope" },
 			m = { "<cmd>Telescope marks<CR>", "Marks" },
+			d = {
+				name = "Dap",
+				c = {
+					function()
+						require("telescope").extensions.dap.commands({})
+					end,
+					"Commands",
+				},
+				C = {
+					function()
+						require("telescope").extensions.dap.configurations({})
+					end,
+					"Configurations",
+				},
+				b = {
+					function()
+						require("telescope").extensions.dap.list_breakpoints({})
+					end,
+					"Breakpoints",
+				},
+				v = {
+					function()
+						require("telescope").extensions.dap.variables({})
+					end,
+					"Variables",
+				},
+				f = {
+					function()
+						require("telescope").extensions.dap.frames({})
+					end,
+					"Frames",
+				},
+			},
+			p = {
+				function()
+					require("telescope").extensions.packer.packer()
+				end,
+				"Packer",
+			},
+			l = {
+				function()
+					require("telescope").extensions.luasnip.luasnip({})
+				end,
+				"Luasnip",
+			},
+			P = {
+				function()
+					require("telescope").extensions.project.project({})
+				end,
+				"Project",
+			},
 		},
 		d = {
 			name = "Debugger",
@@ -57,6 +108,11 @@ return {
 			u = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle Debugger UI" },
 			w = { "<cmd>lua require'dapui'.float_element('watches')<cr>", "Watches" },
 			x = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Inspect" },
+		},
+		S = {
+			name = "Session",
+			s = { ":SaveSession<cr>", "Save" },
+			r = { ":SearchSession<cr>", "Reload" },
 		},
 	},
 }

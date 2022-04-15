@@ -78,4 +78,73 @@ return {
 		cmd = "WinShift",
 		config = require("user.plugins.WinShift"),
 	},
+	{
+		"nvim-telescope/telescope-dap.nvim",
+		module = "telescope._extensions.dap",
+		config = function()
+			require("telescope").load_extension("dap")
+		end,
+	},
+	{
+		"benfowler/telescope-luasnip.nvim",
+		module = "telescope._extensions.luasnip",
+		config = function()
+			require("telescope").load_extension("luasnip")
+		end,
+	},
+	{
+		"nvim-telescope/telescope-packer.nvim",
+		module = "telescope._extensions.packer",
+		config = function()
+			require("telescope").load_extension("packer")
+		end,
+	},
+	{
+		"jvgrootveld/telescope-zoxide",
+		module = "telescope._extensions.zoxide",
+		config = function()
+			require("telescope").load_extension("zoxide")
+		end,
+	},
+	{
+		"rmagatti/auto-session",
+	},
+	{
+		"rmagatti/session-lens",
+		cmd = "SearchSession",
+		config = function()
+			require("session-lens").setup({
+				path_display = { "shorten" },
+				previewer = true,
+				theme_conf = {
+					prompt_prefix = " ",
+					selection_caret = "❯ ",
+					path_display = { "truncate" },
+					selection_strategy = "reset",
+					sorting_strategy = "ascending",
+					layout_strategy = "horizontal",
+					layout_config = {
+						horizontal = {
+							prompt_position = "top",
+							preview_width = 0.55,
+							results_width = 0.8,
+						},
+						vertical = {
+							mirror = false,
+						},
+						width = 0.87,
+						height = 0.80,
+						preview_cutoff = 120,
+					},
+				},
+			})
+		end,
+	},
+	{
+		"nvim-telescope/telescope-project.nvim",
+		module = "telescope._extensions.project",
+		config = function()
+			require("telescope").load_extension("project")
+		end,
+	},
 }
