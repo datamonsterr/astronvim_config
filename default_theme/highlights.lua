@@ -33,6 +33,5 @@ return function(h)
 	h.markdownTSURI = { fg = C.purple }
 	h.markdownTSStrong = { bold = true, fg = C.cyan }
 	h.markdownTSEmphasis = { italic = true, fg = C.cyan }
-
 	return h
 end
