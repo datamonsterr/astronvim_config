@@ -1,3 +1,3 @@
 return {
-  vscode_snippet_paths = {},
+	vscode_snippet_paths = {},
 }

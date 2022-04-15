@@ -1,32 +1,32 @@
 return {
-  -- add to the server on_attach function
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd [[
+	-- add to the server on_attach function
+	on_attach = function(client)
+		if client.resolved_capabilities.document_formatting then
+			vim.cmd([[
             augroup LspFormatting
                 autocmd! * <buffer>
                 autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
             augroup END
-            ]]
-    end
-  end,
+            ]])
+		end
+	end,
 
-  -- Add overrides for LSP server settings, the keys are the name of the server
-  ["server-settings"] = {
-    clangd = {
-      capabilities = {
-        offsetEncoding = "utf-8",
-      },
-    },
-    zk = {
-      default_config = {
-        cmd = { "zk", "lsp" },
-        filetypes = { "markdown" },
-        root_dir = function()
-          return vim.loop.cwd()
-        end,
-        settings = {},
-      },
-    },
-  },
+	-- Add overrides for LSP server settings, the keys are the name of the server
+	["server-settings"] = {
+		clangd = {
+			capabilities = {
+				offsetEncoding = "utf-8",
+			},
+		},
+		zk = {
+			default_config = {
+				cmd = { "zk", "lsp" },
+				filetypes = { "markdown" },
+				root_dir = function()
+					return vim.loop.cwd()
+				end,
+				settings = {},
+			},
+		},
+	},
 }
