@@ -1,4 +1,4 @@
 return {
-	nui_input = true,
-	telescope_select = true,
+  nui_input = true,
+  telescope_select = true,
 }
