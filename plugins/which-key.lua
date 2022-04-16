@@ -17,8 +17,8 @@ return {
 			name = "Focus",
 			t = { ":FocusToggle<cr>", "Toggle" },
 			a = { ":FocusSplitNicely<cr>", "Auto" },
-			m = { ":FocusSplitMaximise<cr>", "Max" },
-			e = { ":FocusSplitEqualise<cr>", "Equal" },
+			m = { ":FocusMaximise<cr>", "Max" },
+			e = { ":FocusEqualise<cr>", "Equal" },
 			l = { ":FocusSplitRight<cr>", "Rigt" },
 			j = { ":FocusSplitDown<cr>", "Down" },
 			k = { ":FocusSplitUp<cr>", "Up" },
@@ -103,7 +103,12 @@ return {
 				end,
 				"Registers",
 			},
-			t = { "<cmd>Telescope<cr>", "Telescope" },
+			t = {
+				function()
+					require("telescope.builtin").builtin()
+				end,
+				"Telescope",
+			},
 			m = {
 				function()
 					require("telescope.builtin").man_pages()

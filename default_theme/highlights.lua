@@ -15,7 +15,7 @@ return function(h)
 	h.WinJumpColor = { bg = C.blue, fg = C.bg, bold = true }
 	h.BufferLineIndicatorSelected = { fg = C.blue }
 	h.CursorLineNr = { fg = C.blue, bold = true }
-	h.BufferLineTabClose = { fg = C.grey_8, bg = C.grey_8 }
+	-- h.BufferLineTabClose = { fg = C.grey_8, bg = C.grey_8 }
 	h.BufferLineFill = { bg = C.grey_8 }
 	h.BufferLineBufferSelected = { fg = C.blue }
 	h.rainbowcol1 = { bold = true, fg = C.yellow_1 }

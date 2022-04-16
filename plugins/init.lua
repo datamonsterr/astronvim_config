@@ -108,6 +108,11 @@ return {
 	},
 	{
 		"rmagatti/auto-session",
+		cmd = "SaveSession",
+		config = function()
+			vim.g.auto_session_enabled = false
+			vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+		end,
 	},
 	{
 		"rmagatti/session-lens",
@@ -116,27 +121,6 @@ return {
 			require("session-lens").setup({
 				path_display = { "shorten" },
 				previewer = true,
-				theme_conf = {
-					prompt_prefix = " ",
-					selection_caret = "❯ ",
-					path_display = { "truncate" },
-					selection_strategy = "reset",
-					sorting_strategy = "ascending",
-					layout_strategy = "horizontal",
-					layout_config = {
-						horizontal = {
-							prompt_position = "top",
-							preview_width = 0.55,
-							results_width = 0.8,
-						},
-						vertical = {
-							mirror = false,
-						},
-						width = 0.87,
-						height = 0.80,
-						preview_cutoff = 120,
-					},
-				},
 			})
 		end,
 	},
