@@ -6,4 +6,7 @@ return {
 		show_close_icon = false,
 		buffer_close_icon = "",
 	},
+	highlights = {
+		duplicate = { guibg = "#2C323C" },
+	},
 }
