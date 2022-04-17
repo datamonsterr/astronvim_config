@@ -136,6 +136,17 @@ return function(plugins)
         vim.g.dracula_italic_comment = true
       end,
     },
+    {
+      "EdenEast/nightfox.nvim",
+      config = function()
+        require("nightfox").setup(require "user.plugins.nightfox")
+      end,
+    },
+    {
+      "catppuccin/nvim",
+      as = "catppuccin",
+      config = function() end,
+    },
   }
   plugins["glepnir/dashboard-nvim"] = nil
   return vim.tbl_deep_extend("force", plugins, my_plugins)
