@@ -10,3 +10,4 @@ end
 return pick_theme("dracula", "dracula")
 -- return pick_theme("nightfox", "duskfox")
 -- return pick_theme("catppuccin", "catppuccin")
+-- return pick_theme("default_theme", "")

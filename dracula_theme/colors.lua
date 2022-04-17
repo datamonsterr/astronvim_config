@@ -13,7 +13,7 @@ return {
   bright_red = "#e57878",
   bright_green = "#72de91",
   bright_yellow = "#f5f59f",
-  bright_purple = "#D6ACFF",
+  bright_purple = "#dbb8fe",
   bright_magenta = "#ea87cd",
   bright_cyan = "#95e9e9",
   bright_white = "#FFFFFF",

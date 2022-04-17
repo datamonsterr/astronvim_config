@@ -2,7 +2,7 @@ local C = require "user.dracula_theme.colors"
 return {
   TSBoolean = { fg = C.bright_cyan, bold = true },
   TSConstant = { fg = C.orange, italic = true },
-  TSVariable = { fg = C.orange },
+  TSVariable = { fg = C.bright_purple },
   TSFunction = { fg = C.green, bold = true },
   TSKeyword = { fg = C.pink, bold = true },
   TSInclude = { fg = C.pink, bold = true },
