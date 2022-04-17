@@ -14,7 +14,21 @@ return function()
   set.updatetime = 150
   g.vcoolor_disable_mappings = 1
   g.vcoolor_lowercase = 1
-
+  set.list = true
+  set.listchars = {
+    tab = "│→",
+    extends = "⟩",
+    precedes = "⟨",
+    trail = "·",
+    nbsp = "␣",
+  }
+  set.showbreak = "↪ "
+  set.conceallevel = 2
+  set.wrap = true
+  set.linebreak = true
+  set.foldenable = false
+  set.foldmethod = "expr"
+  set.foldexpr = "nvim_treesitter#foldexpr()"
   -- Set key bindings
   map("n", "<A-k>", "<cmd>m .-2<CR>")
   map("n", "<A-j>", "<cmd>m .+1<CR>")
@@ -60,4 +74,8 @@ return function()
       set.shiftwidth = 4
     end,
   })
+  if vim.g.colors_name == "dracula" then
+    vim.cmd "syntax reset"
+    require "user.dracula_theme.init"
+  end
 end

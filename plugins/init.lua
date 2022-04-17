@@ -36,16 +36,7 @@ return function(plugins)
     },
     {
       "beauwilliams/focus.nvim",
-      cmd = {
-        "FocusSplitNicely",
-        "FocusToggle",
-        "FocusSplitRight",
-        "FocusSplitLeft",
-        "FocusSplitBottom",
-        "FocusSplitTop",
-        "FocusSplitMaximise",
-        "FocusSplitEqualise",
-      },
+      event = "BufRead",
       config = function()
         require("focus").setup {
           excluded_filetypes = { "toggleterm", "Mundo", "TelescopePrompt", "MundoDiff" },
@@ -135,6 +126,17 @@ return function(plugins)
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
       event = { "BufRead" },
+    },
+    {
+      "Mofiqul/dracula.nvim",
+      config = function()
+        -- use transparent background
+        vim.g.dracula_transparent_bg = true
+        -- set custom lualine background color
+        vim.g.dracula_lualine_bg_color = "#44475a"
+        -- set italic comment
+        vim.g.dracula_italic_comment = true
+      end,
     },
   }
   plugins["glepnir/dashboard-nvim"] = nil

@@ -29,3 +29,5 @@ Install another_method of my config, use:
 ```bash
   git clone -b another_method https://github.com/datamonsterr/astrovim_config ~/.config/astronvim/lua/user
 ```
+
+nonearfj
