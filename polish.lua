@@ -74,6 +74,10 @@ return function()
       set.shiftwidth = 4
     end,
   })
+  cmd("ColorScheme", {
+    pattern = "*",
+    command = "source ~/.config/astronvim/lua/user/dracula_theme/init.lua",
+  })
   if vim.g.colors_name == "dracula" then
     vim.cmd "syntax reset"
     require "user.dracula_theme.init"

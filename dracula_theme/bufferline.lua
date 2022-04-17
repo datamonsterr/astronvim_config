@@ -7,4 +7,5 @@ return {
   BufferLineSeparator = { bg = C.nontext, fg = C.nontext },
   BufferLineSeparatorSelected = { bg = C.bg, fg = C.bg },
   BufferLineCloseButton = { bg = C.nontext },
+  BufferLineModified = { bg = C.nontext },
 }
