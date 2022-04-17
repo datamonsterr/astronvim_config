@@ -1,6 +1,5 @@
 return {
   -- Add bindings to the normal mode <leader> mappings
-  register_n_leader = {
     ["."] = { "<cmd>NeoRoot<cr>", "Set Root" },
     ["q"] = { ":Bdelete!<cr>", "Quit Buffer" },
     ["j"] = {
@@ -197,5 +196,4 @@ return {
         "Inspect",
       },
     },
-  },
 }
