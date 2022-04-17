@@ -23,12 +23,7 @@ return function()
     nbsp = "␣",
   }
   set.showbreak = "↪ "
-  set.conceallevel = 2
   set.wrap = true
-  set.linebreak = true
-  set.foldenable = false
-  set.foldmethod = "expr"
-  set.foldexpr = "nvim_treesitter#foldexpr()"
   -- Set key bindings
   map("n", "<A-k>", "<cmd>m .-2<CR>")
   map("n", "<A-j>", "<cmd>m .+1<CR>")
@@ -74,10 +69,10 @@ return function()
       set.shiftwidth = 4
     end,
   })
-  cmd("ColorScheme", {
-    pattern = "*",
-    command = "source ~/.config/astronvim/lua/user/dracula_theme/init.lua",
-  })
+  -- cmd("ColorScheme", {
+  --   pattern = "*",
+  --   command = "source ~/.config/astronvim/lua/user/dracula_theme/init.lua",
+  -- })
   if vim.g.colors_name == "dracula" then
     vim.cmd "syntax reset"
     require "user.dracula_theme.init"

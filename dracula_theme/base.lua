@@ -4,4 +4,5 @@ return {
   MatchParen = { underline = true },
   VertSplit = { fg = C.selection },
   IndentBlanklineContextChar = { fg = C.comment },
+  CursorLineNr = { fg = C.bright_purple, bold = true },
 }
