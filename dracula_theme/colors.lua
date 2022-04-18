@@ -23,4 +23,5 @@ return {
   nontext = "#3B4048",
   white = "#ABB2BF",
   black = "#191A21",
+  none = "none",
 }

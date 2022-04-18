@@ -74,7 +74,6 @@ return function()
   --   command = "source ~/.config/astronvim/lua/user/dracula_theme/init.lua",
   -- })
   if vim.g.colors_name == "dracula" then
-    vim.cmd "syntax reset"
     require "user.dracula_theme.init"
   end
 end

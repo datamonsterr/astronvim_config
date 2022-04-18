@@ -1,0 +1,26 @@
+local C = require "user.dracula_theme.colors"
+
+return {
+  markdownBlockquote = { fg = C.yellow, italic = true },
+  markdownBold = { fg = C.orange, bold = true },
+  markdownCode = { fg = C.green },
+  markdownCodeBlock = { fg = C.orange },
+  markdownCodeDelimiter = { fg = C.red },
+  markdownH1 = { fg = C.pink, bold = true },
+  markdownH2 = { fg = C.pink, bold = true },
+  markdownH3 = { fg = C.pink, bold = true },
+  markdownH4 = { fg = C.pink, bold = true },
+  markdownH5 = { fg = C.pink, bold = true },
+  markdownH6 = { fg = C.pink, bold = true },
+  markdownHeadingDelimiter = { fg = C.red },
+  markdownHeadingRule = { fg = C.comment },
+  markdownId = { fg = C.purple },
+  markdownIdDeclaration = { fg = C.cyan },
+  markdownIdDelimiter = { fg = C.purple },
+  markdownItalic = { fg = C.yellow, italic = true },
+  markdownLinkDelimiter = { fg = C.purple },
+  markdownLinkText = { fg = C.pink },
+  markdownListMarker = { fg = C.cyan },
+  markdownOrderedListMarker = { fg = C.red },
+  markdownRule = { fg = C.comment },
+}

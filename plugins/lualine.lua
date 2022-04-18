@@ -24,7 +24,7 @@ if vim.g.colors_name == "dracula" then
   return function()
     require("lualine").setup {
       options = {
-        theme = "dracula",
+        theme = "dracula-nvim",
         globalstatus = true,
       },
       sections = {
