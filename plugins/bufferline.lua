@@ -1,4 +1,3 @@
-local C = require "user.dracula_theme.colors"
 return {
   options = {
     offsets = {
@@ -6,8 +5,5 @@ return {
     },
     show_close_icon = false,
     buffer_close_icon = "",
-  },
-  highlights = {
-    duplicate = { guibg = C.nontext },
   },
 }

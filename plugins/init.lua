@@ -1,10 +1,6 @@
 return function(plugins)
   local my_plugins = {
     {
-      "nyngwang/NeoRoot.lua",
-      cmd = "NeoRoot",
-    },
-    {
       "https://gitlab.com/yorickpeterse/nvim-window.git",
       module = "nvim-window",
       config = function()
@@ -127,15 +123,7 @@ return function(plugins)
       "nvim-treesitter/nvim-treesitter-textobjects",
       event = { "BufRead" },
     },
-    {
-      "Mofiqul/dracula.nvim",
-      config = function()
-        -- set custom lualine background color
-        vim.g.dracula_lualine_bg_color = "#44475a"
-        -- set italic comment
-        vim.g.dracula_italic_comment = true
-      end,
-    },
+    { "datamonsterr/nvim-dracula" },
   }
   plugins["glepnir/dashboard-nvim"] = nil
   return vim.tbl_deep_extend("force", plugins, my_plugins)
