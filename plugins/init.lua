@@ -125,6 +125,6 @@ return function(plugins)
     },
     { "datamonsterr/nvim-dracula" },
   }
-  plugins["glepnir/dashboard-nvim"] = nil
+  -- plugins["glepnir/dashboard-nvim"] = nil
   return vim.tbl_deep_extend("force", plugins, my_plugins)
 end

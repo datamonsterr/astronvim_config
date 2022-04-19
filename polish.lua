@@ -5,8 +5,6 @@ local set = vim.opt
 local g = vim.g
 local map = vim.keymap.set
 local opts = { silent = true }
--- local unmap = vim.keymap.del
-
 return function()
   -- Options
   set.relativenumber = true
@@ -42,7 +40,6 @@ return function()
   map("n", "f", ":HopChar1CurrentLine<cr>", opts)
   map("n", "F", ":HopChar2<cr>", opts)
   map("n", "<A-c>", ":VCoolor<cr>")
-
   -- Set autocommands
   group("packer_conf", {})
   cmd("BufWritePost", {
@@ -69,11 +66,4 @@ return function()
       set.shiftwidth = 4
     end,
   })
-  -- cmd("ColorScheme", {
-  --   pattern = "*",
-  --   command = "source ~/.config/astronvim/lua/user/dracula_theme/init.lua",
-  -- })
-  if vim.g.colors_name == "dracula" then
-    require "user.dracula_theme.init"
-  end
 end

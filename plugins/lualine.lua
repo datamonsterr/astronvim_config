@@ -33,13 +33,13 @@ return function()
           status.lsp_name,
           icon = " ",
           color = { gui = "bold", fg = colors.bright_yellow },
-          padding = { left = 1, right = 1 },
+          padding = { left = 1, right = 2 },
           cond = conditions.hide_in_width,
         },
         {
           status.treesitter_status,
           color = { fg = colors.cyan, gui = "bold" },
-          padding = { left = 1, right = 1 },
+          padding = { left = 1, right = 2 },
           cond = conditions.hide_in_width,
         },
         {
