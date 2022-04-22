@@ -5,5 +5,6 @@ return {
     },
     show_close_icon = false,
     buffer_close_icon = "",
+    themable = true,
   },
 }

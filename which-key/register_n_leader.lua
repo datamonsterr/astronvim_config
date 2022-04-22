@@ -9,9 +9,53 @@ return {
   },
   ["w"] = { ":WinShift<cr>", "WinShift" },
   ["o"] = { nil },
-  ["S"] = { ":SaveSession<cr>", "Save Session" },
   ["c"] = { nil },
   ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
+  S = {
+    name = "Sessions",
+    s = {
+      function()
+        require("persisted").save()
+      end,
+      "save",
+    },
+    S = {
+      function()
+        require("persisted").start()
+      end,
+      "Start",
+    },
+    x = {
+      function()
+        require("persisted").stop()
+      end,
+      "stop",
+    },
+    l = {
+      function()
+        require("persisted").load()
+      end,
+      "Load",
+    },
+    L = {
+      function()
+        require("persisted").load { last = true }
+      end,
+      "Load Last",
+    },
+    d = {
+      function()
+        require("persisted").delete()
+      end,
+      "delete",
+    },
+    t = {
+      function()
+        require("persisted").toggle()
+      end,
+      "toggle",
+    },
+  },
 
   F = {
     name = "Focus",
@@ -42,7 +86,18 @@ return {
   f = {
     name = "Files",
     h = { nil },
-    s = { ":SearchSession<cr>", "Sessions" },
+    r = {
+      function()
+        require("telescope").extensions.repo.list {}
+      end,
+      "Repo",
+    },
+    s = {
+      function()
+        require("telescope").extensions.persisted.persisted {}
+      end,
+      "Sessions",
+    },
     l = {
       function()
         require("telescope").extensions.luasnip.luasnip {}
@@ -55,7 +110,7 @@ return {
       end,
       "Zoxide",
     },
-    P = {
+    p = {
       function()
         require("telescope").extensions.project.project {}
       end,

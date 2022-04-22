@@ -14,20 +14,27 @@ return function()
     end,
   }
   local colors = require "nvim-dracula.colors"
-  local spacer = {
-    function()
-      return " "
-    end,
-    padding = { left = 0, right = 0 },
-  }
   require("lualine").setup {
     options = {
       theme = "dracula-nvim",
       globalstatus = true,
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
     },
     sections = {
-      lualine_a = { spacer },
-      lualine_z = { spacer },
+      lualine_x = {
+        {
+          "filetype",
+          cond = conditions.buffer_not_empty,
+          padding = { left = 2, right = 1 },
+        },
+      },
+      lualine_z = {
+        {
+          "location",
+          padding = { left = 1, right = 1 },
+        },
+      },
       lualine_y = {
         {
           status.lsp_name,
@@ -41,10 +48,6 @@ return function()
           color = { fg = colors.cyan, gui = "bold" },
           padding = { left = 1, right = 2 },
           cond = conditions.hide_in_width,
-        },
-        {
-          "location",
-          padding = { left = 1, right = 1 },
         },
       },
     },

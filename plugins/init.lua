@@ -35,7 +35,7 @@ return function(plugins)
       event = "BufRead",
       config = function()
         require("focus").setup {
-          excluded_filetypes = { "toggleterm", "Mundo", "TelescopePrompt", "MundoDiff" },
+          excluded_filetypes = { "toggleterm", "TelescopePrompt" },
           compatible_filetreess = { "neotree" },
         }
       end,
@@ -95,21 +95,12 @@ return function(plugins)
       end,
     },
     {
-      "rmagatti/auto-session",
-      cmd = "SaveSession",
+      "olimorris/persisted.nvim",
+      module = { "persisted", "telescope._extensions.persisted" }, -- For lazy loading
       config = function()
-        vim.g.auto_session_enabled = false
-        vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-      end,
-    },
-    {
-      "rmagatti/session-lens",
-      cmd = "SearchSession",
-      config = function()
-        require("session-lens").setup {
-          path_display = { "shorten" },
-          previewer = true,
-        }
+        require("persisted").setup()
+        require("telescope").load_extension "persisted" -- To load the telescope extension
+        vim.o.sessionoptions = "buffers,curdir,folds,winpos,winsize"
       end,
     },
     {
@@ -123,8 +114,14 @@ return function(plugins)
       "nvim-treesitter/nvim-treesitter-textobjects",
       event = { "BufRead" },
     },
-    { "datamonsterr/nvim-dracula" },
+    {
+      "cljoly/telescope-repo.nvim",
+      module = "telescope._extensions.repo",
+    },
+    {
+      "datamonsterr/nvim-dracula",
+    },
   }
-  -- plugins["glepnir/dashboard-nvim"] = nil
+  plugins["glepnir/dashboard-nvim"] = nil
   return vim.tbl_deep_extend("force", plugins, my_plugins)
 end

@@ -1,3 +1,0 @@
-return function()
-  return {}
-end
