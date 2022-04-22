@@ -5,6 +5,7 @@ local set = vim.opt
 local g = vim.g
 local map = vim.keymap.set
 local opts = { silent = true }
+local unmap = vim.keymap.del
 return function()
   -- Options
   set.relativenumber = true
@@ -20,8 +21,6 @@ return function()
     trail = "·",
     nbsp = "␣",
   }
-  set.showbreak = "↪ "
-  set.wrap = true
   -- Set key bindings
   map("n", "<A-k>", "<cmd>m .-2<CR>")
   map("n", "<A-j>", "<cmd>m .+1<CR>")
@@ -66,4 +65,18 @@ return function()
       set.shiftwidth = 4
     end,
   })
+  if vim.fn.exists "$TMUX" == 1 then
+    require("tmux").setup {
+      copy_sync = {
+        enable = false,
+      },
+      navigation = {
+        cycle_navigation = true,
+        enable_default_keybindings = true,
+      },
+      resize = {
+        enable_default_keybindings = true,
+      },
+    }
+  end
 end

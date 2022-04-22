@@ -1,5 +1,4 @@
 return {
-  -- Add bindings to the normal mode <leader> mappings
   ["q"] = { ":Bdelete!<cr>", "Quit Buffer" },
   ["j"] = {
     function()
@@ -59,14 +58,59 @@ return {
 
   F = {
     name = "Focus",
-    t = { ":FocusToggle<cr>", "Toggle" },
-    a = { ":FocusSplitNicely<cr>", "Auto" },
-    m = { ":FocusMaximise<cr>", "Max" },
-    e = { ":FocusEqualise<cr>", "Equal" },
-    l = { ":FocusSplitRight<cr>", "Rigt" },
-    j = { ":FocusSplitDown<cr>", "Down" },
-    k = { ":FocusSplitUp<cr>", "Up" },
-    h = { ":FocusSplitLeft<cr>", "Left" },
+    t = {
+      function()
+        require("focus").focus_toggle()
+      end,
+      "Toggle",
+    },
+    e = {
+      function()
+        require("focus").focus_enable()
+      end,
+      "Enable",
+    },
+    n = {
+      function()
+        local filename = vim.fn.expand "%"
+        require("focus").split_nicely(filename)
+      end,
+      "Nicely",
+    },
+    m = {
+      function()
+        require("focus").focus_max_or_equal()
+      end,
+      "Max or equal",
+    },
+    l = {
+      function()
+        local filename = vim.fn.expand "%"
+        require("focus").split_command("l", filename)
+      end,
+      "Rigt",
+    },
+    j = {
+      function()
+        local filename = vim.fn.expand "%"
+        require("focus").split_command("j", filename)
+      end,
+      "Down",
+    },
+    k = {
+      function()
+        local filename = vim.fn.expand "%"
+        require("focus").split_command("k", filename)
+      end,
+      "Up",
+    },
+    h = {
+      function()
+        local filename = vim.fn.expand "%"
+        require("focus").split_command("h", filename)
+      end,
+      "Left",
+    },
   },
   p = {
     C = { ":PackerClean<cr>", "Clean" },
