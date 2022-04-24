@@ -26,7 +26,7 @@ return function()
         {
           "filetype",
           cond = conditions.buffer_not_empty,
-          padding = { left = 2, right = 1 },
+          padding = { left = 2, right = 2 },
         },
       },
       lualine_z = {

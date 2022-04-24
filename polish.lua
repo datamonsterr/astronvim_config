@@ -79,4 +79,9 @@ return function()
       },
     }
   end
+  -- cmd("VimEnter", {
+  --   ft = "neo-tree",
+  --   command = "Neotree toggle",
+  -- })
+  vim.cmd "Neotree toggle"
 end

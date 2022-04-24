@@ -3,4 +3,7 @@ return {
   matchup = {
     enable = true,
   },
+  highlight = {
+    disable = { "css" },
+  },
 }

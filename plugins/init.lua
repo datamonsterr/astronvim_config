@@ -109,10 +109,6 @@ return function(plugins)
             vim.cmd "Neotree close"
           end, -- function to run before the session is saved to disk
           after_save = function() end, -- function to run after the session is saved to disk
-          telescope = { -- options for the telescope extension
-            before_source = function(session) end, -- function to run before the session is sourced via telescope
-            after_source = function(session) end, -- function to run after the session is sourced via telescope
-          },
         }
         require("telescope").load_extension "persisted" -- To load the telescope extension
         vim.o.sessionoptions = "buffers,curdir,folds,winpos,winsize"
@@ -152,6 +148,13 @@ return function(plugins)
   plugins["moll/vim-bbye"] = {
     "moll/vim-bbye",
     cmd = "Bdelete",
+  }
+  plugins["numToStr/Comment.nvim"] = {
+    "numToStr/Comment.nvim",
+    module = "Comment.api",
+    config = function()
+      require("configs.comment").config()
+    end,
   }
 
   return vim.tbl_deep_extend("force", plugins, my_plugins)
