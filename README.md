@@ -2,7 +2,7 @@
 
 My AstroNvim configuration
 
-If you want to use AstroVim, check out: [AstroNvim](https://github.com/kabinspace/AstroVim)
+If you want to use AstroNvim, check out: [AstroNvim](https://github.com/kabinspace/AstroVim)
 
 # How to install my config
 
@@ -29,5 +29,3 @@ Install another_method of my config, use:
 ```bash
   git clone -b another_method https://github.com/datamonsterr/astrovim_config ~/.config/astronvim/lua/user
 ```
-
-nonearfj

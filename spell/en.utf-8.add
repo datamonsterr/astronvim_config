@@ -19,3 +19,6 @@ builtins
 nvim
 github
 linters
+config
+AstroNvim
+init
