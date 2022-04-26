@@ -136,6 +136,17 @@ return function(plugins)
       "aserowy/tmux.nvim",
       module = "tmux",
     },
+    {
+      "jose-elias-alvarez/nvim-lsp-ts-utils",
+      module = "nvim-lsp-ts-utils",
+    },
+    {
+      "lewis6991/spellsitter.nvim",
+      event = "BufRead",
+      config = function()
+        require("spellsitter").setup()
+      end,
+    },
   }
   plugins["glepnir/dashboard-nvim"] = nil
   plugins["lukas-reineke/indent-blankline.nvim"] = {
@@ -155,6 +166,10 @@ return function(plugins)
     config = function()
       require("configs.comment").config()
     end,
+  }
+  plugins["b0o/SchemaStore.nvim"] = {
+    "b0o/SchemaStore.nvim",
+    ft = "json",
   }
 
   return vim.tbl_deep_extend("force", plugins, my_plugins)

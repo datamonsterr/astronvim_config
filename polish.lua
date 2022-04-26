@@ -5,15 +5,23 @@ local set = vim.opt
 local g = vim.g
 local map = vim.keymap.set
 local opts = { silent = true }
+local dracula_colors = require "nvim-dracula.colors"
+local hi = function(groups, colors)
+  vim.api.nvim_set_hl(0, groups, colors)
+end
+---@diagnostic disable-next-line: unused-local
 local unmap = vim.keymap.del
 return function()
   -- Options
   set.relativenumber = true
-  set.timeoutlen = 150
-  set.updatetime = 150
+  set.timeoutlen = 100
+  set.updatetime = 100
+  set.exrc = true
   g.vcoolor_disable_mappings = 1
   g.vcoolor_lowercase = 1
   set.list = true
+  set.spell = true
+  set.spellfile = "/home/dat/.config/astronvim/lua/user/spell/en.utf-8.add"
   set.listchars = {
     tab = "│→",
     extends = "⟩",
@@ -21,6 +29,8 @@ return function()
     trail = "·",
     nbsp = "␣",
   }
+  g.loaded_matchit = true
+
   -- Set key bindings
   map("n", "<A-k>", "<cmd>m .-2<CR>")
   map("n", "<A-j>", "<cmd>m .+1<CR>")
@@ -79,9 +89,6 @@ return function()
       },
     }
   end
-  -- cmd("VimEnter", {
-  --   ft = "neo-tree",
-  --   command = "Neotree toggle",
-  -- })
-  vim.cmd "Neotree toggle"
+  -- Custom highlight
+  hi("WinJumpColor", { fg = dracula_colors.fg, bg = dracula_colors.dim_purple })
 end

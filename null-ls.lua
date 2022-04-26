@@ -32,6 +32,7 @@ return function()
       diagnostics.eslint_d.with {
         prefer_local = "node_modules/.bin",
       },
+      -- code_actions.refactoring,
       -- formatting.eslint_d.with {
       --   prefer_local = "node_modules/.bin",
       -- },
