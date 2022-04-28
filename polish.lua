@@ -14,9 +14,11 @@ local unmap = vim.keymap.del
 return function()
   -- Options
   set.relativenumber = true
+  set.spelllang = "en,programming"
   set.timeoutlen = 100
   set.updatetime = 100
   set.exrc = true
+  set.numberwidth = 1
   g.vcoolor_disable_mappings = 1
   g.vcoolor_lowercase = 1
   set.list = true
@@ -29,7 +31,6 @@ return function()
     trail = "·",
     nbsp = "␣",
   }
-  g.loaded_matchit = true
 
   -- Set key bindings
   map("n", "<A-k>", "<cmd>m .-2<CR>")
@@ -49,6 +50,7 @@ return function()
   map("n", "f", ":HopChar1CurrentLine<cr>", opts)
   map("n", "F", ":HopChar2<cr>", opts)
   map("n", "<A-c>", ":VCoolor<cr>")
+  map("n", "gx", "<cmd>call jobstart(['xdg-open', expand('<cfile>')], {'detach': v:true})<cr>")
   -- Set autocommands
   group("packer_conf", {})
   cmd("BufWritePost", {
@@ -91,4 +93,5 @@ return function()
   end
   -- Custom highlight
   hi("WinJumpColor", { fg = dracula_colors.fg, bg = dracula_colors.dim_purple })
+  hi("HighlightUrl", { fg = "none", underline = true, italic = true })
 end

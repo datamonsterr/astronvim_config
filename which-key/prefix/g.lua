@@ -1,6 +1,3 @@
 return {
-  d = { "Go to definition hehehe " },
-  x = { nil },
-  ["<'>"] = { nil },
-  ["<`>"] = { nil },
+  d = { "go to Definition" },
 }

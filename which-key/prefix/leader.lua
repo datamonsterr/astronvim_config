@@ -7,11 +7,10 @@ return {
     "Jump Win",
   },
   ["w"] = { ":WinShift<cr>", "WinShift" },
-  ["o"] = { nil },
   ["c"] = { nil },
   ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
-  S = {
-    name = "Sessions",
+  i = {
+    name = "sessIons",
     s = {
       function()
         require("persisted").save()
@@ -56,8 +55,8 @@ return {
     },
   },
 
-  F = {
-    name = "Focus",
+  o = {
+    name = "fOcus",
     t = {
       function()
         require("focus").focus_toggle()
@@ -88,7 +87,7 @@ return {
         local filename = vim.fn.expand "%"
         require("focus").split_command("l", filename)
       end,
-      "Rigt",
+      "Right",
     },
     j = {
       function()
