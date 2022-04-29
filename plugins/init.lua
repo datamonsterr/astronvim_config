@@ -174,6 +174,31 @@ return function(plugins)
       end,
     },
     { "psliwka/vim-dirtytalk", run = ":DirtytalkUpdate" },
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      after = "nvim-dap",
+      config = function()
+        require("nvim-dap-virtual-text").setup()
+      end,
+    },
+    {
+      "AckslD/nvim-neoclip.lua",
+      requires = {
+        { "tami5/sqlite.lua", module = "sqlite" },
+        { "nvim-telescope/telescope.nvim" },
+      },
+      module = { "telescope._extensions.neoclip", "telescope._extensions.macroscope" },
+      config = function()
+        require("neoclip").setup {
+          history = 200,
+          enable_persistent_history = true,
+          continuous_sync = false, -- Enable if I want to run it multiple sessions
+          default_register = "a",
+          default_register_macros = "q",
+        }
+      end,
+    },
+    { "michaelb/sniprun", run = "bash ./install.sh", module = "sniprun" },
   }
   plugins["glepnir/dashboard-nvim"] = nil
   plugins["lukas-reineke/indent-blankline.nvim"] = {
@@ -186,13 +211,6 @@ return function(plugins)
   plugins["moll/vim-bbye"] = {
     "moll/vim-bbye",
     cmd = "Bdelete",
-  }
-  plugins["numToStr/Comment.nvim"] = {
-    "numToStr/Comment.nvim",
-    module = "Comment.api",
-    config = function()
-      require("configs.comment").config()
-    end,
   }
   plugins["b0o/SchemaStore.nvim"] = {
     "b0o/SchemaStore.nvim",

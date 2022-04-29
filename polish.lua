@@ -5,7 +5,7 @@ local set = vim.opt
 local g = vim.g
 local map = vim.keymap.set
 local opts = { silent = true }
-local dracula_colors = require "nvim-dracula.colors"
+local dc = require "nvim-dracula.colors"
 local hi = function(groups, colors)
   vim.api.nvim_set_hl(0, groups, colors)
 end
@@ -17,7 +17,6 @@ return function()
   set.spelllang = "en,programming"
   set.timeoutlen = 100
   set.updatetime = 100
-  set.exrc = true
   set.numberwidth = 1
   g.vcoolor_disable_mappings = 1
   g.vcoolor_lowercase = 1
@@ -92,6 +91,8 @@ return function()
     }
   end
   -- Custom highlight
-  hi("WinJumpColor", { fg = dracula_colors.fg, bg = dracula_colors.dim_purple })
+  hi("WinJumpColor", { fg = dc.fg, bg = dc.dim_purple })
   hi("HighlightUrl", { fg = "none", underline = true, italic = true })
+  hi("SniprunVirtualTextOk", { italic = true, bg = dc.bright_green, fg = dc.bg })
+  hi("SniprunVirtualTextErr", { italic = true, bg = dc.bright_red, fg = dc.bg })
 end
