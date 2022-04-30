@@ -175,6 +175,12 @@ return {
         end,
         "Repo",
       },
+      b = {
+        function()
+          require("telescope").extensions.file_browser.file_browser()
+        end,
+        "Browse files",
+      },
       s = {
         function()
           require("telescope").extensions.persisted.persisted {}

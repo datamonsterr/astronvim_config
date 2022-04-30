@@ -1,4 +1,7 @@
 {
-  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-  "Lua.diagnostics.disable": ["different-requires"]
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.completion.autoRequire": false,
+    "Lua.diagnostics.disable": [
+        "different-requires"
+    ]
 }

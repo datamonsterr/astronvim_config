@@ -199,6 +199,17 @@ return function(plugins)
       end,
     },
     { "michaelb/sniprun", run = "bash ./install.sh", module = "sniprun" },
+    {
+      "nvim-telescope/telescope-hop.nvim",
+      module = { "telescope._extensions.hop" },
+      config = function()
+        require("telescope").load_extension "hop"
+      end,
+    },
+    {
+      "nvim-telescope/telescope-file-browser.nvim",
+      module = "telescope._extensions.file_browser",
+    },
   }
   plugins["glepnir/dashboard-nvim"] = nil
   plugins["lukas-reineke/indent-blankline.nvim"] = {
