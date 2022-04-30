@@ -1,15 +1,15 @@
 return {
   ["<leader>"] = {
     ["q"] = { ":Bdelete!<cr>", "Quit Buffer" },
+    ["w"] = { ":WinShift<cr>", "WinShift" },
+    ["c"] = { nil },
+    ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
     ["j"] = {
       function()
         require("nvim-window").pick()
       end,
       "Jump Win",
     },
-    ["w"] = { ":WinShift<cr>", "WinShift" },
-    ["c"] = { nil },
-    ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
     n = {
       name = "Neoclip",
       p = {
@@ -376,16 +376,16 @@ return {
       },
     },
   },
-  g = {
-    d = { "go to Definition" },
+  ["<C-s>"] = {
+    function()
+      require("syntax-tree-surfer").select()
+    end,
+    "Select",
   },
-  z = {
-    g = "spell Good",
-    G = "spell Good internal-wordlist",
-    w = "spell Wrong",
-    W = "spell Wrong internal-wordlist",
-    z = "Middle this line",
-    b = "Bottom this line",
-    t = "Top this line",
+  ["<C-n>"] = {
+    function()
+      require("syntax-tree-surfer").select_current_node()
+    end,
+    "Select Node",
   },
 }

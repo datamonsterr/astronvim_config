@@ -122,10 +122,6 @@ return function(plugins)
       end,
     },
     {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      event = { "BufRead" },
-    },
-    {
       "cljoly/telescope-repo.nvim",
       module = "telescope._extensions.repo",
     },
@@ -210,6 +206,8 @@ return function(plugins)
       "nvim-telescope/telescope-file-browser.nvim",
       module = "telescope._extensions.file_browser",
     },
+    { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+    { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
   }
   plugins["glepnir/dashboard-nvim"] = nil
   plugins["lukas-reineke/indent-blankline.nvim"] = {

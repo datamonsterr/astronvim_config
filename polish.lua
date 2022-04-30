@@ -44,12 +44,10 @@ return function()
   map("v", "<A-j>", ":m '>+1<cr>gv=gv")
   map("v", "<A-k>", ":m '<-2<cr>gv=gv")
   map("n", "<C-w>x", ":WinShift swap<cr>")
-  map("n", "<C-s>", vim.diagnostic.open_float)
-  map("i", "<C-s>", vim.diagnostic.open_float)
   map("n", "f", ":HopChar1CurrentLine<cr>", opts)
   map("n", "F", ":HopChar2<cr>", opts)
   map("n", "<A-c>", ":VCoolor<cr>")
-  map("n", "gx", "<cmd>call jobstart(['xdg-open', expand('<cfile>')], {'detach': v:true})<cr>")
+  unmap("n", "<C-s>")
   -- Set autocommands
   group("packer_conf", {})
   cmd("BufWritePost", {
@@ -60,9 +58,9 @@ return function()
   })
   group("telescope_prompt", {})
   cmd("FileType", {
-    pattern = "TelescopePrompt",
+    pattern = { "TelescopePrompt", "Outline", "qf", "neo-tree" },
     callback = function()
-      for _, option in pairs { "relativenumber", "number", "cursorline" } do
+      for _, option in pairs { "relativenumber", "number", "cursorline", "spell" } do
         vim.opt[option] = false
       end
     end,
