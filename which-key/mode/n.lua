@@ -388,4 +388,16 @@ return {
     end,
     "Select Node",
   },
+  ["]"] = {
+    f = "Next function",
+    c = "Next class",
+    F = "Next end function",
+    C = "Next end class",
+  },
+  ["["] = {
+    f = "Prev function",
+    c = "Prev class",
+    F = "Prev end function",
+    C = "Prev end class",
+  },
 }

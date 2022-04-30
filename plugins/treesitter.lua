@@ -11,10 +11,10 @@ return {
       enable = true,
       lookahead = true,
       keymaps = {
-        ["af"] = "@function.outer",
+        ["of"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ax"] = "@class.outer",
-        ["ix"] = "@class.inner",
+        ["oc"] = "@class.outer",
+        ["ic"] = "@class.inner",
       },
     },
     move = {
@@ -22,19 +22,19 @@ return {
       set_jumps = true,
       goto_next_start = {
         ["]f"] = "@function.outer",
-        ["]x"] = "@class.outer",
+        ["]c"] = "@class.outer",
       },
       goto_next_end = {
         ["]F"] = "@function.outer",
-        ["]X"] = "@class.outer",
+        ["]C"] = "@class.outer",
       },
       goto_previous_start = {
         ["[f"] = "@function.outer",
-        ["[x"] = "@class.outer",
+        ["[c"] = "@class.outer",
       },
       goto_previous_end = {
         ["[F"] = "@function.outer",
-        ["[X"] = "@class.outer",
+        ["[C"] = "@class.outer",
       },
     },
     swap = {
