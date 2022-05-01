@@ -64,3 +64,6 @@ addEventListener
 
 Popup
 p
+Cursorhold
+Bufferline
+Statusline

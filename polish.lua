@@ -4,7 +4,6 @@ local cmd = vim.api.nvim_create_autocmd
 local set = vim.opt
 local g = vim.g
 local map = vim.keymap.set
-local opts = { silent = true }
 local dc = require "nvim-dracula.colors"
 local hi = function(groups, colors)
   vim.api.nvim_set_hl(0, groups, colors)
@@ -44,21 +43,14 @@ return function()
   map("v", "<A-j>", ":m '>+1<cr>gv=gv")
   map("v", "<A-k>", ":m '<-2<cr>gv=gv")
   map("n", "<C-w>x", ":WinShift swap<cr>")
-  map("n", "f", ":HopChar1CurrentLine<cr>", opts)
-  map("n", "F", ":HopChar2<cr>", opts)
+  map("n", "f", ":HopChar1CurrentLine<cr>")
+  map("n", "F", ":HopChar2<cr>")
   map("n", "<A-c>", ":VCoolor<cr>")
   unmap("n", "<C-s>")
   -- Set autocommands
-  group("packer_conf", {})
-  cmd("BufWritePost", {
-    desc = "Sync packer after modifying plugins.lua",
-    group = "packer_conf",
-    pattern = "plugins.lua",
-    command = "source <afile> | PackerSync",
-  })
   group("telescope_prompt", {})
   cmd("FileType", {
-    pattern = { "TelescopePrompt", "Outline", "qf", "neo-tree" },
+    pattern = { "TelescopePrompt", "qf" },
     callback = function()
       for _, option in pairs { "relativenumber", "number", "cursorline", "spell" } do
         vim.opt[option] = false

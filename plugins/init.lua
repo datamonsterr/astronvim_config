@@ -69,30 +69,18 @@ return function(plugins)
     {
       "nvim-telescope/telescope-dap.nvim",
       module = "telescope._extensions.dap",
-      config = function()
-        require("telescope").load_extension "dap"
-      end,
     },
     {
       "benfowler/telescope-luasnip.nvim",
       module = "telescope._extensions.luasnip",
-      config = function()
-        require("telescope").load_extension "luasnip"
-      end,
     },
     {
       "nvim-telescope/telescope-packer.nvim",
       module = "telescope._extensions.packer",
-      config = function()
-        require("telescope").load_extension "packer"
-      end,
     },
     {
       "jvgrootveld/telescope-zoxide",
       module = "telescope._extensions.zoxide",
-      config = function()
-        require("telescope").load_extension "zoxide"
-      end,
     },
     {
       "olimorris/persisted.nvim",
@@ -117,9 +105,6 @@ return function(plugins)
     {
       "nvim-telescope/telescope-project.nvim",
       module = "telescope._extensions.project",
-      config = function()
-        require("telescope").load_extension "project"
-      end,
     },
     {
       "cljoly/telescope-repo.nvim",
@@ -184,6 +169,7 @@ return function(plugins)
         { "nvim-telescope/telescope.nvim" },
       },
       module = { "telescope._extensions.neoclip", "telescope._extensions.macroscope" },
+      event = { "TextYankPost" },
       config = function()
         require("neoclip").setup {
           history = 200,
@@ -197,10 +183,7 @@ return function(plugins)
     { "michaelb/sniprun", run = "bash ./install.sh", module = "sniprun" },
     {
       "nvim-telescope/telescope-hop.nvim",
-      module = { "telescope._extensions.hop" },
-      config = function()
-        require("telescope").load_extension "hop"
-      end,
+      module = "telescope._extensions.hop",
     },
     {
       "nvim-telescope/telescope-file-browser.nvim",
@@ -209,22 +192,51 @@ return function(plugins)
     { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
   }
-  plugins["glepnir/dashboard-nvim"] = nil
-  plugins["lukas-reineke/indent-blankline.nvim"] = {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    config = function()
-      require("configs.indent-line").config()
-    end,
+
+  local disable_plugins = {
+    "glepnir/dashboard-nvim",
+    "antoinemadec/FixCursorHold.nvim",
   }
-  plugins["moll/vim-bbye"] = {
-    "moll/vim-bbye",
-    cmd = "Bdelete",
+
+  local default_plugins = {
+    {
+      "stevearc/aerial.nvim",
+      cmd = "AerialToggle",
+      config = function()
+        require("configs.aerial").config()
+      end,
+    },
+    {
+      "karb94/neoscroll.nvim",
+      module = "neoscroll",
+      config = function()
+        require("configs.neoscroll").config()
+      end,
+    },
+    {
+      "moll/vim-bbye",
+      cmd = "Bdelete",
+    },
+    {
+      "b0o/SchemaStore.nvim",
+      ft = "json",
+    },
+    {
+      "lukas-reineke/indent-blankline.nvim",
+      event = "BufRead",
+      config = function()
+        require("configs.indent-line").config()
+      end,
+    },
   }
-  plugins["b0o/SchemaStore.nvim"] = {
-    "b0o/SchemaStore.nvim",
-    ft = "json",
-  }
+
+  for _, plugin in pairs(default_plugins) do
+    plugins[plugin[1]] = plugin
+  end
+
+  for _, plugin in pairs(disable_plugins) do
+    plugins[plugin] = nil
+  end
 
   return vim.tbl_deep_extend("force", plugins, my_plugins)
 end

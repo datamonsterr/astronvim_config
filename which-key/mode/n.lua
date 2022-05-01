@@ -1,10 +1,10 @@
 return {
   ["<leader>"] = {
-    ["q"] = { ":Bdelete!<cr>", "Quit Buffer" },
-    ["w"] = { ":WinShift<cr>", "WinShift" },
-    ["c"] = { nil },
+    q = { ":Bdelete!<cr>", "Quit Buffer" },
+    w = { ":WinShift<cr>", "WinShift" },
+    c = { nil },
     ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
-    ["j"] = {
+    j = {
       function()
         require("nvim-window").pick()
       end,
@@ -399,5 +399,41 @@ return {
     c = "Prev class",
     F = "Prev end function",
     C = "Prev end class",
+  },
+  ["<C-d>"] = {
+    function()
+      require("neoscroll").scroll(vim.wo.scroll, true, 250)
+    end,
+    "Scroll Down",
+  },
+  ["<C-u>"] = {
+    function()
+      require("neoscroll").scroll(-vim.wo.scroll, true, 250)
+    end,
+    "Scroll Up",
+  },
+  ["<C-b>"] = {
+    function()
+      require("neoscroll").scroll(-vim.api.nvim_win_get_height(0), true, 450)
+    end,
+    "Scroll Up a Page",
+  },
+  ["<C-e>"] = {
+    function()
+      require("neoscroll").scroll(0.10, true, 100)
+    end,
+    "Scroll Down Slow",
+  },
+  ["<C-y>"] = {
+    function()
+      require("neoscroll").scroll(-0.10, true, 100)
+    end,
+    "Scroll Up Slow",
+  },
+  ["<C-f>"] = {
+    function()
+      require("neoscroll").scroll(vim.api.nvim_win_get_height(0), true, 450)
+    end,
+    "Scroll Down a Page",
   },
 }
