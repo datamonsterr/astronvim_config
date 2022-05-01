@@ -192,12 +192,6 @@ return function(plugins)
     { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
   }
-
-  local disable_plugins = {
-    "glepnir/dashboard-nvim",
-    "antoinemadec/FixCursorHold.nvim",
-  }
-
   local default_plugins = {
     {
       "stevearc/aerial.nvim",
@@ -228,14 +222,16 @@ return function(plugins)
         require("configs.indent-line").config()
       end,
     },
+    "glepnir/dashboard-nvim",
+    "antoinemadec/FixCursorHold.nvim",
   }
 
   for _, plugin in pairs(default_plugins) do
-    plugins[plugin[1]] = plugin
-  end
-
-  for _, plugin in pairs(disable_plugins) do
-    plugins[plugin] = nil
+    if type(plugin) == "table" then
+      plugins[plugin[1]] = plugin
+    elseif type(plugin) == "string" then
+      plugins[plugin] = nil
+    end
   end
 
   return vim.tbl_deep_extend("force", plugins, my_plugins)
