@@ -85,4 +85,12 @@ return function()
   hi("HighlightUrl", { fg = "none", underline = true, italic = true })
   hi("SniprunVirtualTextOk", { italic = true, bg = dc.bright_green, fg = dc.bg })
   hi("SniprunVirtualTextErr", { italic = true, bg = dc.bright_red, fg = dc.bg })
+
+  -- FileType
+  vim.filetype.add {
+    extension = {
+      rasi = "rasi",
+      conf = "config",
+    },
+  }
 end

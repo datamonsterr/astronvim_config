@@ -69,3 +69,14 @@ Bufferline
 Statusline
 english
 DirChanged
+FileType
+bindsym
+bindsym
+picom
+xrandr
+goldendict
+polybar
+greenclip
+rofi
+Mod1
+ibus
