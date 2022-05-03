@@ -11,45 +11,6 @@ return {
       end,
       "Jump Win",
     },
-    n = {
-      name = "Neoclip",
-      p = {
-        function()
-          require("neoclip").db_pull()
-        end,
-        "Pull data",
-      },
-      P = {
-        function()
-          require("neoclip").db_push()
-        end,
-        "Push data",
-      },
-      c = {
-        function()
-          require("neoclip").clear_history()
-        end,
-        "Clear history",
-      },
-      o = {
-        function()
-          require("telescope").extensions.neoclip[vim.fn.input "Choose a register: "]()
-        end,
-        "Optional register",
-      },
-      d = {
-        function()
-          require("telescope").extensions.neoclip.default()
-        end,
-        "Default register",
-      },
-      m = {
-        function()
-          require("telescope").extensions.macroscope.default()
-        end,
-        "Macros",
-      },
-    },
     o = {
       name = "fOcus",
       t = {

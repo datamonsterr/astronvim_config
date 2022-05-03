@@ -36,7 +36,7 @@ return function(plugins)
       config = function()
         require("focus").setup {
           excluded_filetypes = { "toggleterm", "TelescopePrompt" },
-          compatible_filetreess = { "neotree" },
+          compatible_filetrees = { "neotree" },
         }
       end,
     },
@@ -111,28 +111,6 @@ return function(plugins)
     {
       "nvim-treesitter/playground",
       cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
-      config = function()
-        require("nvim-treesitter.configs").setup {
-          playground = {
-            enable = true,
-            disable = {},
-            updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-            persist_queries = false, -- Whether the query persists across vim sessions
-            keybindings = {
-              toggle_query_editor = "o",
-              toggle_hl_groups = "i",
-              toggle_injected_languages = "t",
-              toggle_anonymous_nodes = "a",
-              toggle_language_display = "I",
-              focus_language = "f",
-              unfocus_language = "F",
-              update = "R",
-              goto_node = "<cr>",
-              show_help = "?",
-            },
-          },
-        }
-      end,
     },
     { "psliwka/vim-dirtytalk", run = ":DirtytalkUpdate" },
     {
@@ -140,24 +118,6 @@ return function(plugins)
       after = "nvim-dap",
       config = function()
         require("nvim-dap-virtual-text").setup()
-      end,
-    },
-    {
-      "AckslD/nvim-neoclip.lua",
-      requires = {
-        { "tami5/sqlite.lua", module = "sqlite" },
-        { "nvim-telescope/telescope.nvim" },
-      },
-      module = { "telescope._extensions.neoclip", "telescope._extensions.macroscope" },
-      event = { "TextYankPost" },
-      config = function()
-        require("neoclip").setup {
-          history = 200,
-          enable_persistent_history = true,
-          continuous_sync = false, -- Enable if I want to run it multiple sessions
-          default_register = "a",
-          default_register_macros = "q",
-        }
       end,
     },
     { "michaelb/sniprun", run = "bash ./install.sh", module = "sniprun" },
