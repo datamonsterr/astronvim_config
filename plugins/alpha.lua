@@ -3,6 +3,7 @@ local plugins_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath "data" .. "/site
 local startify = require "alpha.themes.startify"
 return {
   layout = {
+    { type = "padding", val = 1 },
     {
       type = "text",
       val = utils.user_plugin_opts "header",

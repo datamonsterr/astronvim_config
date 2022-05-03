@@ -25,6 +25,9 @@ return function(plugins)
         "HopChar1CurrentLine",
         "HopChar2",
       },
+      config = function()
+        require("hop").setup()
+      end,
     },
     {
       "beauwilliams/focus.nvim",
