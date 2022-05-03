@@ -3,6 +3,7 @@ return {
     q = { ":Bdelete!<cr>", "Quit Buffer" },
     w = { ":WinShift<cr>", "WinShift" },
     c = { nil },
+    a = { ":Alpha<cr>", "Alpha" },
     ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
     j = {
       function()
@@ -49,52 +50,6 @@ return {
         "Macros",
       },
     },
-    i = {
-      name = "sessIons",
-      s = {
-        function()
-          require("persisted").save()
-        end,
-        "save",
-      },
-      S = {
-        function()
-          require("persisted").start()
-        end,
-        "Start",
-      },
-      x = {
-        function()
-          require("persisted").stop()
-        end,
-        "stop",
-      },
-      l = {
-        function()
-          require("persisted").load()
-        end,
-        "Load",
-      },
-      L = {
-        function()
-          require("persisted").load { last = true }
-        end,
-        "Load Last",
-      },
-      d = {
-        function()
-          require("persisted").delete()
-        end,
-        "delete",
-      },
-      t = {
-        function()
-          require("persisted").toggle()
-        end,
-        "toggle",
-      },
-    },
-
     o = {
       name = "fOcus",
       t = {
@@ -180,12 +135,6 @@ return {
           require("telescope").extensions.file_browser.file_browser()
         end,
         "Browse files",
-      },
-      s = {
-        function()
-          require("telescope").extensions.persisted.persisted {}
-        end,
-        "Sessions",
       },
       l = {
         function()
@@ -435,5 +384,25 @@ return {
       require("neoscroll").scroll(vim.api.nvim_win_get_height(0), true, 450)
     end,
     "Scroll Down a Page",
+  },
+  z = {
+    z = {
+      function()
+        require("neoscroll").zz(250)
+      end,
+      "Center this line",
+    },
+    t = {
+      function()
+        require("neoscroll").zt(250)
+      end,
+      "Top this line",
+    },
+    b = {
+      function()
+        require("neoscroll").zb(250)
+      end,
+      "Bottom this line",
+    },
   },
 }

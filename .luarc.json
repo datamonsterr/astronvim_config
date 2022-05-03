@@ -3,5 +3,9 @@
     "Lua.completion.autoRequire": false,
     "Lua.diagnostics.disable": [
         "different-requires"
+    ],
+    "Lua.diagnostics.globals": [
+        "vim",
+        "██████╔╝██║░░██║░░░██║░░░██║░░██║██║░╚═╝░██║╚█████╔╝██║░╚███║██████╔╝░░░██║░░░███████╗██║░░██║██║░░██║"
     ]
 }

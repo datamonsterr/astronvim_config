@@ -83,26 +83,6 @@ return function(plugins)
       module = "telescope._extensions.zoxide",
     },
     {
-      "olimorris/persisted.nvim",
-      module = { "persisted", "telescope._extensions.persisted" }, -- For lazy loading
-      config = function()
-        require("persisted").setup {
-          dir = vim.fn.expand(vim.fn.stdpath "data" .. "/sessions/"), -- directory where session files are saved
-          use_git_branch = false, -- create session files based on the branch of the git enabled repository
-          autosave = true, -- automatically save session files when exiting Neovim
-          autoload = false, -- automatically load the session for the cwd on Neovim startup
-          allowed_dirs = nil, -- table of dirs that the plugin will auto-save and auto-load from
-          ignored_dirs = nil, -- table of dirs that are ignored when auto-saving and auto-loading
-          before_save = function()
-            vim.cmd "Neotree close"
-          end, -- function to run before the session is saved to disk
-          after_save = function() end, -- function to run after the session is saved to disk
-        }
-        require("telescope").load_extension "persisted" -- To load the telescope extension
-        vim.o.sessionoptions = "buffers,curdir,folds,winpos,winsize"
-      end,
-    },
-    {
       "nvim-telescope/telescope-project.nvim",
       module = "telescope._extensions.project",
     },
@@ -194,22 +174,11 @@ return function(plugins)
   }
   local default_plugins = {
     {
-      "stevearc/aerial.nvim",
-      cmd = "AerialToggle",
-      config = function()
-        require("configs.aerial").config()
-      end,
-    },
-    {
       "karb94/neoscroll.nvim",
       module = "neoscroll",
       config = function()
         require("configs.neoscroll").config()
       end,
-    },
-    {
-      "moll/vim-bbye",
-      cmd = "Bdelete",
     },
     {
       "b0o/SchemaStore.nvim",
@@ -222,7 +191,6 @@ return function(plugins)
         require("configs.indent-line").config()
       end,
     },
-    "glepnir/dashboard-nvim",
     "antoinemadec/FixCursorHold.nvim",
   }
 
