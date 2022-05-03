@@ -129,6 +129,27 @@ return function(plugins)
     },
     { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
+    {
+      "tzachar/cmp-tabnine",
+      run = "./install.sh",
+      requires = "hrsh7th/nvim-cmp",
+      config = function()
+        local tabnine = require "cmp_tabnine.config"
+        tabnine:setup {
+          max_lines = 1000,
+          max_num_results = 5,
+          sort = true,
+          run_on_every_keystroke = true,
+          snippet_placeholder = "..",
+          ignored_file_types = { -- default is not to ignore
+            -- uncomment to ignore in lua:
+            -- lua = true
+          },
+          show_prediction_strength = true,
+        }
+        require("core.utils").add_user_cmp_source "cmp_tabnine"
+      end,
+    },
   }
   local default_plugins = {
     {

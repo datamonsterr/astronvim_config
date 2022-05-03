@@ -28,6 +28,7 @@ return function()
     precedes = "⟨",
     trail = "·",
     nbsp = "␣",
+    eol = "↲",
   }
 
   -- Set key bindings
