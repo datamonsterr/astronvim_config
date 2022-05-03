@@ -25,10 +25,6 @@ return function(plugins)
         "HopChar1CurrentLine",
         "HopChar2",
       },
-      config = function()
-        -- you can configure Hop the way you like here; see :h hop-config
-        require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
-      end,
     },
     {
       "beauwilliams/focus.nvim",
@@ -36,7 +32,6 @@ return function(plugins)
       config = function()
         require("focus").setup {
           excluded_filetypes = { "toggleterm", "TelescopePrompt" },
-          compatible_filetrees = { "neotree" },
         }
       end,
     },

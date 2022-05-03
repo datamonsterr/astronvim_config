@@ -2,6 +2,7 @@ return {
   ["<leader>"] = {
     q = { ":Bdelete!<cr>", "Quit Buffer" },
     w = { ":WinShift<cr>", "WinShift" },
+    u = { nil },
     c = { nil },
     a = { ":Alpha<cr>", "Alpha" },
     ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
