@@ -134,13 +134,6 @@ return function(plugins)
   }
   local default_plugins = {
     {
-      "karb94/neoscroll.nvim",
-      module = "neoscroll",
-      config = function()
-        require("configs.neoscroll").config()
-      end,
-    },
-    {
       "b0o/SchemaStore.nvim",
       ft = "json",
     },

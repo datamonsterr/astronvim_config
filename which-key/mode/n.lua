@@ -76,12 +76,6 @@ return {
         "Packer Search",
       },
     },
-    b = {
-      name = "BufferLine",
-      b = { ":BufferLinePick<cr>", "Pick" },
-      p = { ":BufferLineTogglePin<cr>", "Pin" },
-      c = { ":BufferLinePickClose<cr>", "Close" },
-    },
     f = {
       name = "Files",
       h = { nil },
@@ -309,61 +303,5 @@ return {
     c = "Prev class",
     F = "Prev end function",
     C = "Prev end class",
-  },
-  ["<C-d>"] = {
-    function()
-      require("neoscroll").scroll(vim.wo.scroll, true, 250)
-    end,
-    "Scroll Down",
-  },
-  ["<C-u>"] = {
-    function()
-      require("neoscroll").scroll(-vim.wo.scroll, true, 250)
-    end,
-    "Scroll Up",
-  },
-  ["<C-b>"] = {
-    function()
-      require("neoscroll").scroll(-vim.api.nvim_win_get_height(0), true, 450)
-    end,
-    "Scroll Up a Page",
-  },
-  ["<C-e>"] = {
-    function()
-      require("neoscroll").scroll(0.10, true, 100)
-    end,
-    "Scroll Down Slow",
-  },
-  ["<C-y>"] = {
-    function()
-      require("neoscroll").scroll(-0.10, true, 100)
-    end,
-    "Scroll Up Slow",
-  },
-  ["<C-f>"] = {
-    function()
-      require("neoscroll").scroll(vim.api.nvim_win_get_height(0), true, 450)
-    end,
-    "Scroll Down a Page",
-  },
-  z = {
-    z = {
-      function()
-        require("neoscroll").zz(250)
-      end,
-      "Center this line",
-    },
-    t = {
-      function()
-        require("neoscroll").zt(250)
-      end,
-      "Top this line",
-    },
-    b = {
-      function()
-        require("neoscroll").zb(250)
-      end,
-      "Bottom this line",
-    },
   },
 }
