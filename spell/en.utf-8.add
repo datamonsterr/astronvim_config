@@ -80,3 +80,7 @@ greenclip
 rofi
 Mod1
 ibus
+AUTOCMD
+autocmd
+BufUnload
+showtabline

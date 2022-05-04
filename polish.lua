@@ -23,7 +23,7 @@ return function()
   set.spell = true
   set.spellfile = "/home/dat/.config/astronvim/lua/user/spell/en.utf-8.add"
   set.listchars = {
-    tab = "│→",
+    tab = "→ ",
     extends = "⟩",
     precedes = "⟨",
     trail = "·",

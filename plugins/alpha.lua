@@ -1,17 +1,11 @@
 local utils = require "core.utils"
 local plugins_count = vim.fn.len(vim.fn.globpath(vim.fn.stdpath "data" .. "/site/pack/packer/start", "*", 0, 1))
+  + vim.fn.len(vim.fn.globpath(vim.fn.stdpath "data" .. "/site/pack/packer/opt", "*", 0, 1))
+local plugins_loaded = vim.fn.len(vim.fn.globpath(vim.fn.stdpath "data" .. "/site/pack/packer/start", "*", 0, 1))
 local startify = require "alpha.themes.startify"
 return {
   layout = {
-    { type = "padding", val = 1 },
-    {
-      type = "text",
-      val = utils.user_plugin_opts "header",
-      opts = {
-        position = "center",
-        hl = "DashboardHeader",
-      },
-    },
+    { type = "text", val = utils.user_plugin_opts "header", opts = { position = "center", hl = "DashboardHeader" } },
     { type = "padding", val = 2 },
     {
       type = "group",
@@ -24,21 +18,17 @@ return {
         utils.alpha_button("SPC f m", "  Bookmarks  "),
         utils.alpha_button("SPC S l", "  Last Session  "),
       },
-      opts = {
-        spacing = 1,
-      },
+      opts = { spacing = 1 },
     },
     startify.section.mru,
     startify.section.mru_cwd,
     {
       type = "text",
       val = {
-        " AstroNvim loaded " .. plugins_count .. " plugins ",
+        " AstroNvim loaded " .. plugins_loaded .. " plugins ",
+        " AstroNvim has " .. plugins_count .. " plugins ",
       },
-      opts = {
-        position = "center",
-        hl = "DashboardFooter",
-      },
+      opts = { position = "center", hl = "DashboardFooter" },
     },
   },
 }
