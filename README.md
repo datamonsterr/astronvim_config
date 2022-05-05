@@ -18,10 +18,10 @@ Install my config, use:
 # Another configuration method
 
 Basically, [AstroNvim](https://github.com/kabinspace/AstroVim) provides us two way to make
-an user's customization. You can use an user/init.lua (which I'm using in main branch) or
-without a user/init.lua (which I'm using in another_method branch).
+an user's customization. You can use an user/init.lua (which I'm using in another_method branch) or
+without a user/init.lua (which I'm using in main branch).
 
-**Notes:** You can see that my `main` method seems not in a single file because I split user/init.lua
+**Notes:** You can see that my `another_method` seems not in a single file because I split user/init.lua
 to many files and source it back to user/init.lua
 
 Install another_method of my config, use:
