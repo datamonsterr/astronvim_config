@@ -294,12 +294,6 @@ return {
     end,
     "Select",
   },
-  ["<C-n>"] = {
-    function()
-      require("syntax-tree-surfer").select_current_node()
-    end,
-    "Select Node",
-  },
   ["]"] = {
     f = "Next function",
     c = "Next class",

@@ -14,6 +14,19 @@ return function()
     end,
   }
   local colors = require "nvim-dracula.colors"
+
+  local filename = {
+    function()
+      if vim.o.filetype ~= "toggleterm" then
+        return vim.fn.expand "%"
+      else
+        local display = "Terminal: " .. vim.b.toggle_number
+        return display
+      end
+    end,
+    padding = { left = 2, right = 2 },
+  }
+
   require("lualine").setup {
     options = {
       theme = "dracula-nvim",
@@ -22,6 +35,9 @@ return function()
       section_separators = { left = "", right = "" },
     },
     sections = {
+      lualine_c = {
+        filename,
+      },
       lualine_x = {
         {
           "filetype",
