@@ -1,7 +1,7 @@
 return function()
-  require "custom.mappings"
-  require "custom.highlights"
-  require "custom.tmux"
+  require "user.custom.mappings"
+  require "user.custom.highlights"
+  require "user.custom.tmux"
 
   -- FileType
   vim.filetype.add {

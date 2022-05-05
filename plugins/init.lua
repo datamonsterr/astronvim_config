@@ -50,17 +50,17 @@ return function(plugins)
     {
       "mfussenegger/nvim-dap",
       module = "dap",
-      config = require "plugins.nvim-dap",
+      config = require "user.plugins.nvim-dap",
     },
     {
       "rcarriga/nvim-dap-ui",
       after = "nvim-dap",
-      config = require "plugins.nvim-dapui",
+      config = require "user.plugins.nvim-dapui",
     },
     {
       "sindrets/winshift.nvim",
       cmd = "WinShift",
-      config = require "plugins.WinShift",
+      config = require "user.plugins.WinShift",
     },
     {
       "nvim-telescope/telescope-dap.nvim",
