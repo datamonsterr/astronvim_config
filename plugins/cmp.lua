@@ -26,7 +26,6 @@ local kind_icons = {
   TypeParameter = " ",
 }
 local cmp = require "cmp"
-local luasnip = require "luasnip"
 
 return {
   experimental = {
@@ -37,7 +36,8 @@ return {
   },
   window = {
     documentation = {
-      border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+      -- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+      border = { " ", " ", " ", " ", " ", " ", " ", " " },
     },
   },
   formatting = {
@@ -62,7 +62,5 @@ return {
   mapping = {
     ["<C-j>"] = cmp.config.disable,
     ["<C-k>"] = cmp.config.disable,
-    ["<C-p>"] = cmp.config.disable,
-    ["<C-n>"] = cmp.config.disable,
   },
 }

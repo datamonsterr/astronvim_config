@@ -1,17 +1,6 @@
 return function(plugins)
   local my_plugins = {
     {
-      "https://gitlab.com/yorickpeterse/nvim-window.git",
-      module = "nvim-window",
-      config = function()
-        require("nvim-window").setup {
-          normal_hl = "WinJumpColor",
-          hint_hl = "Bold",
-          border = "none",
-        }
-      end,
-    },
-    {
       "ur4ltz/surround.nvim",
       event = "BufRead",
       config = function()
@@ -23,7 +12,14 @@ return function(plugins)
       branch = "v1", -- optional but strongly recommended
       cmd = {
         "HopChar1CurrentLine",
+        "HopChar2CurrentLine",
         "HopChar2",
+        "HopChar1",
+        "HopLine",
+        "HopLineStart",
+        "HopWord",
+        "HopWordCurrenLine",
+        "HopPattern",
       },
       config = function()
         require("hop").setup()
@@ -31,10 +27,12 @@ return function(plugins)
     },
     {
       "beauwilliams/focus.nvim",
-      event = "BufWinEnter",
+      module = "focus",
       config = function()
         require("focus").setup {
           excluded_filetypes = { "toggleterm", "TelescopePrompt" },
+          cursorline = false,
+          signcolumn = false,
         }
       end,
     },
@@ -129,27 +127,6 @@ return function(plugins)
     },
     { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
-    {
-      "tzachar/cmp-tabnine",
-      run = "./install.sh",
-      requires = "hrsh7th/nvim-cmp",
-      config = function()
-        local tabnine = require "cmp_tabnine.config"
-        tabnine:setup {
-          max_lines = 1000,
-          max_num_results = 5,
-          sort = true,
-          run_on_every_keystroke = true,
-          snippet_placeholder = "..",
-          ignored_file_types = { -- default is not to ignore
-            -- uncomment to ignore in lua:
-            -- lua = true
-          },
-          show_prediction_strength = true,
-        }
-        require("core.utils").add_user_cmp_source "cmp_tabnine"
-      end,
-    },
   }
   local default_plugins = {
     {
