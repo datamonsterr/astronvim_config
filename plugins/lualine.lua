@@ -18,7 +18,7 @@ return function()
   local filename = {
     function()
       if vim.o.filetype ~= "toggleterm" then
-        return vim.fn.expand "%"
+        return vim.fn.expand "%:t"
       else
         local display = "Terminal: " .. vim.b.toggle_number
         return display
@@ -36,6 +36,12 @@ return function()
     },
     sections = {
       lualine_c = {
+        {
+          "diff",
+          symbols = { added = " ", modified = "柳", removed = " " },
+          cond = conditions.hide_in_width,
+          padding = { left = 2, right = 1 },
+        },
         filename,
       },
       lualine_x = {
