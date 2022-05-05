@@ -50,17 +50,17 @@ return function(plugins)
     {
       "mfussenegger/nvim-dap",
       module = "dap",
-      config = require "user.plugins.nvim-dap",
+      config = require "plugins.nvim-dap",
     },
     {
       "rcarriga/nvim-dap-ui",
       after = "nvim-dap",
-      config = require "user.plugins.nvim-dapui",
+      config = require "plugins.nvim-dapui",
     },
     {
       "sindrets/winshift.nvim",
       cmd = "WinShift",
-      config = require "user.plugins.WinShift",
+      config = require "plugins.WinShift",
     },
     {
       "nvim-telescope/telescope-dap.nvim",
@@ -120,6 +120,29 @@ return function(plugins)
     },
     { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
+    {
+      "lewis6991/nvim-treesitter-context",
+      after = "nvim-treesitter",
+      config = function()
+        require("treesitter-context").setup {
+          enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+          throttle = true, -- Throttles plugin updates (may improve performance)
+          max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
+          patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+            default = {
+              "class",
+              "function",
+              "method",
+              "for", -- These won't appear in the context
+              "while",
+              "if",
+              "switch",
+              "case",
+            },
+          },
+        }
+      end,
+    },
   }
   local default_plugins = {
     {
