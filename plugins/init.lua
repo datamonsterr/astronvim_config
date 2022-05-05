@@ -143,6 +143,9 @@ return function(plugins)
         }
       end,
     },
+    {
+      "andymass/vim-matchup",
+    },
   }
   local default_plugins = {
     {

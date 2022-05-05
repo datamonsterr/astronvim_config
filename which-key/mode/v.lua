@@ -29,13 +29,13 @@ return {
     end,
     "Child",
   },
-  ["<A-j>"] = {
+  ["<C-j>"] = {
     function()
       require("syntax-tree-surfer").surf("next", "visual", true)
     end,
     "Swap Next",
   },
-  ["<A-k>"] = {
+  ["<C-k>"] = {
     function()
       require("syntax-tree-surfer").surf("prev", "visual", true)
     end,

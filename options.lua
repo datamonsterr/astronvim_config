@@ -21,7 +21,8 @@ return {
     conceallevel = 2,
   },
   g = {
-    vcoolor_disable_mappings = 1,
-    vcoolor_lowercase = 1,
+    vcoolor_disable_mappings = true,
+    vcoolor_lowercase = true,
+    loaded_matchit = true,
   },
 }
