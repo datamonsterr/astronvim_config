@@ -94,10 +94,6 @@ return function(plugins)
       module = "tmux",
     },
     {
-      "jose-elias-alvarez/nvim-lsp-ts-utils",
-      module = "nvim-lsp-ts-utils",
-    },
-    {
       "nvim-treesitter/playground",
       cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
     },
