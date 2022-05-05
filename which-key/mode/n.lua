@@ -1,17 +1,24 @@
+local function vim_opt_toggle(user_opt)
+  if vim.o[user_opt] == true then
+    vim.opt[user_opt] = false
+  else
+    vim.opt[user_opt] = true
+  end
+end
+
 return {
   ["<leader>"] = {
     q = { ":Bdelete!<cr>", "Quit Buffer" },
     w = { ":WinShift<cr>", "WinShift" },
     u = { nil },
-    c = { nil },
+    c = {
+      function()
+        vim_opt_toggle "spell"
+      end,
+      "Check spell",
+    },
     a = { ":Alpha<cr>", "Alpha" },
     ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
-    j = {
-      function()
-        require("nvim-window").pick()
-      end,
-      "Jump Win",
-    },
     o = {
       name = "fOcus",
       t = {

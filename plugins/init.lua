@@ -98,13 +98,6 @@ return function(plugins)
       module = "nvim-lsp-ts-utils",
     },
     {
-      "lewis6991/spellsitter.nvim",
-      event = "BufRead",
-      config = function()
-        require("spellsitter").setup()
-      end,
-    },
-    {
       "nvim-treesitter/playground",
       cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
     },

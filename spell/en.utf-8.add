@@ -84,3 +84,11 @@ AUTOCMD
 autocmd
 BufUnload
 showtabline
+cursorline
+listchars
+astronvim
+astronvim
+#opPattern
+#r4ltz
+ur4ltz/!
+HopPattern/!
