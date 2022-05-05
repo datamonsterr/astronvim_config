@@ -5,6 +5,7 @@ local plugins_loaded = vim.fn.len(vim.fn.globpath(vim.fn.stdpath "data" .. "/sit
 local startify = require "alpha.themes.startify"
 return {
   layout = {
+    { type = "padding", val = 2 },
     { type = "text", val = utils.user_plugin_opts "header", opts = { position = "center", hl = "DashboardHeader" } },
     { type = "padding", val = 2 },
     {
@@ -25,8 +26,7 @@ return {
     {
       type = "text",
       val = {
-        " AstroNvim loaded " .. plugins_loaded .. " plugins ",
-        " AstroNvim has " .. plugins_count .. " plugins ",
+        " AstroNvim loaded " .. plugins_loaded .. " and has " .. plugins_count .. " plugins ",
       },
       opts = { position = "center", hl = "DashboardFooter" },
     },

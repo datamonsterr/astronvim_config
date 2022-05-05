@@ -35,13 +35,20 @@ return function()
       section_separators = { left = "", right = "" },
     },
     sections = {
-      lualine_c = {
+      lualine_b = {
+        {
+          "branch",
+          icon = "",
+          padding = { left = 2, right = 1 },
+        },
         {
           "diff",
           symbols = { added = " ", modified = "柳", removed = " " },
           cond = conditions.hide_in_width,
           padding = { left = 2, right = 1 },
         },
+      },
+      lualine_c = {
         filename,
       },
       lualine_x = {
