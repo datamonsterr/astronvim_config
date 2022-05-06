@@ -96,7 +96,10 @@ return function(plugins)
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
     {
       "andymass/vim-matchup",
-      after = "nvim-treesitter",
+      opt = true,
+      setup = function()
+        require("core.utils").defer_plugin "gitsigns.nvim"
+      end,
       config = function()
         vim.g.matchup_matchparen_offscreen = {}
       end,
@@ -115,15 +118,37 @@ return function(plugins)
       end,
     },
     {
-      "williamboman/nvim-lsp-installer",
-      cmd = {
-        "LspInstall",
-        "LspInstallInfo",
-        "LspInstallLog",
-      },
+      "nvim-lualine/lualine.nvim",
+      after = "nvim-web-devicons",
       config = function()
-        require("configs.nvim-lsp-installer").config()
-        require "configs.lsp"
+        require("configs.lualine").config()
+      end,
+    },
+    {
+      "kyazdani42/nvim-web-devicons",
+      after = "packer.nvim",
+      config = function()
+        require("configs.icons").config()
+      end,
+    },
+    {
+      "rafamadriz/friendly-snippets",
+      module = "cmp_nvim_lsp",
+      event = "InsertEnter",
+    },
+    {
+      "L3MON4D3/LuaSnip",
+      wants = "friendly-snippets",
+      after = "nvim-cmp",
+      config = function()
+        require("configs.luasnip").config()
+      end,
+    },
+    {
+      "numToStr/Comment.nvim",
+      module = "Comment",
+      config = function()
+        require("configs.Comment").config()
       end,
     },
     "antoinemadec/FixCursorHold.nvim",
