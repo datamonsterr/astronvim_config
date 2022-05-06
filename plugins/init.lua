@@ -114,6 +114,20 @@ return function(plugins)
         require("configs.indent-line").config()
       end,
     },
+    {
+      "nvim-lualine/lualine.nvim",
+      event = { "BufAdd", "BufRead" },
+      config = function()
+        require("configs.lualine").config()
+      end,
+    },
+    {
+      "akinsho/bufferline.nvim",
+      event = { "BufAdd", "BufRead" },
+      config = function()
+        require("configs.bufferline").config()
+      end,
+    },
     "antoinemadec/FixCursorHold.nvim",
   }
 
