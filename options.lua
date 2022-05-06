@@ -18,7 +18,6 @@ return {
     },
     wrap = true,
     showbreak = "↪ ",
-    laststatus = 0,
   },
   g = {
     vcoolor_disable_mappings = true,

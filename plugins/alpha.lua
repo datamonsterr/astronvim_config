@@ -13,10 +13,8 @@ return {
       val = {
         utils.alpha_button("SPC f f", "  Find File  "),
         utils.alpha_button("SPC f o", "  Recents  "),
-        utils.alpha_button("SPC f w", "  Find Word  "),
         utils.alpha_button("SPC f p", "P  Projects  "),
         utils.alpha_button("SPC f n", "  New File  "),
-        utils.alpha_button("SPC f m", "  Bookmarks  "),
         utils.alpha_button("SPC S l", "  Last Session  "),
       },
       opts = { spacing = 1 },

@@ -115,17 +115,15 @@ return function(plugins)
       end,
     },
     {
-      "nvim-lualine/lualine.nvim",
-      event = { "BufAdd", "BufRead" },
+      "williamboman/nvim-lsp-installer",
+      cmd = {
+        "LspInstall",
+        "LspInstallInfo",
+        "LspInstallLog",
+      },
       config = function()
-        require("configs.lualine").config()
-      end,
-    },
-    {
-      "akinsho/bufferline.nvim",
-      event = { "BufAdd", "BufRead" },
-      config = function()
-        require("configs.bufferline").config()
+        require("configs.nvim-lsp-installer").config()
+        require "configs.lsp"
       end,
     },
     "antoinemadec/FixCursorHold.nvim",
