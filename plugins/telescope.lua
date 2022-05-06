@@ -1,8 +1,6 @@
 local status_ok, telescope = pcall(require, "telescope")
 if status_ok then
-  local actions = require "telescope.actions"
   local fb_actions = require("telescope").extensions.file_browser.actions
-  local hop = telescope.extensions.hop
 
   return {
     defaults = {
@@ -21,18 +19,6 @@ if status_ok then
           width = 0.87,
           height = 0.80,
           preview_cutoff = 120,
-        },
-      },
-      mappings = {
-        i = {
-          ["<C-h>"] = hop.hop,
-          ["<C-space>"] = function(prompt_bufnr)
-            local opts = {
-              callback = actions.toggle_selection,
-              loop_callback = actions.send_selected_to_qflist,
-            }
-            hop._hop_loop(prompt_bufnr, opts)
-          end,
         },
       },
     },

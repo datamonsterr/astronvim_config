@@ -10,17 +10,7 @@ return function(plugins)
     {
       "phaazon/hop.nvim",
       branch = "v1", -- optional but strongly recommended
-      cmd = {
-        "HopChar1CurrentLine",
-        "HopChar2CurrentLine",
-        "HopChar2",
-        "HopChar1",
-        "HopLine",
-        "HopLineStart",
-        "HopWord",
-        "HopWordCurrenLine",
-        "HopPattern",
-      },
+      event = "BufRead", -- I want to use it all the time
       config = function()
         require("hop").setup()
       end,
@@ -67,16 +57,8 @@ return function(plugins)
       module = "telescope._extensions.dap",
     },
     {
-      "benfowler/telescope-luasnip.nvim",
-      module = "telescope._extensions.luasnip",
-    },
-    {
       "nvim-telescope/telescope-packer.nvim",
       module = "telescope._extensions.packer",
-    },
-    {
-      "jvgrootveld/telescope-zoxide",
-      module = "telescope._extensions.zoxide",
     },
     {
       "nvim-telescope/telescope-project.nvim",
@@ -97,7 +79,7 @@ return function(plugins)
       "nvim-treesitter/playground",
       cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
     },
-    { "psliwka/vim-dirtytalk", run = ":DirtytalkUpdate" },
+    { "psliwka/vim-dirtytalk", run = ":DirtytalkUpdate", event = "BufRead" },
     {
       "theHamsta/nvim-dap-virtual-text",
       after = "nvim-dap",
@@ -107,40 +89,17 @@ return function(plugins)
     },
     { "michaelb/sniprun", run = "bash ./install.sh", module = "sniprun" },
     {
-      "nvim-telescope/telescope-hop.nvim",
-      module = "telescope._extensions.hop",
-    },
-    {
       "nvim-telescope/telescope-file-browser.nvim",
       module = "telescope._extensions.file_browser",
     },
     { "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
     {
-      "lewis6991/nvim-treesitter-context",
+      "andymass/vim-matchup",
       after = "nvim-treesitter",
       config = function()
-        require("treesitter-context").setup {
-          enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-          throttle = true, -- Throttles plugin updates (may improve performance)
-          max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
-          patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-            default = {
-              "class",
-              "function",
-              "method",
-              "for", -- These won't appear in the context
-              "while",
-              "if",
-              "switch",
-              "case",
-            },
-          },
-        }
+        vim.g.matchup_matchparen_offscreen = {}
       end,
-    },
-    {
-      "andymass/vim-matchup",
     },
   }
   local default_plugins = {

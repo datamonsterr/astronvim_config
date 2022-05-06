@@ -25,6 +25,7 @@ return function()
       end
     end,
     padding = { left = 2, right = 2 },
+    color = { fg = colors.bright_cyan, gui = "bold" },
   }
 
   require("lualine").setup {
