@@ -6,16 +6,20 @@ local startify = require "alpha.themes.startify"
 return {
   layout = {
     { type = "padding", val = 2 },
-    { type = "text", val = utils.user_plugin_opts "header", opts = { position = "center", hl = "DashboardHeader" } },
+    {
+      type = "text",
+      val = utils.user_plugin_opts("header", {}, false),
+      opts = { position = "center", hl = "DashboardHeader" },
+    },
     { type = "padding", val = 2 },
     {
       type = "group",
       val = {
-        utils.alpha_button("SPC f f", "  Find File  "),
-        utils.alpha_button("SPC f o", "  Recents  "),
-        utils.alpha_button("SPC f p", "P  Projects  "),
-        utils.alpha_button("SPC f n", "  New File  "),
-        utils.alpha_button("SPC S l", "  Last Session  "),
+        utils.alpha_button("LDR f f", "  Find File  "),
+        utils.alpha_button("LDR f o", "  Recents  "),
+        utils.alpha_button("LDR f p", "P  Projects  "),
+        utils.alpha_button("LDR f n", "  New File  "),
+        utils.alpha_button("LDR S l", "  Last Session  "),
       },
       opts = { spacing = 1 },
     },

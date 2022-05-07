@@ -1,39 +1,53 @@
 local default_opts = {}
-local map = function(mode, lhs, rhs, opts)
-  vim.keymap.set(mode, lhs, rhs, opts)
-end
+local map = vim.keymap.set
+local unmap = vim.keymap.del
+
+local unmappings = {
+  n = {
+    "<leader>fh",
+    "<leader>u",
+    "<leader>o",
+    "<b",
+    ">b",
+  },
+}
 
 local mappings = {
   n = {
-    ["<A-k>"] = "<cmd>m .-2<CR>",
-    ["<A-j>"] = "<cmd>m .+1<CR>",
+    ["<A-k>"] = { "<cmd>m .-2<CR>", { desc = "move line up" } },
+    ["<A-j>"] = { "<cmd>m .+1<CR>", { desc = "move line down" } },
     ["n"] = "nzzzv",
     ["N"] = "Nzzzv",
     ["J"] = "mzJ`z",
-    [","] = ",<c-g>u",
-    ["."] = ".<c-g>u",
-    ["!"] = "!<c-g>u",
-    ["?"] = "?<c-g>u",
     ["<C-w>x"] = ":WinShift swap<cr>",
-    f = ":HopChar1CurrentLine<cr>",
-    F = ":HopChar1<cr>",
-    ["<C-f>"] = ":HopLineStart<cr>",
-    ["<C-f>p"] = ":HopPattern<cr>",
-    ["<C-f>w"] = ":HopWord<cr>",
-    ["<A-c>"] = ":VCoolor<cr>",
+    f = { ":HopChar1CurrentLine<cr>", { desc = "Hop 1 Char Current Line" } },
+    F = { ":HopChar1<cr>", { desc = "Hop 1 Char Whole Buf" } },
+    ["<A-c>"] = { ":VCoolor<cr>", { desc = "VCoolor" } },
   },
   v = {
     ["<A-j>"] = ":m '>+1<cr>gv=gv",
     ["<A-k>"] = ":m '<-2<cr>gv=gv",
   },
+  i = {
+    [","] = ",<c-g>u",
+    ["."] = ".<c-g>u",
+    ["!"] = "!<c-g>u",
+    ["?"] = "?<c-g>u",
+  },
 }
 
 for mode, maps in pairs(mappings) do
   for lhs, rhs in pairs(maps) do
-    if type(rhs) == "string" then
+    if type(rhs) == "string" or type(rhs) == "function" then
       map(mode, lhs, rhs, default_opts)
     elseif type(rhs) == "table" then
       map(mode, lhs, rhs[1], rhs[2])
     end
+  end
+end
+
+for mode, unmaps in pairs(unmappings) do
+  for _, unmapkey in pairs(unmaps) do
+    unmap(mode, unmapkey)
   end
 end

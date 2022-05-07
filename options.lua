@@ -1,13 +1,13 @@
 return {
   opt = {
     relativenumber = true,
-    spelllang = "en,programming",
     spell = false,
-    timeoutlen = 200,
-    updatetime = 200,
+    spelllang = "en,programming",
+    timeoutlen = 100,
+    updatetime = 100,
     numberwidth = 1,
-    list = true,
     spellfile = "/home/dat/.config/astronvim/lua/user/spell/en.utf-8.add",
+    list = true,
     listchars = {
       tab = "→ ",
       extends = "⟩",
@@ -18,10 +18,20 @@ return {
     },
     wrap = true,
     showbreak = "↪ ",
+    lazyredraw = true,
+    synmaxcol = 200,
   },
   g = {
     vcoolor_disable_mappings = true,
     vcoolor_lowercase = true,
     loaded_matchit = true,
+    loaded_matchparen = true,
+    loaded_logiPat = true,
+    loaded_rrhelper = true,
+    loaded_man = true,
+    loaded_shada_plugin = true,
+    loaded_spellfile_plugin = true,
+    loaded_netrw = true,
+    loaded_tutor_mode_plugin = true,
   },
 }

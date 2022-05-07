@@ -8,10 +8,10 @@ return {
     },
     presets = {
       operators = false,
-      motions = true,
+      motions = false,
       text_objects = true,
       windows = true,
-      nav = true,
+      nav = false,
       z = true,
       g = true,
     },

@@ -98,11 +98,15 @@ return function(plugins)
       "andymass/vim-matchup",
       opt = true,
       setup = function()
-        require("core.utils").defer_plugin "gitsigns.nvim"
+        require("core.utils").defer_plugin "vim-matchup"
       end,
       config = function()
         vim.g.matchup_matchparen_offscreen = {}
       end,
+    },
+    {
+      "hrsh7th/cmp-nvim-lua",
+      after = "cmp_luasnip",
     },
   }
   local default_plugins = {
@@ -137,21 +141,37 @@ return function(plugins)
       event = "InsertEnter",
     },
     {
-      "L3MON4D3/LuaSnip",
-      wants = "friendly-snippets",
-      after = "nvim-cmp",
-      config = function()
-        require("configs.luasnip").config()
-      end,
-    },
-    {
       "numToStr/Comment.nvim",
       module = "Comment",
       config = function()
         require("configs.Comment").config()
       end,
     },
+    {
+      "williamboman/nvim-lsp-installer",
+      opt = true,
+      setup = function()
+        require("core.utils").defer_plugin "nvim-lsp-installer"
+        -- reload the current file so lsp actually starts for it
+        vim.defer_fn(function()
+          vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+        end, 0)
+      end,
+      config = function()
+        require("configs.nvim-lsp-installer").config()
+        require "configs.lsp"
+      end,
+    },
+    {
+      "neovim/nvim-lspconfig",
+      after = "nvim-lsp-installer",
+      module = "lspconfig",
+      setup = function()
+        require("core.utils").defer_plugin "nvim-lspconfig"
+      end,
+    },
     "antoinemadec/FixCursorHold.nvim",
+    "goolord/alpha-nvim",
   }
 
   for _, plugin in pairs(default_plugins) do

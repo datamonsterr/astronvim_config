@@ -6,11 +6,47 @@ local function vim_opt_toggle(user_opt)
   end
 end
 
-return {
+local mappings = {
+  g = {
+    name = "GoTo",
+  },
+  z = {
+    name = "Spell, Scroll, Fold",
+  },
+  ["<C-u>"] = "Scroll Up Half Page",
+  ["<C-d>"] = "Scroll Down Half Page",
+  ["<C-b>"] = "Scroll Up Page",
+  ["<C-f>"] = "Scroll Down Page",
+  ["<C-y>"] = "Scroll Up",
+  ["<C-e>"] = "Scroll Down",
+
   ["<leader>"] = {
+    d = {
+      name = "Document",
+      h = { ":nohlsearch<cr>", "No highlight" },
+      s = {
+        function()
+          vim_opt_toggle "spell"
+        end,
+        "Spell",
+      },
+      c = {
+        function()
+          vim.opt_toggle "cursorline"
+        end,
+        "Cursorline",
+      },
+    },
+    name = "Plugins",
     q = { ":Bdelete!<cr>", "Quit Buffer" },
     w = { ":WinShift<cr>", "WinShift" },
-    u = { nil },
+
+    h = {
+      name = "Hop",
+      l = { ":HopLineStart<cr>", "Hop Line Start" },
+      p = { ":HopPattern<cr>", "Hop Pattern" },
+      w = { ":HopWord<cr>", "Hop Word" },
+    },
     c = {
       function()
         vim_opt_toggle "spell"
@@ -86,7 +122,6 @@ return {
     },
     f = {
       name = "Files",
-      h = { nil },
       r = {
         function()
           require("telescope").extensions.repo.list {}
@@ -98,18 +133,6 @@ return {
           require("telescope").extensions.file_browser.file_browser()
         end,
         "Browse files",
-      },
-      l = {
-        function()
-          require("telescope").extensions.luasnip.luasnip {}
-        end,
-        "Luasnip",
-      },
-      z = {
-        function()
-          require("telescope").extensions.zoxide.list()
-        end,
-        "Zoxide",
       },
       p = {
         function()
@@ -172,7 +195,7 @@ return {
         "Man",
       },
     },
-    d = {
+    x = {
       name = "Debugger",
       b = {
         function()
@@ -290,20 +313,69 @@ return {
   },
   ["<C-s>"] = {
     function()
-      require("syntax-tree-surfer").select()
+      require("syntax-tree-surfer").select_current_node()
     end,
-    "Select",
+    "Select current node",
   },
   ["]"] = {
+    name = "Next objects",
     f = "Next function",
     c = "Next class",
     F = "Next end function",
     C = "Next end class",
   },
   ["["] = {
+    name = "Prev objects",
     f = "Prev function",
     c = "Prev class",
     F = "Prev end function",
     C = "Prev end class",
   },
 }
+local ignore = {
+  "z<CR>",
+  "z+",
+  "z-",
+  "z^",
+  "zl",
+  "zh",
+  "z.",
+  "Y",
+  "n",
+  "N",
+  "J",
+  "<A-c>",
+  "<SNR>",
+  "y",
+  "c",
+  "d",
+  "<PageUp>",
+  "<PageDown>",
+  "<Up>",
+  "<Down>",
+  "<Left>",
+  "<Right>",
+  "j",
+  "k",
+  "l",
+  "h",
+  "^",
+  "*",
+  "-",
+  "^",
+  "0",
+  "%",
+  "#",
+  "$",
+  "<LeftMouse>",
+  "<2-LeftMouse>",
+  "<C-i>",
+  "<C-o>",
+  "G",
+  "gg",
+}
+for _, key in pairs(ignore) do
+  mappings[key] = { "which_key_ignore" }
+end
+
+return mappings
