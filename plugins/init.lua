@@ -87,7 +87,6 @@ return function(plugins)
         require("nvim-dap-virtual-text").setup()
       end,
     },
-    { "michaelb/sniprun", run = "bash ./install.sh", module = "sniprun" },
     {
       "nvim-telescope/telescope-file-browser.nvim",
       module = "telescope._extensions.file_browser",
