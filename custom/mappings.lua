@@ -36,12 +36,21 @@ local mappings = {
   },
 }
 
+-- Trying to make my mappings can use which-key styple
 for mode, maps in pairs(mappings) do
   for lhs, rhs in pairs(maps) do
     if type(rhs) == "string" or type(rhs) == "function" then
       map(mode, lhs, rhs, default_opts)
     elseif type(rhs) == "table" then
-      map(mode, lhs, rhs[1], rhs[2])
+      if type(rhs.name) == "string" then
+        for key, value in pairs(rhs) do
+          if key ~= "name" then
+            map(mode, lhs .. key, value[1], { desc = value[2] })
+          end
+        end
+      else
+        map(mode, lhs, rhs[1], rhs[2])
+      end
     end
   end
 end
