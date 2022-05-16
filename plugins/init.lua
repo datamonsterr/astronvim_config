@@ -1,6 +1,5 @@
 return function(plugins)
-  local my_plugins = {
-    {
+  local my_plugins = { {
       "ur4ltz/surround.nvim",
       event = "BufRead",
       config = function()
@@ -95,10 +94,7 @@ return function(plugins)
     { "ziontee113/syntax-tree-surfer", module = "syntax-tree-surfer" },
     {
       "andymass/vim-matchup",
-      opt = true,
-      setup = function()
-        require("core.utils").defer_plugin "vim-matchup"
-      end,
+      event = "BufRead",
       config = function()
         vim.g.matchup_matchparen_offscreen = {}
       end,
@@ -118,55 +114,6 @@ return function(plugins)
       event = "BufRead",
       config = function()
         require("configs.indent-line").config()
-      end,
-    },
-    {
-      "nvim-lualine/lualine.nvim",
-      after = "nvim-web-devicons",
-      config = function()
-        require("configs.lualine").config()
-      end,
-    },
-    {
-      "kyazdani42/nvim-web-devicons",
-      after = "packer.nvim",
-      config = function()
-        require("configs.icons").config()
-      end,
-    },
-    {
-      "rafamadriz/friendly-snippets",
-      module = "cmp_nvim_lsp",
-      event = "InsertEnter",
-    },
-    {
-      "numToStr/Comment.nvim",
-      module = "Comment",
-      config = function()
-        require("configs.Comment").config()
-      end,
-    },
-    {
-      "williamboman/nvim-lsp-installer",
-      opt = true,
-      setup = function()
-        require("core.utils").defer_plugin "nvim-lsp-installer"
-        -- reload the current file so lsp actually starts for it
-        vim.defer_fn(function()
-          vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-        end, 0)
-      end,
-      config = function()
-        require("configs.nvim-lsp-installer").config()
-        require "configs.lsp"
-      end,
-    },
-    {
-      "neovim/nvim-lspconfig",
-      after = "nvim-lsp-installer",
-      module = "lspconfig",
-      setup = function()
-        require("core.utils").defer_plugin "nvim-lspconfig"
       end,
     },
     "antoinemadec/FixCursorHold.nvim",

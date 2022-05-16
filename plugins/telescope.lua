@@ -6,7 +6,6 @@ if status_ok then
     defaults = {
       prompt_prefix = " ",
       layout_strategy = "horizontal",
-      selection_caret = " ",
       layout_config = {
         horizontal = {
           prompt_position = "top",
