@@ -87,7 +87,7 @@ return function(_)
           {
             provider = function()
               if vim.o.filetype == "toggleterm" then
-                local display = " Terminal: " .. vim.b.toggle_number .. " "
+                local display = " Term " .. vim.b.toggle_number .. " "
                 return display
               end
             end,
@@ -96,7 +96,7 @@ return function(_)
             left_sep = "slant_left_2",
           },
         },
-        { { provider = provider.spacer(1), hl = mode(), left_sep = "slant_left_2" } },
+        { { provider = provider.spacer(1), hl = mode(), left_sep = "slant_left" } },
       },
     },
   }
