@@ -1,103 +1,120 @@
-return function(_)
-  local C = require "default_theme.colors"
-  local hl = require("core.status").hl
-  local provider = require("core.status").provider
-  local conditional = require("core.status").conditional
-  local hl_mode = require("feline.providers.vi_mode").get_vim_mode
-  local mode = function()
-    if hl_mode() == "NORMAL" then
-      return { bg = "purple" }
-    elseif hl_mode() == "INSERT" then
-      return { bg = "cyan" }
-    elseif hl_mode() == "COMMAND" then
-      return { bg = "orange" }
-    else
-      return { bg = "pink" }
+if vim.g.colors_name == "dracula" then
+  return function(_)
+    local hl = require("core.status").hl
+    local provider = require("core.status").provider
+    local conditional = require("core.status").conditional
+    local hl_mode = require("feline.providers.vi_mode").get_vim_mode
+    local C = require "nvim-dracula.colors"
+    local mode = function()
+      if hl_mode() == "NORMAL" then
+        return { fg = C.bg, bg = C.purple }
+      elseif hl_mode() == "INSERT" then
+        return { fg = C.bg, bg = C.cyan }
+      elseif hl_mode() == "COMMAND" then
+        return { fg = C.bg, bg = C.orange }
+      else
+        return { fg = C.bg, bg = C.pink }
+      end
     end
-  end
-  return {
-    disable = { filetypes = { "^NvimTree$", "^neo%-tree$", "^dashboard$", "^Outline$", "^aerial$" } },
-    theme = "dracula",
-    components = {
-      active = {
-        {
+    return {
+      disable = { filetypes = { "^NvimTree$", "^neo%-tree$", "^dashboard$", "^Outline$", "^aerial$" } },
+      components = {
+        active = {
           {
-            provider = provider.spacer(),
-            hl = mode(),
-            right_sep = "slant_right",
-          },
-          { provider = provider.spacer(2) },
-          { provider = "git_branch", hl = { fg = "purple", style = "bold" }, icon = " " },
-          { provider = provider.spacer(3), enabled = conditional.git_available },
-          {
-            provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
-            enabled = conditional.has_filetype,
-          },
-          { provider = provider.spacer(2), enabled = conditional.has_filetype },
-          { provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
-          { provider = "git_diff_changed", hl = hl.fg("GitSignsChange", { fg = C.orange_1 }), icon = " 柳" },
-          { provider = "git_diff_removed", hl = hl.fg("GitSignsDelete", { fg = C.red_1 }), icon = "  " },
-          { provider = provider.spacer(2), enabled = conditional.git_changed },
-          { provider = "diagnostic_errors", hl = hl.fg("DiagnosticError", { fg = C.red_1 }), icon = "  " },
-          { provider = "diagnostic_warnings", hl = hl.fg("DiagnosticWarn", { fg = C.orange_1 }), icon = "  " },
-          { provider = "diagnostic_info", hl = hl.fg("DiagnosticInfo", { fg = C.white_2 }), icon = "  " },
-          { provider = "diagnostic_hints", hl = hl.fg("DiagnosticHint", { fg = C.yellow_1 }), icon = "  " },
-        },
-        {
-          {
-            provider = function()
-              if vim.o.filetype == "TelescopePrompt" then
-                return "  Telescope "
-              else
-                local filename = vim.fn.expand "%:t"
+            {
+              provider = provider.spacer(),
+              hl = mode,
+              right_sep = "slant_right",
+              enabled = function()
+                return vim.o.filetype ~= "TelescopePrompt"
+              end,
+            },
+            {
+              provider = provider.spacer(1),
+              enabled = function()
+                return vim.o.filetype ~= "TelescopePrompt"
+              end,
+            },
+            { provider = "git_branch", hl = { fg = C.purple, style = "bold" }, icon = " " },
+            { provider = provider.spacer(1), enabled = conditional.git_available },
+            {
+              provider = function()
+                local filename = vim.fn.expand "%:t:r"
                 return " " .. filename .. " "
-              end
-            end,
-            hl = { fg = "bg", style = "bold", bg = "purple" },
-            right_sep = "slant_right_2",
-            left_sep = "slant_left_2",
-            enabled = function()
-              return vim.bo.filetype ~= ""
-            end,
+              end,
+              hl = mode,
+              right_sep = "slant_right",
+              left_sep = "slant_left_2",
+              enabled = conditional.has_filetype,
+            },
+            { provider = provider.spacer(1), enabled = conditional.has_filetype },
+            {
+              provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
+              enabled = conditional.has_filetype,
+            },
+            { provider = provider.spacer(2), enabled = conditional.has_filetype },
+            { provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
+            { provider = "git_diff_changed", hl = hl.fg("GitSignsChange", { fg = C.orange_1 }), icon = " 柳" },
+            { provider = "git_diff_removed", hl = hl.fg("GitSignsDelete", { fg = C.red_1 }), icon = "  " },
+            { provider = provider.spacer(2), enabled = conditional.git_changed },
+            { provider = "diagnostic_errors", hl = hl.fg("DiagnosticError", { fg = C.red_1 }), icon = "  " },
+            { provider = "diagnostic_warnings", hl = hl.fg("DiagnosticWarn", { fg = C.orange_1 }), icon = "  " },
+            { provider = "diagnostic_info", hl = hl.fg("DiagnosticInfo", { fg = C.white_2 }), icon = "  " },
+            { provider = "diagnostic_hints", hl = hl.fg("DiagnosticHint", { fg = C.yellow_1 }), icon = "  " },
+            {
+              provider = "  Telescope ",
+              hl = { fg = "bg", style = "bold", bg = C.purple },
+              right_sep = "slant_right",
+              enabled = function()
+                return vim.bo.filetype == "TelescopePrompt"
+              end,
+            },
+          },
+          {
+            {
+              provider = provider.lsp_client_names(true),
+              short_provider = provider.lsp_client_names(),
+              hl = mode,
+              right_sep = "slant_right",
+              left_sep = "slant_left_2",
+              icon = "   ",
+            },
+            { provider = provider.spacer(1), enabled = conditional.bar_width() },
+            {
+              provider = provider.treesitter_status,
+              enabled = conditional.bar_width(),
+              hl = hl.fg("GitSignsAdd", { fg = C.green }),
+            },
+            { provider = provider.spacer(2) },
+            { provider = "position", hl = { fg = C.yellow }, enabled = conditional.has_filetype },
+            { provider = provider.spacer() },
+            {
+              provider = provider.spacer(),
+              hl = mode,
+              left_sep = "slant_left_2",
+            },
           },
         },
-        {
-          { provider = "lsp_client_names", enabled = conditional.bar_width(), icon = " " },
-          { provider = provider.spacer(1), enabled = conditional.bar_width() },
+        inactive = {
           {
-            provider = provider.treesitter_status,
-            enabled = conditional.bar_width(),
-            hl = hl.fg("GitSignsAdd", { fg = C.green }),
+            {
+              provider = function()
+                if vim.o.filetype == "toggleterm" then
+                  local display = " Term " .. vim.b.toggle_number .. " "
+                  return display
+                else
+                  return " " .. vim.o.filetype .. " "
+                end
+              end,
+              hl = { fg = "bg", style = "bold", bg = C.purple },
+              right_sep = "slant_right",
+            },
           },
-          { provider = provider.spacer(2) },
-          { provider = "position", hl = { fg = "yellow" } },
-          { provider = provider.spacer() },
-          {
-            provider = provider.spacer(),
-            hl = mode(),
-            left_sep = "slant_left",
-          },
+          { { provider = provider.spacer(1), hl = mode, left_sep = "slant_left_2" } },
         },
       },
-      inactive = {
-        {
-          { provider = provider.spacer(1), hl = mode(), right_sep = "slant_right" },
-        },
-        {
-          {
-            provider = function()
-              if vim.o.filetype == "toggleterm" then
-                local display = " Term " .. vim.b.toggle_number .. " "
-                return display
-              end
-            end,
-            hl = { fg = "bg", style = "bold", bg = "purple" },
-            right_sep = "slant_right_2",
-            left_sep = "slant_left_2",
-          },
-        },
-        { { provider = provider.spacer(1), hl = mode(), left_sep = "slant_left" } },
-      },
-    },
-  }
+    }
+  end
+else
+  return {}
 end

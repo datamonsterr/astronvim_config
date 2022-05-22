@@ -9,6 +9,7 @@ local unmappings = {
     "<leader>o",
     "<b",
     ">b",
+    "<leader>h",
   },
 }
 
