@@ -10,6 +10,11 @@ local unmappings = {
     "<b",
     ">b",
     "<leader>h",
+    "<leader>tp",
+    "<leader>tl",
+    "<leader>tu",
+    "<leader>tt",
+    "<leader>tn",
   },
 }
 

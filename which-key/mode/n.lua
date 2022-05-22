@@ -21,6 +21,14 @@ local mappings = {
   ["<C-e>"] = "Scroll Down",
 
   ["<leader>"] = {
+    g = {
+      g = {
+        function()
+          require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", direction = "float", hidden = true }):toggle()
+        end,
+        "Lazygit",
+      },
+    },
     d = {
       name = "Document",
       h = { ":nohlsearch<cr>", "No highlight" },
