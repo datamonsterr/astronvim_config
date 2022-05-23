@@ -1,5 +1,6 @@
 return function(plugins)
-  local my_plugins = { {
+  local my_plugins = {
+    {
       "ur4ltz/surround.nvim",
       event = "BufRead",
       config = function()

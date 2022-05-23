@@ -1,5 +1,19 @@
 if vim.g.colors_name == "dracula" then
   return function(_)
+    local my_provider = {
+      lsp_client_names = function()
+        local buf_client_names = {}
+        for _, client in pairs(vim.lsp.buf_get_clients(0)) do
+          if client.name == "null-ls" then
+            vim.list_extend(buf_client_names, astronvim.null_ls_sources(vim.bo.filetype, "FORMATTING"))
+            vim.list_extend(buf_client_names, astronvim.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
+          else
+            table.insert(buf_client_names, client.name)
+          end
+        end
+        return table.concat(buf_client_names, ", ") .. " "
+      end,
+    }
     local hl = require("core.status").hl
     local provider = require("core.status").provider
     local conditional = require("core.status").conditional
@@ -18,6 +32,7 @@ if vim.g.colors_name == "dracula" then
     end
     return {
       disable = { filetypes = { "^NvimTree$", "^neo%-tree$", "^dashboard$", "^Outline$", "^aerial$" } },
+      theme = { bg = C.bg, fg = C.fg },
       components = {
         active = {
           {
@@ -73,6 +88,7 @@ if vim.g.colors_name == "dracula" then
           {
             {
               provider = provider.lsp_client_names(true),
+              -- provider = my_provider.lsp_client_names,
               short_provider = provider.lsp_client_names(),
               hl = mode,
               right_sep = "slant_right",

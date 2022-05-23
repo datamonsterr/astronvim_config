@@ -331,6 +331,7 @@ local mappings = {
     c = "Next class",
     F = "Next end function",
     C = "Next end class",
+    ["/"] = "Next comment",
   },
   ["["] = {
     name = "Prev objects",
@@ -338,6 +339,7 @@ local mappings = {
     c = "Prev class",
     F = "Prev end function",
     C = "Prev end class",
+    ["/"] = "Prev comment",
   },
 }
 local ignore = {

@@ -1,4 +1,5 @@
 return {
+  -- this is a comment
   ensure_installed = { "cpp", "vim", "lua", "python", "rust", "javascript", "html", "css", "json", "toml" },
   matchup = {
     enable = true,
@@ -30,6 +31,7 @@ return {
       goto_next_end = {
         ["]F"] = "@function.outer",
         ["]C"] = "@class.outer",
+        ["]/"] = "@comment.outer",
       },
       goto_previous_start = {
         ["[f"] = "@function.outer",
@@ -38,6 +40,7 @@ return {
       goto_previous_end = {
         ["[F"] = "@function.outer",
         ["[C"] = "@class.outer",
+        ["[/"] = "@comment.outer",
       },
     },
     swap = {
