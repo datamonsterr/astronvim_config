@@ -104,6 +104,9 @@ return function(plugins)
       "hrsh7th/cmp-nvim-lua",
       after = "cmp_luasnip",
     },
+    {
+      "SmiteshP/nvim-gps",
+    },
   }
   local default_plugins = {
     {
