@@ -1,6 +1,22 @@
 if vim.g.colors_name == "dracula" then
   return function(_)
     local hl = require("core.status").hl
+    local my_provider = {
+      lsp_client_names = function(expand_null_ls)
+        return function()
+          local buf_client_names = {}
+          for _, client in pairs(vim.lsp.buf_get_clients(0)) do
+            if client.name == "null-ls" and expand_null_ls then
+              vim.list_extend(buf_client_names, astronvim.null_ls_sources(vim.bo.filetype, "FORMATTING"))
+              vim.list_extend(buf_client_names, astronvim.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
+            else
+              table.insert(buf_client_names, client.name)
+            end
+          end
+          return table.concat(buf_client_names, ", ") .. " "
+        end
+      end,
+    }
     local provider = require("core.status").provider
     local conditional = require("core.status").conditional
     local hl_mode = require("feline.providers.vi_mode").get_vim_mode
@@ -73,9 +89,8 @@ if vim.g.colors_name == "dracula" then
           },
           {
             {
-              provider = provider.lsp_client_names(true),
-              -- provider = my_provider.lsp_client_names,
-              short_provider = provider.lsp_client_names(),
+              provider = my_provider.lsp_client_names(true),
+              short_provider = my_provider.lsp_client_names(),
               hl = mode,
               right_sep = "slant_right",
               left_sep = "slant_left_2",
