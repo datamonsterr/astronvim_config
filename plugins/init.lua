@@ -106,6 +106,7 @@ return function(plugins)
     },
     {
       "SmiteshP/nvim-gps",
+      config = require "user.plugins.gps",
     },
   }
   local default_plugins = {
