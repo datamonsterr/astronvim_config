@@ -1,6 +1,6 @@
 local status_ok, telescope = pcall(require, "telescope")
 if status_ok then
-  local fb_actions = require("telescope").extensions.file_browser.actions
+  local fb_actions = telescope.extensions.file_browser.actions
 
   return {
     defaults = {
