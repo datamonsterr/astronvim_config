@@ -1,6 +1,6 @@
 if vim.fn.exists "$TMUX" == 1 then
-  local has_tmux_plugin, _ = pcall(require, "tmux")
-  if has_tmux_plugin then
+  local has_tmux, _ = pcall(require, "tmux")
+  if has_tmux then
     require("tmux").setup {
       copy_sync = {
         enable = false,
