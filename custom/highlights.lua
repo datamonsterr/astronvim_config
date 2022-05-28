@@ -1,14 +1,16 @@
-local dc = require "nvim-dracula.colors"
+local C = require "nvim-dracula.colors"
 local hi = function(groups, colors)
   vim.api.nvim_set_hl(0, groups, colors)
 end
 local custom_highlights = {
-  WinJumpColor = { fg = dc.fg, bg = dc.dim_purple },
+  WinJumpColor = { fg = C.fg, bg = C.dim_purple },
   HighlightUrl = { fg = "none", underline = true, italic = true, bg = "none" },
-  SniprunVirtualTextOk = { italic = true, bg = dc.bright_green, fg = dc.bg },
-  SniprunVirtualTextErr = { italic = true, bg = dc.bright_red, fg = dc.bg },
-  TreesitterContext = { bg = dc.visual },
-  TreesitterContextLineNumber = { bg = dc.visual, fg = dc.cyan, bold = true },
+  SniprunVirtualTextOk = { italic = true, bg = C.bright_green, fg = C.bg },
+  SniprunVirtualTextErr = { italic = true, bg = C.bright_red, fg = C.bg },
+  TreesitterContext = { bg = C.visual },
+  TreesitterContextLineNumber = { bg = C.visual, fg = C.cyan, bold = true },
+  NeoTreeNormal = { bg = C.bg },
+  NeoTreeNormalNC = { bg = C.bg },
 }
 for group, highlights in pairs(custom_highlights) do
   hi(group, highlights)
