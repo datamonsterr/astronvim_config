@@ -108,6 +108,7 @@ return function(plugins)
       "SmiteshP/nvim-gps",
       event = "BufRead",
       config = require "user.plugins.gps",
+      disable = true,
     },
   }
   local default_plugins = {
