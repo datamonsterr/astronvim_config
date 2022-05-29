@@ -1,7 +1,16 @@
+local function include(item, table)
+  for _, value in pairs(table) do
+    if value == item then
+      return true
+    end
+  end
+  return false
+end
+
 if vim.g.colors_name == "dracula" then
   return function(_)
     local hl = require("core.status").hl
-    local my_provider = {
+    local custom = {
       lsp_client_names = function(expand_null_ls)
         return function()
           local buf_client_names = {}
@@ -15,6 +24,12 @@ if vim.g.colors_name == "dracula" then
           end
           return table.concat(buf_client_names, ", ") .. " "
         end
+      end,
+      has_filetype = function()
+        return vim.fn.empty(vim.fn.expand "%:t") ~= 1
+          and vim.bo.filetype
+          and vim.bo.filetype ~= ""
+          and not include(vim.bo.filetype, { "TelescopePrompt" })
       end,
     }
     local provider = require("core.status").provider
@@ -62,25 +77,25 @@ if vim.g.colors_name == "dracula" then
               hl = mode,
               right_sep = "slant_right",
               left_sep = "slant_left_2",
-              enabled = conditional.has_filetype,
+              enabled = custom.has_filetype,
             },
-            { provider = provider.spacer(1), enabled = conditional.has_filetype },
+            { provider = provider.spacer(1), enabled = custom.has_filetype },
             {
               provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
-              enabled = conditional.has_filetype,
+              enabled = custom.has_filetype,
             },
-            { provider = provider.spacer(2), enabled = conditional.has_filetype },
+            { provider = provider.spacer(1), enabled = custom.has_filetype },
             { provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
             { provider = "git_diff_changed", hl = hl.fg("GitSignsChange", { fg = C.orange_1 }), icon = " 柳" },
             { provider = "git_diff_removed", hl = hl.fg("GitSignsDelete", { fg = C.red_1 }), icon = "  " },
-            { provider = provider.spacer(2), enabled = conditional.git_changed },
+            { provider = provider.spacer(1), enabled = conditional.git_changed },
             { provider = "diagnostic_errors", hl = hl.fg("DiagnosticError", { fg = C.red_1 }), icon = "  " },
             { provider = "diagnostic_warnings", hl = hl.fg("DiagnosticWarn", { fg = C.orange_1 }), icon = "  " },
             { provider = "diagnostic_info", hl = hl.fg("DiagnosticInfo", { fg = C.white_2 }), icon = "  " },
             { provider = "diagnostic_hints", hl = hl.fg("DiagnosticHint", { fg = C.yellow_1 }), icon = "  " },
             {
               provider = "  Telescope ",
-              hl = { fg = "bg", style = "bold", bg = C.purple },
+              hl = mode,
               right_sep = "slant_right",
               enabled = function()
                 return vim.bo.filetype == "TelescopePrompt"
@@ -89,11 +104,12 @@ if vim.g.colors_name == "dracula" then
           },
           {
             {
-              provider = my_provider.lsp_client_names(true),
-              short_provider = my_provider.lsp_client_names(),
+              provider = custom.lsp_client_names(true),
+              short_provider = custom.lsp_client_names(),
               hl = mode,
               right_sep = "slant_right",
               left_sep = "slant_left_2",
+              enabled = custom.has_filetype,
               icon = "   ",
             },
             { provider = provider.spacer(1), enabled = conditional.bar_width() },
@@ -103,7 +119,7 @@ if vim.g.colors_name == "dracula" then
               hl = hl.fg("GitSignsAdd", { fg = C.green }),
             },
             { provider = provider.spacer(2) },
-            { provider = "position", hl = { fg = C.yellow }, enabled = conditional.has_filetype },
+            { provider = "position", hl = { fg = C.yellow }, enabled = custom.has_filetype },
             { provider = provider.spacer() },
             {
               provider = provider.spacer(),
@@ -123,7 +139,7 @@ if vim.g.colors_name == "dracula" then
                   return " " .. vim.o.filetype .. " "
                 end
               end,
-              hl = { fg = "bg", style = "bold", bg = C.purple },
+              hl = mode,
               right_sep = "slant_right",
             },
           },
