@@ -11,6 +11,7 @@ local custom_highlights = {
   TreesitterContextLineNumber = { bg = C.visual, fg = C.cyan, bold = true },
   NeoTreeNormal = { bg = C.bg },
   NeoTreeNormalNC = { bg = C.bg },
+  StatusLine = { link = "Normal" },
 }
 for group, highlights in pairs(custom_highlights) do
   hi(group, highlights)

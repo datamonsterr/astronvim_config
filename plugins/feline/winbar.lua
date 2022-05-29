@@ -13,10 +13,11 @@ if vim.g.colors_name == "dracula" then
             {
               {
                 provider = function()
-                  local filename = vim.fn.expand "%:t"
-                  local filetype = vim.o.filetype
-                  local icon = require("nvim-web-devicons").get_icon(filename, filetype, { default = true })
-                  return icon .. " " .. filename .. " > " .. gps.get_location()
+                  -- local filename = vim.fn.expand "%:t"
+                  -- local filetype = vim.o.filetype
+                  -- local icon = require("nvim-web-devicons").get_icon(filename, filetype, { default = true })
+                  -- return icon .. " " .. filename .. " > " .. gps.get_location()
+                  return " > " .. gps.get_location()
                 end,
                 enabled = function()
                   return gps.is_available()
