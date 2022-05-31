@@ -67,6 +67,36 @@ return function()
         stopOnEntry = true,
       },
     },
+    rust = {
+      {
+        name = "Launch file",
+        type = "cppdbg",
+        request = "launch",
+        program = function()
+          local function split(inputstr, sep)
+            if sep == nil then
+              sep = "%s"
+            end
+            local t = {}
+            for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+              table.insert(t, str)
+            end
+            return t
+          end
+          local function get_project(table)
+            for index, value in pairs(table) do
+              if value == "src" then
+                return table[index - 1]
+              end
+            end
+          end
+          local pname = get_project(split(vim.fn.expand "%", "/"))
+          return vim.fn.expand "%:h" .. "/../target/debug/" .. pname
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+      },
+    },
     go = {
       {
         type = "go",
@@ -91,7 +121,6 @@ return function()
       },
     },
   }
-  dap.configurations.rust = dap.configurations.cpp
   local function start_session(_, _)
     local info_string = string.format("%s", dap.session().config.program)
     vim.notify(info_string, "debug", { title = "Debugger Started", timeout = 500 })
