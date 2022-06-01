@@ -62,7 +62,6 @@ return {
   ["nvim-treesitter/playground"] = {
     cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
   },
-  ["psliwka/vim-dirtytalk"] = { run = ":DirtytalkUpdate", event = "BufRead" },
   {
     "theHamsta/nvim-dap-virtual-text",
     after = "nvim-dap",

@@ -40,7 +40,7 @@ local mappings = {
       },
       c = {
         function()
-          vim.opt_toggle "cursorline"
+          vim_opt_toggle "cursorline"
         end,
         "Cursorline",
       },
