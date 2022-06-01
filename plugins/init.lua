@@ -93,6 +93,9 @@ return {
       require("configs.indent-line").config()
     end,
   },
+  ["jvgrootveld/telescope-zoxide"] = {
+    module = "telescope._extensions.zoxide",
+  },
   ["goolord/alpha-nvim"] = { disable = true },
   ["antoinemadec/FixCursorHold.nvim"] = { disable = true },
 }

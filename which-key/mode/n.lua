@@ -181,6 +181,12 @@ local mappings = {
           "Frames",
         },
       },
+      z = {
+        function()
+          require("telescope").extensions.zoxide.list {}
+        end,
+        "Zoxide",
+      },
     },
     s = {
       b = { nil },
