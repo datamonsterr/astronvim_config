@@ -71,7 +71,7 @@ if vim.g.colors_name == "dracula" then
             { provider = provider.spacer(1), enabled = conditional.git_available },
             {
               provider = function()
-                local filename = vim.fn.expand "%:t:r"
+                local filename = vim.fn.expand "%:r:p"
                 return " " .. filename .. " "
               end,
               hl = mode,
