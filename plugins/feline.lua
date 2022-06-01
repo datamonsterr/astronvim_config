@@ -71,20 +71,16 @@ if vim.g.colors_name == "dracula" then
             { provider = provider.spacer(1), enabled = conditional.git_available },
             {
               provider = function()
-                local filename = vim.fn.expand "%:r:p"
-                return " " .. filename .. " "
+                local filename = vim.fn.expand "%:p"
+                local shorten_filename = vim.fn.pathshorten(filename)
+                local icon = require("nvim-web-devicons").get_icon(filename, vim.o.filetype, { default = true })
+                return string.format(" %s %s ", icon, shorten_filename)
               end,
               hl = mode,
               right_sep = "slant_right",
               left_sep = "slant_left_2",
               enabled = custom.has_filetype,
             },
-            { provider = provider.spacer(1), enabled = custom.has_filetype },
-            {
-              provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
-              enabled = custom.has_filetype,
-            },
-            { provider = provider.spacer(1), enabled = custom.has_filetype },
             { provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
             { provider = "git_diff_changed", hl = hl.fg("GitSignsChange", { fg = C.orange_1 }), icon = " 柳" },
             { provider = "git_diff_removed", hl = hl.fg("GitSignsDelete", { fg = C.red_1 }), icon = "  " },
@@ -112,7 +108,6 @@ if vim.g.colors_name == "dracula" then
               enabled = custom.has_filetype,
               icon = "   ",
             },
-            { provider = provider.spacer(1), enabled = conditional.bar_width() },
             {
               provider = provider.treesitter_status,
               enabled = conditional.bar_width(),
