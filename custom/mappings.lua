@@ -4,17 +4,20 @@ local unmap = vim.keymap.del
 
 local unmappings = {
   n = {
-    "<leader>fh",
-    "<leader>u",
-    "<leader>o",
     "<b",
     ">b",
-    "<leader>h",
-    "<leader>tp",
-    "<leader>tl",
-    "<leader>tu",
-    "<leader>tt",
-    "<leader>tn",
+    ["<leader>"] = {
+      "h",
+      "tp",
+      "tl",
+      "tu",
+      "tt",
+      "tn",
+      "c",
+      "fh",
+      "u",
+      "o",
+    },
   },
 }
 
@@ -62,7 +65,13 @@ for mode, maps in pairs(mappings) do
 end
 
 for mode, unmaps in pairs(unmappings) do
-  for _, unmapkey in pairs(unmaps) do
-    unmap(mode, unmapkey)
+  for prefix, key in pairs(unmaps) do
+    if type(key) == "table" then
+      for _, key_child in pairs(key) do
+        unmap(mode, prefix .. key_child)
+      end
+    else
+      unmap(mode, key)
+    end
   end
 end

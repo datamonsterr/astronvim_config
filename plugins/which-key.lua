@@ -16,4 +16,9 @@ return {
       g = true,
     },
   },
+  layout = {
+    align = "center",
+    spacing = 8,
+  },
+  -- ignore_missing = true,
 }

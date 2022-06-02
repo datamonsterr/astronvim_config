@@ -10,5 +10,13 @@ M.split = function(inputstr, sep)
   end
   return t
 end
+M.include = function(item, table)
+  for _, value in pairs(table) do
+    if value == item then
+      return true
+    end
+  end
+  return false
+end
 
 return M

@@ -1,12 +1,3 @@
-local function include(item, table)
-  for _, value in pairs(table) do
-    if value == item then
-      return true
-    end
-  end
-  return false
-end
-
 if vim.g.colors_name == "dracula" then
   return function(_)
     local hl = require("core.status").hl
@@ -29,7 +20,7 @@ if vim.g.colors_name == "dracula" then
         return vim.fn.empty(vim.fn.expand "%:t") ~= 1
           and vim.bo.filetype
           and vim.bo.filetype ~= ""
-          and not include(vim.bo.filetype, { "TelescopePrompt" })
+          and not require("user.custom.utils").include(vim.bo.filetype, { "TelescopePrompt" })
       end,
     }
     local provider = require("core.status").provider
@@ -71,8 +62,8 @@ if vim.g.colors_name == "dracula" then
             { provider = provider.spacer(1), enabled = conditional.git_available },
             {
               provider = function()
-                local filename = vim.fn.expand "%:p"
-                local shorten_filename = vim.fn.pathshorten(filename)
+                local filename = vim.fn.expand("%:p"):gsub("/home/dat", "~")
+                local shorten_filename = vim.fn.pathshorten(filename, 2)
                 local icon = require("nvim-web-devicons").get_icon(filename, vim.o.filetype, { default = true })
                 return string.format(" %s %s ", icon, shorten_filename)
               end,
@@ -102,10 +93,10 @@ if vim.g.colors_name == "dracula" then
           {
             {
               provider = function()
-                return "CWD: " .. vim.fn.getcwd()
+                return "CWD: " .. vim.fn.getcwd():gsub("/home/dat", "~")
               end,
               short_provider = function()
-                return vim.fn.pathshorten(vim.fn.getcwd())
+                return vim.fn.pathshorten(vim.fn.getcwd():gsub("/home/dat", "~"))
               end,
               hl = { fg = C.grey },
             },

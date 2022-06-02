@@ -14,3 +14,5 @@ map("cpp", "n", "<F5>", ":cd %:h<cr> :!g++ % && ./a.out<cr> :!rm a.out <cr>", { 
 
 map("rust", "n", "<F4>", ":cd %:h<cr>:!cargo build<cr>", { desc = "Build rust projects with cargo" })
 map("rust", "n", "<F5>", ":RustRun<cr>", { desc = "Build rust projects with cargo" })
+
+map("javascript", "n", "<F5>", ":!node %<cr>", { desc = "Run Js code" })

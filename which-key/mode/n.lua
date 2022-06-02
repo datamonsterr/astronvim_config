@@ -1,8 +1,14 @@
-local function vim_opt_toggle(user_opt)
-  if vim.o[user_opt] == true then
-    vim.opt[user_opt] = false
+local function vim_opt_toggle(user_opt, first, second)
+  if first == nil then
+    first = true
+  end
+  if second == nil then
+    second = false
+  end
+  if vim.o[user_opt] == first then
+    vim.opt[user_opt] = second
   else
-    vim.opt[user_opt] = true
+    vim.opt[user_opt] = first
   end
 end
 
@@ -44,24 +50,22 @@ local mappings = {
         end,
         "Cursorline",
       },
+      C = {
+        function()
+          vim_opt_toggle("conceallevel", 0, 2)
+        end,
+        "Conceal",
+      },
     },
     name = "Plugins",
     q = { ":Bdelete!<cr>", "Quit Buffer" },
     w = { ":WinShift<cr>", "WinShift" },
-
     h = {
       name = "Hop",
       l = { ":HopLineStart<cr>", "Hop Line Start" },
       p = { ":HopPattern<cr>", "Hop Pattern" },
       w = { ":HopWord<cr>", "Hop Word" },
     },
-    c = {
-      function()
-        vim_opt_toggle "spell"
-      end,
-      "Check spell",
-    },
-    a = { ":Alpha<cr>", "Alpha" },
     ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
     o = {
       name = "fOcus",
