@@ -17,7 +17,7 @@ return function()
         { id = "stacks", size = 0.25 },
       },
       size = 40,
-      position = "right",
+      position = "left",
     },
     tray = {
       elements = { "repl" },
@@ -25,7 +25,7 @@ return function()
       position = "bottom",
     },
     floating = {
-      border = "rounded",
+      border = "single",
       mappings = {
         close = { "q", "<esc>" },
       },

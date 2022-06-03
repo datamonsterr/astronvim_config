@@ -14,6 +14,7 @@ local custom_highlights = {
   StatusLine = { link = "Normal" },
   BufferLineTab = { bg = C.selection, fg = C.selection },
   BufferLineTabSelected = { bg = C.selection, fg = C.selection },
+  DapUIFloatBorder = { bg = C.none, fg = C.fg },
 }
 for group, highlights in pairs(custom_highlights) do
   hi(group, highlights)
