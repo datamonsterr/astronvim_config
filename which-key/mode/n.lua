@@ -263,18 +263,6 @@ local mappings = {
         end,
         "REPL",
       },
-      s = {
-        function()
-          require("dapui").float_element "scopes"
-        end,
-        "Scopes",
-      },
-      t = {
-        function()
-          require("dapui").float_element "stacks"
-        end,
-        "Threads",
-      },
       u = {
         function()
           require("dapui").toggle()

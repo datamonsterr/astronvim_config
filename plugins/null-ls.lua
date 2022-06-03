@@ -42,7 +42,7 @@ return function(config)
         desc = "Auto format before save",
         pattern = "<buffer>",
         callback = function()
-          vim.lsp.buf.formatting_sync()
+          vim.lsp.buf.formatting_sync { async = true }
         end,
       })
     end
