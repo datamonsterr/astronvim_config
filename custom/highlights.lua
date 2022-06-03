@@ -12,6 +12,8 @@ local custom_highlights = {
   NeoTreeNormal = { bg = C.bg },
   NeoTreeNormalNC = { bg = C.bg },
   StatusLine = { link = "Normal" },
+  BufferLineTab = { bg = C.selection, fg = C.selection },
+  BufferLineTabSelected = { bg = C.selection, fg = C.selection },
 }
 for group, highlights in pairs(custom_highlights) do
   hi(group, highlights)
