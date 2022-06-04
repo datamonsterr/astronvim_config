@@ -11,11 +11,6 @@ return function()
       type = "executable",
       command = vim.fn.expand "~/cppdbg/debugAdapters/bin/OpenDebugAD7",
     },
-    cpptools = {
-      name = "cpptools",
-      type = "executable",
-      command = vim.fn.expand "~/cpptools-linux/extension/debugAdapters/OpenDebugAD7",
-    },
     go = function(callback, config)
       local stdout = vim.loop.new_pipe(false)
       local handle
