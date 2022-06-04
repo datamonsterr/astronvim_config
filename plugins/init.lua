@@ -13,7 +13,7 @@ return {
     end,
   },
   ["beauwilliams/focus.nvim"] = {
-    module = "focus",
+    event = "BufRead",
     config = function()
       require("focus").setup {
         excluded_filetypes = { "toggleterm", "TelescopePrompt" },
@@ -133,6 +133,6 @@ return {
         })
       end)
     end,
-  requires = "nvim-neorg/neorg-telescope",
+    requires = "nvim-neorg/neorg-telescope",
   },
 }

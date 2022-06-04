@@ -63,7 +63,6 @@ return {
   },
   sources = {
     { name = "nvim_lua" },
-    { name = "nvim_lsp_signature_help" },
   },
   mapping = {
     ["<C-j>"] = cmp.config.disable,

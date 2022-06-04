@@ -67,7 +67,11 @@ if vim.g.colors_name == "dracula" then
                 local icon = require("nvim-web-devicons").get_icon(filename, vim.o.filetype, { default = true })
                 return string.format(" %s %s ", icon, shorten_filename)
               end,
-              short_provider = provider.spacer(0),
+              short_provider = function()
+                local filename = vim.fn.expand "%:t:r"
+                local icon = require("nvim-web-devicons").get_icon(filename, vim.o.filetype, { default = true })
+                return string.format(" %s %s ", icon, filename)
+              end,
               hl = mode,
               right_sep = "slant_right",
               left_sep = "slant_left_2",
@@ -103,7 +107,7 @@ if vim.g.colors_name == "dracula" then
             { provider = provider.spacer(1) },
             {
               provider = custom.lsp_client_names(true),
-              short_provider = provider.spacer(0),
+              short_provider = custom.lsp_client_names(),
               hl = mode,
               right_sep = "slant_right",
               left_sep = "slant_left_2",
@@ -118,7 +122,6 @@ if vim.g.colors_name == "dracula" then
             { provider = provider.spacer(1) },
             {
               provider = "position",
-              short_provider = "",
               hl = { fg = C.yellow },
               enabled = custom.has_filetype,
             },

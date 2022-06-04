@@ -12,6 +12,7 @@ return function()
     },
     sidebar = {
       elements = {
+        { id = "watches", size = 0.5 },
         { id = "scopes", size = 0.5 },
         { id = "breakpoints", size = 0.25 },
         { id = "stacks", size = 0.25 },
@@ -20,7 +21,7 @@ return function()
       position = "left",
     },
     tray = {
-      elements = { "repl" },
+      elements = { "repl", "console" },
       size = 10,
       position = "bottom",
     },

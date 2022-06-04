@@ -27,6 +27,9 @@ local mappings = {
   ["<C-e>"] = "Scroll Down",
 
   ["<leader>"] = {
+    S = {
+      D = { ":!rm -r /home/dat/.local/share/nvim/sessions/*<cr><cr>", "Delete all sessions" },
+    },
     g = {
       g = {
         function()
@@ -74,12 +77,6 @@ local mappings = {
           require("focus").focus_toggle()
         end,
         "Toggle",
-      },
-      e = {
-        function()
-          require("focus").focus_enable()
-        end,
-        "Enable",
       },
       n = {
         function()
@@ -223,6 +220,12 @@ local mappings = {
       },
       B = {
         function()
+          require("dap").set_breakpoint(vim.fn.input "Breakpoints condition: ")
+        end,
+        "Breakpoint with condition",
+      },
+      C = {
+        function()
           require("dap").clear_breakpoints()
         end,
         "Clear Breakpoints",
@@ -248,12 +251,14 @@ local mappings = {
       q = {
         function()
           require("dap").close()
+          require("dapui").close()
         end,
         "Close Session",
       },
       Q = {
         function()
           require("dap").terminate()
+          require("dapui").close()
         end,
         "Terminate",
       },
@@ -268,18 +273,6 @@ local mappings = {
           require("dapui").toggle()
         end,
         "Toggle Debugger UI",
-      },
-      w = {
-        function()
-          require("dapui").float_element "watches"
-        end,
-        "Watches",
-      },
-      x = {
-        function()
-          require("dap.ui.widgets").hover()
-        end,
-        "Inspect",
       },
       v = { ":DapVirtualTextToggle<cr>", "Virtual Text" },
     },

@@ -9,7 +9,12 @@ return function()
     cppdbg = {
       id = "cppdbg",
       type = "executable",
-      command = "/home/dat/extension/debugAdapters/bin/OpenDebugAD7",
+      command = vim.fn.expand "~/cppdbg/debugAdapters/bin/OpenDebugAD7",
+    },
+    cpptools = {
+      name = "cpptools",
+      type = "executable",
+      command = vim.fn.expand "~/cpptools-linux/extension/debugAdapters/OpenDebugAD7",
     },
     go = function(callback, config)
       local stdout = vim.loop.new_pipe(false)
@@ -57,11 +62,22 @@ return function()
     },
     cpp = {
       {
-        name = "Launch file",
+        name = "Launch (auto choose debug file)",
         type = "cppdbg",
         request = "launch",
         program = function()
           return vim.fn.expand "%:r" .. ".out"
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+        runInTerminal = true,
+      },
+      {
+        name = "Launch (choose debug file manually)",
+        type = "cppdbg",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = true,
@@ -85,6 +101,7 @@ return function()
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = true,
+        runInTerminal = true,
       },
     },
     go = {
@@ -111,6 +128,7 @@ return function()
       },
     },
   }
+  -- get notify
   local function start_session(_, _)
     local info_string = string.format("%s", dap.session().config.program)
     vim.notify(info_string, "debug", { title = "Debugger Started", timeout = 500 })
@@ -121,6 +139,7 @@ return function()
   end
   dap.listeners.after.event_initialized["dapui"] = start_session
   dap.listeners.before.event_terminated["dapui"] = terminate_session
+  -- Define symbols
   vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticWarn" })
   vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticInfo" })
   vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "DiagnosticError" })
