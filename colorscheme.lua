@@ -1,1 +1,1 @@
-  return "default_theme"
+return "dracula"
