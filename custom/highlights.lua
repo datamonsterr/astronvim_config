@@ -40,7 +40,10 @@ local custom_highlights = {
     TelescopeResultsBorder = { fg = dp.alt_bg, bg = dp.alt_bg },
     TelescopePromptBorder = { fg = dp.alt_bg, bg = dp.alt_bg },
     TelescopePreviewBorder = { fg = dp.alt_bg, bg = dp.alt_bg },
-    VertSplit = { bg = dp.bg, fg = dp.gray },
+    BufferLineFill = { bg = dp.dark_gray },
+    BufferLineSeparator = { bg = dp.dark_gray, fg = dp.dark_gray },
+    NonText = { fg = dp.gray },
+    VertSplit = { bg = dp.bg, fg = dp.dark_gray },
   },
 }
 
