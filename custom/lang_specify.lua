@@ -1,11 +1,4 @@
-local map = function(lang, mode, lhs, rhs, opts)
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = lang,
-    callback = function()
-      vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
-    end,
-  })
-end
+local map = require("user.custom.utils").filetype_map
 
 map("python", "n", "<F5>", ":!python %<cr>", { desc = "Run python code" })
 

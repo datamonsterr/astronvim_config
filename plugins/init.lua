@@ -135,4 +135,5 @@ return {
     end,
     requires = "nvim-neorg/neorg-telescope",
   },
+  ["LunarVim/darkplus.nvim"] = {},
 }

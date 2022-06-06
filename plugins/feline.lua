@@ -1,3 +1,4 @@
+local darkplus = require "darkplus.palette"
 if vim.g.colors_name == "dracula" then
   return function(_)
     local hl = require("core.status").hl
@@ -153,6 +154,10 @@ if vim.g.colors_name == "dracula" then
       },
     }
   end
+elseif vim.g.colors_name == "darkplus" then
+  return {
+    theme = { bg = darkplus.alt_bg, fg = darkplus.fg },
+  }
 else
   return {}
 end

@@ -18,5 +18,13 @@ M.include = function(item, table)
   end
   return false
 end
+M.filetype_map = function(lang, mode, lhs, rhs, opts)
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = lang,
+    callback = function()
+      vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, opts)
+    end,
+  })
+end
 
 return M
