@@ -87,12 +87,6 @@ return {
     disable = true,
   },
   ["b0o/SchemaStore.nvim"] = { ft = "json" },
-  ["lukas-reineke/indent-blankline.nvim"] = {
-    event = "BufRead",
-    config = function()
-      require("configs.indent-line").config()
-    end,
-  },
   ["jvgrootveld/telescope-zoxide"] = {
     module = "telescope._extensions.zoxide",
   },
