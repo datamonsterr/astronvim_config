@@ -1,5 +1,6 @@
 local dc = require "nvim-dracula.colors"
 local dp = require "darkplus.palette"
+local cmd = vim.api.nvim_create_autocmd
 local hi = function(groups, colors)
   vim.api.nvim_set_hl(0, groups, colors)
 end
@@ -24,6 +25,8 @@ local custom_highlights = {
     rainbowcol8 = { fg = dp.yellow_orange },
     NormalFloat = { bg = dp.alt_bg },
     FloatBorder = { bg = dp.alt_bg, fg = dp.alt_bg },
+    Float = { bg = dp.alt_bg },
+    WhichKeyFloat = { bg = dp.alt_bg },
     TelescopeNormal = { fg = dp.fg, bg = dp.alt_bg },
     TelescopeSelection = { bg = dp.dark_gray },
     TelescopeTitle = { fg = dp.fg },
@@ -47,10 +50,20 @@ local custom_highlights = {
   },
 }
 
-for theme, settings in pairs(custom_highlights) do
-  if vim.g.colors_name == theme then
-    for group, highlights in pairs(settings) do
-      hi(group, highlights)
+local apply = function()
+  for theme, settings in pairs(custom_highlights) do
+    if vim.g.colors_name == theme then
+      for group, highlights in pairs(settings) do
+        hi(group, highlights)
+      end
     end
   end
 end
+
+apply()
+
+cmd("ColorScheme", {
+  callback = function()
+    apply()
+  end,
+})
