@@ -1,5 +1,6 @@
 local dc = require "nvim-dracula.colors"
 local dp = require "darkplus.palette"
+local cp = require("catppuccin.api.colors").get_colors() -- fetch colors with API
 local cmd = vim.api.nvim_create_autocmd
 local hi = function(groups, colors)
   vim.api.nvim_set_hl(0, groups, colors)
@@ -48,13 +49,45 @@ local custom_highlights = {
     NonText = { fg = dp.gray },
     VertSplit = { bg = dp.bg, fg = dp.dark_gray },
   },
+  catppuccin = {
+    rainbowcol1 = { fg = cp.pink },
+    rainbowcol2 = { fg = cp.mave },
+    rainbowcol3 = { fg = cp.sky },
+    rainbowcol4 = { fg = cp.maroon },
+    rainbowcol5 = { fg = cp.green },
+    rainbowcol6 = { fg = cp.teal },
+    rainbowcol7 = { fg = cp.peach },
+    rainbowcol8 = { fg = cp.flamingo },
+    TelescopeNormal = { fg = cp.text, bg = cp.crust },
+    TelescopeSelection = { bg = cp.base },
+    TelescopeTitle = { fg = cp.text },
+    TelescopeMatching = { fg = cp.blue },
+    TelescopePromptTitle = { fg = cp.crust, bg = cp.yellow },
+    TelescopePromptNormal = { fg = cp.text, bg = cp.crust },
+    TelescopePromptPrefix = { fg = cp.yellow, bg = cp.crust },
+    TelescopePromptCounter = { fg = cp.yellow },
+    TelescopeResultsTitle = { fg = cp.crust, bg = cp.crust },
+    TelescopeResultsNormal = { fg = cp.text, bg = cp.crust },
+    TelescopePreviewTitle = { fg = cp.crust, bg = cp.peach },
+    TelescopePreviewNormal = { fg = cp.text, bg = cp.crust },
+    TelescopeBorder = { fg = cp.crust, bg = cp.crust },
+    TelescopeResultsBorder = { fg = cp.crust, bg = cp.crust },
+    TelescopePromptBorder = { fg = cp.crust, bg = cp.crust },
+    TelescopePreviewBorder = { fg = cp.crust, bg = cp.crust },
+    NormalFloat = { bg = cp.crust },
+    FloatBorder = { bg = cp.crust, fg = cp.crust },
+    Float = { bg = cp.crust },
+    WhichKeyFloat = { bg = cp.crust },
+  },
 }
 
 local apply = function()
   for theme, settings in pairs(custom_highlights) do
     if vim.g.colors_name == theme then
       for group, highlights in pairs(settings) do
-        hi(group, highlights)
+        vim.schedule(function()
+          hi(group, highlights)
+        end)
       end
     end
   end

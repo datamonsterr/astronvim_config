@@ -158,6 +158,8 @@ elseif vim.g.colors_name == "darkplus" then
   return {
     theme = { bg = darkplus.dark, fg = darkplus.fg },
   }
-else
-  return {}
+elseif vim.g.colors_name == "catppuccin" then
+  return {
+    components = require "catppuccin.core.integrations.feline",
+  }
 end

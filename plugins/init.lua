@@ -130,4 +130,5 @@ return {
     requires = "nvim-neorg/neorg-telescope",
   },
   ["LunarVim/darkplus.nvim"] = {},
+  ["catppuccin/nvim"] = { as = "catppuccin" },
 }

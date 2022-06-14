@@ -1,1 +1,1 @@
-return "dracula"
+return "catppuccin"
