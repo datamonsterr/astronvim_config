@@ -1,10 +1,4 @@
 return {
-  ["<leader>"] = {
-    r = {
-      ":'<,'>lua require('sniprun').run('v')<cr>",
-      "Run",
-    },
-  },
   J = {
     function()
       require("syntax-tree-surfer").surf("next", "visual")

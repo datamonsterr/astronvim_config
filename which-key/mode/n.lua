@@ -1,8 +1,14 @@
-local function vim_opt_toggle(user_opt)
-  if vim.o[user_opt] == true then
-    vim.opt[user_opt] = false
+local function vim_opt_toggle(user_opt, first, second)
+  if first == nil then
+    first = true
+  end
+  if second == nil then
+    second = false
+  end
+  if vim.o[user_opt] == first then
+    vim.opt[user_opt] = second
   else
-    vim.opt[user_opt] = true
+    vim.opt[user_opt] = first
   end
 end
 
@@ -21,6 +27,9 @@ local mappings = {
   ["<C-e>"] = "Scroll Down",
 
   ["<leader>"] = {
+    S = {
+      D = { ":!rm -r /home/dat/.local/share/nvim/sessions/*<cr><cr>", "Delete all sessions" },
+    },
     g = {
       g = {
         function()
@@ -40,28 +49,26 @@ local mappings = {
       },
       c = {
         function()
-          vim.opt_toggle "cursorline"
+          vim_opt_toggle "cursorline"
         end,
         "Cursorline",
+      },
+      C = {
+        function()
+          vim_opt_toggle("conceallevel", 0, 2)
+        end,
+        "Conceal",
       },
     },
     name = "Plugins",
     q = { ":Bdelete!<cr>", "Quit Buffer" },
     w = { ":WinShift<cr>", "WinShift" },
-
     h = {
       name = "Hop",
       l = { ":HopLineStart<cr>", "Hop Line Start" },
       p = { ":HopPattern<cr>", "Hop Pattern" },
       w = { ":HopWord<cr>", "Hop Word" },
     },
-    c = {
-      function()
-        vim_opt_toggle "spell"
-      end,
-      "Check spell",
-    },
-    a = { ":Alpha<cr>", "Alpha" },
     ["."] = { "<cmd>cd %:p:h<cr>", "Set CWD" },
     o = {
       name = "fOcus",
@@ -70,12 +77,6 @@ local mappings = {
           require("focus").focus_toggle()
         end,
         "Toggle",
-      },
-      e = {
-        function()
-          require("focus").focus_enable()
-        end,
-        "Enable",
       },
       n = {
         function()
@@ -181,6 +182,12 @@ local mappings = {
           "Frames",
         },
       },
+      z = {
+        function()
+          require("telescope").extensions.zoxide.list {}
+        end,
+        "Zoxide",
+      },
     },
     s = {
       b = { nil },
@@ -213,6 +220,12 @@ local mappings = {
       },
       B = {
         function()
+          require("dap").set_breakpoint(vim.fn.input "Breakpoints condition: ")
+        end,
+        "Breakpoint with condition",
+      },
+      C = {
+        function()
           require("dap").clear_breakpoints()
         end,
         "Clear Breakpoints",
@@ -238,12 +251,14 @@ local mappings = {
       q = {
         function()
           require("dap").close()
+          require("dapui").close()
         end,
         "Close Session",
       },
       Q = {
         function()
           require("dap").terminate()
+          require("dapui").close()
         end,
         "Terminate",
       },
@@ -253,35 +268,11 @@ local mappings = {
         end,
         "REPL",
       },
-      s = {
-        function()
-          require("dapui").float_element "scopes"
-        end,
-        "Scopes",
-      },
-      t = {
-        function()
-          require("dapui").float_element "stacks"
-        end,
-        "Threads",
-      },
       u = {
         function()
           require("dapui").toggle()
         end,
         "Toggle Debugger UI",
-      },
-      w = {
-        function()
-          require("dapui").float_element "watches"
-        end,
-        "Watches",
-      },
-      x = {
-        function()
-          require("dap.ui.widgets").hover()
-        end,
-        "Inspect",
       },
       v = { ":DapVirtualTextToggle<cr>", "Virtual Text" },
     },

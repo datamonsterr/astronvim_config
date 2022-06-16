@@ -27,6 +27,7 @@ local kind_icons = {
 }
 
 local cmp = require "cmp"
+local luasnip = require "luasnip"
 
 return {
   experimental = {
@@ -62,10 +63,23 @@ return {
   },
   sources = {
     { name = "nvim_lua" },
-    { name = "nvim_lsp_signature_help" },
   },
   mapping = {
     ["<C-j>"] = cmp.config.disable,
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
     ["<C-k>"] = cmp.config.disable,
   },
 }

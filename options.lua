@@ -18,8 +18,6 @@ return {
     },
     wrap = true,
     showbreak = "↪ ",
-    lazyredraw = true,
-    synmaxcol = 200,
   },
   g = {
     vcoolor_disable_mappings = true,
