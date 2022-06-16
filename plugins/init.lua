@@ -9,13 +9,12 @@ return function(plugins)
     },
     {
       "phaazon/hop.nvim",
-      branch = "v1", -- optional but strongly recommended
       event = "BufRead", -- I want to use it all the time
       config = function()
         require("hop").setup()
       end,
     },
-    {
+    { -- TODO:
       "beauwilliams/focus.nvim",
       module = "focus",
       config = function()
@@ -37,7 +36,7 @@ return function(plugins)
       "KabbAmine/vCoolor.vim",
       cmd = "VCoolor",
     },
-    {
+    { --TODO:
       "mfussenegger/nvim-dap",
       module = "dap",
       config = require "user.plugins.nvim-dap",
@@ -47,7 +46,7 @@ return function(plugins)
       after = "nvim-dap",
       config = require "user.plugins.nvim-dapui",
     },
-    {
+    { --TODO:
       "sindrets/winshift.nvim",
       cmd = "WinShift",
       config = require "user.plugins.WinShift",
@@ -71,13 +70,9 @@ return function(plugins)
     {
       "datamonsterr/nvim-dracula",
     },
-    {
+    { --TODO:
       "aserowy/tmux.nvim",
       module = "tmux",
-    },
-    {
-      "nvim-treesitter/playground",
-      cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
     },
     { "psliwka/vim-dirtytalk", run = ":DirtytalkUpdate", event = "BufRead" },
     {
@@ -109,18 +104,56 @@ return function(plugins)
       event = "BufRead",
       config = require "user.plugins.gps",
     },
+    -- TODO:
+    ---- My Custom
+    "mg979/vim-visual-multi", -- visual-multi cursor
+    "machakann/vim-sandwich", -- vim-sandwitch - surronding.
+    "AndrewRadev/sideways.vim", -- sideways - shift parameters.
+    "mhinz/vim-startify", -- Startify.
+    { -- Window Picker
+      "s1n7ax/nvim-window-picker",
+      tag = "v1.*",
+      config = function()
+        require("window-picker").setup()
+      end,
+    },
+    {
+      "sudormrfbin/cheatsheet.nvim",
+      requires = {
+        { "nvim-telescope/telescope.nvim" },
+        { "nvim-lua/popup.nvim" },
+        { "nvim-lua/plenary.nvim" },
+      },
+    },
+    {
+      "terrortylor/nvim-comment",
+      config = require("nvim_comment").setup(),
+    },
+    { -- TODO: Suda
+      "lambdalisue/suda.vim",
+      config = vim.api.nvim_set_var("suda_smart_edit", 1),
+    },
+    { -- Remembers last place you edited.
+      "ethanholz/nvim-lastplace",
+      event = "BufRead",
+      config = function()
+        require("nvim-lastplace").setup {
+          lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+          lastplace_ignore_filetype = {
+            "gitcommit",
+            "gitrebase",
+            "svn",
+            "hgcommit",
+          },
+          lastplace_open_folds = true,
+        }
+      end,
+    },
   }
   local default_plugins = {
     {
       "b0o/SchemaStore.nvim",
       ft = "json",
-    },
-    {
-      "lukas-reineke/indent-blankline.nvim",
-      event = "BufRead",
-      config = function()
-        require("configs.indent-line").config()
-      end,
     },
     "antoinemadec/FixCursorHold.nvim",
     "goolord/alpha-nvim",

@@ -1,6 +1,6 @@
 return {
   opt = {
-    relativenumber = true,
+    relativenumber = false,
     spell = false,
     spelllang = "en,programming",
     timeoutlen = 100,

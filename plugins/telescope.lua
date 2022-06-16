@@ -19,17 +19,36 @@ if status_ok then
         height = 0.80,
         preview_cutoff = 120,
       },
+      mappings = {
+        i = {
+          ["<C-z>"] = "which_key",
+        },
+      },
+      file_ignore_patterns = {
+        ".git",
+        ".cache",
+      },
     },
     extensions = {
       file_browser = {
         mappings = {
           i = {
-            ["<C-z>"] = fb_actions.toggle_hidden,
+            ["<C-/>"] = fb_actions.toggle_hidden,
           },
           n = {
             z = fb_actions.toggle_hidden,
           },
         },
+      },
+    },
+    pickers = {
+      find_files = {
+        hidden = true,
+      },
+      live_grep = {
+        additional_args = function(opts)
+          return { "--hidden" }
+        end,
       },
     },
   }

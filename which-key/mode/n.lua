@@ -318,30 +318,41 @@ local mappings = {
         "Close",
       },
     },
-  },
-  ["<C-s>"] = {
-    function()
-      require("syntax-tree-surfer").select_current_node()
-    end,
-    "Select current node",
-  },
-  ["]"] = {
-    name = "Next objects",
-    f = "Next function",
-    c = "Next class",
-    F = "Next end function",
-    C = "Next end class",
-    ["/"] = "Next comment",
-  },
-  ["["] = {
-    name = "Prev objects",
-    f = "Prev function",
-    c = "Prev class",
-    F = "Prev end function",
-    C = "Prev end class",
-    ["/"] = "Prev comment",
+    -- Duplicate a line / selection and comment out the first
+    C = { "Ypk:CommentToggle<CR>j", "Duplicate comment" },
+    -- Insert current date
+    i = { '"=strftime("%b %d, %Y")<CR>p', "insert date " },
+
+    ["<Up>"] = { "<cmd>lua require('tmux').move_top()<cr>", "which_key_ignore" },
+    ["<Down>"] = { "<cmd>lua require('tmux').move_bottom()<cr>", "which_key_ignore" },
+    ["<Left>"] = { "<cmd>lua require('tmux').move_left()<cr>", "which_key_ignore" },
+    ["<Right>"] = { "<cmd>lua require('tmux').move_right()<cr>", "which_key_ignore" },
+
+    ["<C-s>"] = {
+      function()
+        require("syntax-tree-surfer").select_current_node()
+      end,
+      "Select current node",
+    },
+    ["]"] = {
+      name = "Next objects",
+      f = "Next function",
+      c = "Next class",
+      F = "Next end function",
+      C = "Next end class",
+      ["/"] = "Next comment",
+    },
+    ["["] = {
+      name = "Prev objects",
+      f = "Prev function",
+      c = "Prev class",
+      F = "Prev end function",
+      C = "Prev end class",
+      ["/"] = "Prev comment",
+    },
   },
 }
+
 local ignore = {
   "z<CR>",
   "z+",
