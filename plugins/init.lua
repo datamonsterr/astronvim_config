@@ -55,7 +55,6 @@ return {
   ["cljoly/telescope-repo.nvim"] = {
     module = "telescope._extensions.repo",
   },
-  ["datamonsterr/nvim-dracula"] = {},
   ["aserowy/tmux.nvim"] = {
     module = "tmux",
   },
@@ -129,7 +128,6 @@ return {
     end,
     requires = "nvim-neorg/neorg-telescope",
   },
-  ["LunarVim/darkplus.nvim"] = {},
   ["catppuccin/nvim"] = {
     as = "catppuccin",
     config = function()

@@ -9,7 +9,7 @@ return function()
     cppdbg = {
       id = "cppdbg",
       type = "executable",
-      command = vim.fn.expand "~/cppdbg/debugAdapters/bin/OpenDebugAD7",
+      command = vim.fn.expand "~/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
     },
     go = function(callback, config)
       local stdout = vim.loop.new_pipe(false)
