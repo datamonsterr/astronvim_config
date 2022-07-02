@@ -5,6 +5,7 @@ local hi = function(groups, colors)
 end
 local custom_highlights = {
   catppuccin = {
+    TSFuncBuiltin = { fg = cp.sapphire, bold = true },
     rainbowcol1 = { fg = cp.pink },
     rainbowcol2 = { fg = cp.mauve },
     rainbowcol3 = { fg = cp.rosewater },

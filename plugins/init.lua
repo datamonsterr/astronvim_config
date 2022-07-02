@@ -131,8 +131,9 @@ return {
   ["catppuccin/nvim"] = {
     as = "catppuccin",
     config = function()
-      vim.g.catppuccin_flavour = "frappe"
+      vim.g.catppuccin_flavour = "mocha"
       require("catppuccin").setup {
+        term_colors = true,
         integrations = {
           treesitter = true,
           native_lsp = {
@@ -144,10 +145,10 @@ return {
               information = "italic",
             },
             underlines = {
-              errors = "underline",
-              hints = "underline",
-              warnings = "underline",
-              information = "underline",
+              errors = "undercurl",
+              hints = "undercurl",
+              warnings = "undercurl",
+              information = "undercurl",
             },
           },
           lsp_trouble = false,
@@ -166,7 +167,7 @@ return {
             show_root = true,
             transparent_panel = false,
           },
-          which_key = false,
+          which_key = true,
           indent_blankline = {
             enabled = true,
             colored_indent_levels = true,

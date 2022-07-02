@@ -137,7 +137,7 @@ local mappings = {
         end,
         "Repo",
       },
-      b = {
+      B = {
         function()
           require("telescope").extensions.file_browser.file_browser()
         end,
@@ -334,24 +334,9 @@ local mappings = {
   },
 }
 local ignore = {
-  "z<CR>",
-  "z+",
-  "z-",
-  "z^",
-  "zl",
-  "zh",
-  "z.",
-  "Y",
   "n",
   "N",
-  "J",
-  "<A-c>",
   "<SNR>",
-  "y",
-  "c",
-  "d",
-  "<PageUp>",
-  "<PageDown>",
   "<Up>",
   "<Down>",
   "<Left>",
@@ -360,20 +345,8 @@ local ignore = {
   "k",
   "l",
   "h",
-  "^",
-  "*",
-  "-",
-  "^",
-  "0",
-  "%",
-  "#",
-  "$",
   "<LeftMouse>",
   "<2-LeftMouse>",
-  "<C-i>",
-  "<C-o>",
-  "G",
-  "gg",
 }
 for _, key in pairs(ignore) do
   mappings[key] = { "which_key_ignore" }

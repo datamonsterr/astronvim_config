@@ -7,5 +7,4 @@ return {
   "sumneko_lua",
   "tsserver",
   "emmet_ls",
-  "rust_analyzer",
 }

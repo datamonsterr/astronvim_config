@@ -1,5 +1,5 @@
 return {
-  terminal_mappings = true,
+  terminal_mappings = false,
   highlights = {
     NormalFloat = {
       link = "NormalFloat",
