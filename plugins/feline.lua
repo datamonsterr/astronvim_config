@@ -13,12 +13,6 @@ local custom = {
       return table.concat(buf_client_names, ", ") .. " "
     end
   end,
-  has_filetype = function()
-    return vim.fn.empty(vim.fn.expand "%:t") ~= 1
-      and vim.bo.filetype
-      and vim.bo.filetype ~= ""
-      and not require("user.custom.utils").include(vim.bo.filetype, { "TelescopePrompt" })
-  end,
 }
 
 local components = require "catppuccin.core.integrations.feline"
@@ -39,7 +33,6 @@ components.active[1][10]["hl"] = { fg = clrs.text, bg = clrs.surface0 }
 components.active[3][4] = {
   provider = custom.lsp_client_names(true),
   short_provider = custom.lsp_client_names(),
-  enabled = custom.has_filetype,
   icon = "  ",
   hl = {
     fg = sett.bkg,
