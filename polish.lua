@@ -1,5 +1,4 @@
 return function()
-  require "user.custom.highlights"
   require "user.custom.tmux"
   require "user.custom.ui"
 
@@ -8,6 +7,9 @@ return function()
     extension = {
       rasi = "rasi",
       conf = "config",
+    },
+    filename = {
+      ["CmakeLists.txt"] = "cmake",
     },
   }
 end

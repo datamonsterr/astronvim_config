@@ -20,6 +20,7 @@ return {
         vim.cmd(string.format("silent exec '!goldendict %s'", word))
       end,
       silent = true,
+      desc = "Goldendict",
     },
     ["<leader>q"] = { ":Bdelete!<cr>", desc = "Quit Buffer" },
     ["<leader>w"] = { ":WinShift<cr>", desc = "WinShift" },
@@ -51,6 +52,7 @@ return {
       function()
         vim_opt_toggle "cursorcolumn"
       end,
+      desc = "Cursor Column",
     },
     ["<leader>dC"] = {
       function()
@@ -92,37 +94,37 @@ return {
     ["<leader>fh"] = false,
     ["<leader>u"] = false,
     ["<leader>o"] = false,
-    ["<leader>xb"] = {
+    ["<F9>"] = {
       function()
         require("dap").toggle_breakpoint()
       end,
       desc = "Toggle Breakpoint",
     },
-    ["<leader>xB"] = {
+    ["<leader>xb"] = {
       function()
         require("dap").set_breakpoint(vim.fn.input "Breakpoints condition: ")
       end,
       desc = "Breakpoint with condition",
     },
-    ["<leader>xC"] = {
+    ["<leader>xc"] = {
       function()
         require("dap").clear_breakpoints()
       end,
       desc = "Clear Breakpoints",
     },
-    ["<leader>xc"] = {
+    ["<F10>"] = {
       function()
         require("dap").continue()
       end,
       desc = "Continue",
     },
-    ["<leader>xi"] = {
+    ["<F11>"] = {
       function()
         require("dap").step_into()
       end,
       desc = "Step Into",
     },
-    ["<leader>xo"] = {
+    ["<F12>"] = {
       function()
         require("dap").step_over()
       end,
@@ -142,19 +144,12 @@ return {
       end,
       desc = "Terminate",
     },
-    ["<leader>xr"] = {
-      function()
-        require("dap").repl.toggle()
-      end,
-      desc = "REPL",
-    },
     ["<leader>xu"] = {
       function()
         require("dapui").toggle()
       end,
       desc = "Toggle Debugger UI",
     },
-    ["<leader>xv"] = { ":DapVirtualTextToggle<cr>", desc = "Virtual Text" },
     ["<leader>fdc"] = {
       function()
         require("telescope").extensions.dap.commands {}
