@@ -31,6 +31,7 @@ local custom_highlights = {
     TelescopePromptBorder = { fg = cp.crust, bg = cp.crust },
     TelescopePreviewBorder = { fg = cp.crust, bg = cp.crust },
     BufferLineFill = { bg = cp.crust },
+    CursorColumn = { bg = "#2A2B3C" },
     NormalFloat = { bg = cp.crust },
     FloatBorder = { bg = cp.crust, fg = cp.crust },
     Float = { bg = cp.crust },

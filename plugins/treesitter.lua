@@ -8,7 +8,7 @@ return {
     disable = { "css" },
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true },
+  indent = { enable = true, disable = { "python" } },
   incremental_selection = { enable = true },
   textobjects = {
     select = {

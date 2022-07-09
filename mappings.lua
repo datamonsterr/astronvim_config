@@ -14,6 +14,13 @@ end
 
 return {
   n = {
+    ["<A-g>"] = {
+      function()
+        local word = vim.fn.expand "<cword>"
+        vim.cmd(string.format("silent exec '!goldendict %s'", word))
+      end,
+      silent = true,
+    },
     ["<leader>q"] = { ":Bdelete!<cr>", desc = "Quit Buffer" },
     ["<leader>w"] = { ":WinShift<cr>", desc = "WinShift" },
     ["<leader>hl"] = { ":HopLineStart<cr>", desc = "Hop Line Start" },
@@ -39,6 +46,11 @@ return {
         vim_opt_toggle "cursorline"
       end,
       desc = "Cursorline",
+    },
+    ["<leader>dl"] = {
+      function()
+        vim_opt_toggle "cursorcolumn"
+      end,
     },
     ["<leader>dC"] = {
       function()
@@ -191,6 +203,11 @@ return {
     ["<A-k>"] = { ":m '<-2<cr>gv=gv" },
   },
   i = {
+    ["<C-[>"] = {
+      function()
+        vim.notify("Use Capslock Key", "warn", { title = "Change your habit" })
+      end,
+    },
     [","] = ",<c-g>u",
     ["."] = ".<c-g>u",
     ["!"] = "!<c-g>u",

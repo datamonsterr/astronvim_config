@@ -24,14 +24,6 @@ return function(config)
     code_actions.eslint_d.with {
       prefer_local = "node_modules/.bin",
     },
-    -- diagnostics.eslint_d.with {
-    --   prefer_local = "node_modules/.bin",
-    -- },
-    -- code_actions.refactoring,
-    -- formatting.eslint_d.with {
-    --   prefer_local = "node_modules/.bin",
-    -- },
-    -- dictionary
     hover.dictionary,
   }
   -- NOTE: You can remove this on attach function to disable format on save

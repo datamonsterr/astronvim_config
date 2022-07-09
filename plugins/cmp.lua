@@ -66,6 +66,7 @@ return {
   },
   mapping = {
     ["<C-j>"] = cmp.config.disable,
+    ["<C-k>"] = cmp.config.disable,
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -80,6 +81,5 @@ return {
       "i",
       "s",
     }),
-    ["<C-k>"] = cmp.config.disable,
   },
 }
