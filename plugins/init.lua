@@ -126,4 +126,5 @@ return {
       }
     end,
   },
+  ["elkowar/yuck.vim"] = {},
 }

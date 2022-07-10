@@ -14,6 +14,14 @@ end
 
 return {
   n = {
+    ["<leader>dr"] = {
+      function()
+        local word = vim.fn.expand "<cword>"
+        local replacement = vim.fn.input "Replace this word with: "
+        vim.cmd("%s/" .. word .. "/" .. replacement .. "/g")
+      end,
+      desc = "Replace word undercursor",
+    },
     ["<A-g>"] = {
       function()
         local word = vim.fn.expand "<cword>"
