@@ -1,5 +1,1 @@
-return {
-  capabilities = {
-    offsetEncoding = "utf-8",
-  },
-}
+return {}

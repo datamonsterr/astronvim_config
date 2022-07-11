@@ -1,6 +1,7 @@
 local cp = require("catppuccin.api.colors").get_colors() -- fetch colors with API
 return {
   TSFuncBuiltin = { fg = cp.lavender, bold = true },
+  rainbowcol2 = { fg = cp.lavender },
   TSConditional = { italic = true, fg = cp.mauve },
   TSKeywordOperator = { bold = true, fg = cp.mauve },
   TSInclude = { bold = true, fg = cp.mauve },
