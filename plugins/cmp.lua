@@ -30,9 +30,6 @@ local cmp = require "cmp"
 local luasnip = require "luasnip"
 
 return {
-  experimental = {
-    ghost_text = true,
-  },
   view = {
     entries = { name = "custom", selection_order = "near_cursor" },
   },

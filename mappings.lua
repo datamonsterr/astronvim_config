@@ -14,6 +14,14 @@ end
 
 return {
   n = {
+    ["<leader><cr>"] = { '<esc>/<++><cr>"_c4l', desc = "Next Template" },
+    ["<leader>dr"] = {
+      function()
+        local word = vim.fn.expand "<cword>"
+        local rp = vim.fn.input "Replace with: "
+        vim.cmd("%s/" .. word .. "/" .. rp .. "/g")
+      end,
+    },
     ["<A-g>"] = {
       function()
         local word = vim.fn.expand "<cword>"
@@ -60,7 +68,7 @@ return {
       end,
       desc = "Conceal",
     },
-    ["<C-x>"] = {
+    ["<C-t>"] = {
       function()
         require("syntax-tree-surfer").select_current_node()
       end,
@@ -196,6 +204,42 @@ return {
   v = {
     ["<A-j>"] = { ":m '>+1<cr>gv=gv" },
     ["<A-k>"] = { ":m '<-2<cr>gv=gv" },
+    J = {
+      function()
+        require("syntax-tree-surfer").surf("next", "visual")
+      end,
+      desc = "Next",
+    },
+    K = {
+      function()
+        require("syntax-tree-surfer").surf("prev", "visual")
+      end,
+      desc = "Prev",
+    },
+    H = {
+      function()
+        require("syntax-tree-surfer").surf("parent", "visual")
+      end,
+      desc = "Parent",
+    },
+    L = {
+      function()
+        require("syntax-tree-surfer").surf("child", "visual")
+      end,
+      desc = "Child",
+    },
+    ["<C-j>"] = {
+      function()
+        require("syntax-tree-surfer").surf("next", "visual", true)
+      end,
+      desc = "Swap Next",
+    },
+    ["<C-k>"] = {
+      function()
+        require("syntax-tree-surfer").surf("prev", "visual", true)
+      end,
+      desc = "Swap Prev",
+    },
   },
   i = {
     ["<C-[>"] = {
@@ -203,6 +247,7 @@ return {
         vim.notify("Use Capslock Key", "warn", { title = "Change your habit" })
       end,
     },
+    ["<C-S>"] = { "<Esc>:w<cr>i", desc = "Save the file" },
     [","] = ",<c-g>u",
     ["."] = ".<c-g>u",
     ["!"] = "!<c-g>u",

@@ -8,7 +8,7 @@ return function(config)
   -- Check supported linters
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
   local diagnostics = null_ls.builtins.diagnostics
-  local code_actions = null_ls.builtins.code_actions
+  -- local code_actions = null_ls.builtins.code_actions
   local hover = null_ls.builtins.hover
   config.sources = {
     -- Set a formatter
@@ -21,9 +21,9 @@ return function(config)
     },
     -- Set a linter
     -- Eslint
-    code_actions.eslint_d.with {
-      prefer_local = "node_modules/.bin",
-    },
+    -- code_actions.eslint_d.with {
+    --   prefer_local = "node_modules/.bin",
+    -- },
     hover.dictionary,
   }
   -- NOTE: You can remove this on attach function to disable format on save

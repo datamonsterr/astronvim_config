@@ -1,5 +1,6 @@
 return {
   opt = {
+    lazyredraw = false,
     relativenumber = true,
     spell = false,
     spelllang = "en,programming",
@@ -31,5 +32,6 @@ return {
     loaded_spellfile_plugin = true,
     loaded_netrw = true,
     loaded_tutor_mode_plugin = true,
+    simple_todo_map_keys = false,
   },
 }

@@ -2,7 +2,7 @@ return {
   ["ur4ltz/surround.nvim"] = {
     event = "BufRead",
     config = function()
-      require("surround").setup { mappings_style = "surround" }
+      require("surround").setup { mappings_style = "surround", map_insert_mode = false }
     end,
   },
   ["phaazon/hop.nvim"] = {
@@ -68,8 +68,24 @@ return {
   ["catppuccin/nvim"] = {
     as = "catppuccin",
     config = function()
-      require "plugins.catppuccin"
+      require "user.plugins.catppuccin"
     end,
   },
-  ["mickael-menu/zk-nvim"] = {},
+  ["mickael-menu/zk-nvim"] = {
+    -- module = { "zk", "zk.commands" },
+    config = function()
+      require "user.plugins.zk"
+    end,
+  },
+  ["vitalk/vim-simple-todo"] = {
+    keys = {
+      "<Plug>(simple-todo-above)",
+      "<Plug>(simple-todo-below)",
+      "<Plug>(simple-todo-mark-as-done)",
+      "<Plug>(simple-todo-mark-as-undone)",
+      "<Plug>(simple-todo-mark-switch)",
+      "<Plug>(simple-todo-new-list-item)",
+      "<Plug>(simple-todo-new-list-item-start-of-line)",
+    },
+  },
 }
