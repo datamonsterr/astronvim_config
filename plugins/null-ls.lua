@@ -4,10 +4,8 @@ return function(config)
   local formatting = null_ls.builtins.formatting
   local hover = null_ls.builtins.hover
   config.sources = {
-    -- Set a formatter
     formatting.stylua,
     formatting.autopep8,
-    formatting.clang_format,
     formatting.prettierd.with {
       env = {
         PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/.prettierrc.json",
@@ -16,7 +14,6 @@ return function(config)
     hover.dictionary,
   }
   config.on_attach = function(client)
-    client.offset_encoding = "utf-8"
     if client.server_capabilities.documentFormattingProvider then
       vim.api.nvim_create_autocmd("BufWritePre", {
         desc = "Auto format before save",

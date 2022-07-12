@@ -9,6 +9,7 @@ return function()
     },
     filename = {
       ["CmakeLists.txt"] = "cmake",
+      [".clang-format"] = "yaml",
     },
   }
 end
