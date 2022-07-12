@@ -1,4 +1,5 @@
 return {
+  ["max397574/better-escape.nvim"] = { disable = true },
   ["ur4ltz/surround.nvim"] = {
     event = "BufRead",
     config = function()

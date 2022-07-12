@@ -2,7 +2,6 @@ return function(config)
   -- https://github.com/jose-elias-alvarez/null-ls.nvim
   local null_ls = require "null-ls"
   local formatting = null_ls.builtins.formatting
-  local hover = null_ls.builtins.hover
   config.sources = {
     formatting.stylua,
     formatting.autopep8,
@@ -11,7 +10,6 @@ return function(config)
         PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/.prettierrc.json",
       },
     },
-    hover.dictionary,
   }
   config.on_attach = function(client)
     if client.server_capabilities.documentFormattingProvider then

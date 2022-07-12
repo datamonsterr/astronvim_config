@@ -22,4 +22,5 @@ return {
   DiagnosticWarn = { fg = cp.yellow },
   DiagnosticInfo = { fg = cp.blue },
   DiagnosticHint = { fg = cp.rosewater },
+  TelescopeBorder = { fg = cp.blue },
 }
