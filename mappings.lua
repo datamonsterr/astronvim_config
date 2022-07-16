@@ -14,6 +14,12 @@ end
 
 return {
   n = {
+    ["<leader>lF"] = {
+      function()
+        vim.api.nvim_del_augroup_by_name "format_on_save"
+      end,
+      desc = "Disable Format on Save",
+    },
     ["<leader><cr>"] = { '<esc>/<++><cr>"_c4l', desc = "Next Template" },
     ["<leader>dr"] = {
       function()

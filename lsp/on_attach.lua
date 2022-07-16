@@ -8,14 +8,19 @@ return function(client, bufnr)
       vim.diagnostic.hide()
     end
   end, { buffer = bufnr, desc = "Toggle diagnostics" })
+
   if client.name == "tsserver" or client.name == "jsonls" or client.name == "html" or client.name == "sumneko_lua" then
     client.resolved_capabilities.document_formatting = false
   end
   if client.resolved_capabilities.document_formatting then
-    vim.cmd [[
-            augroup LspFormatting autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-            augroup END
-            ]]
+    vim.api.nvim_create_augroup("format_on_save", { clear = true })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      desc = "Auto format before save",
+      group = "format_on_save",
+      pattern = "<buffer>",
+      callback = function()
+        vim.lsp.buf.formatting_sync { async = true }
+      end,
+    })
   end
 end

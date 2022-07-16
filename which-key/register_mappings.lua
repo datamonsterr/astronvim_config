@@ -56,9 +56,6 @@ return {
           end,
           "Tags",
         },
-        i = { "<Plug>(simple-todo-new-list-item)", "Insert Todo" },
-        I = { "<Plug>(simple-todo-new-list-item-start-of-line)", "Convert to Todo" },
-        ["<tab>"] = { "<Plug>(simple-todo-mark-switch)", "Toggle Todo" },
       },
     },
     ["]"] = {
