@@ -1,4 +1,4 @@
-local cp = require("catppuccin.api.colors").get_colors() -- fetch colors with API
+local cp = require("catppuccin.palettes").get_palette()
 return {
   TSFuncBuiltin = { fg = cp.lavender, bold = true },
   rainbowcol2 = { fg = cp.lavender },
