@@ -18,11 +18,7 @@ return {
     },
     mappings = {
       i = {
-        ["<Tab>"] = actions.move_selection_next,
-        ["<S-Tab>"] = actions.move_selection_previous,
         ["<C-h>"] = actions.select_horizontal,
-        ["<C-j>"] = actions.toggle_selection + actions.move_selection_worse,
-        ["<C-k>"] = actions.toggle_selection + actions.move_selection_better,
       },
 
       n = {

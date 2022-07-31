@@ -1,5 +1,5 @@
 return {
-  ["windwp/nvim-ts-autotag"] = { ft = "html", after = false },
+  ["goolord/alpha-nvim"] = { disable = true },
   ["max397574/better-escape.nvim"] = { disable = true },
   ["ur4ltz/surround.nvim"] = {
     event = "BufRead",
@@ -9,7 +9,7 @@ return {
   },
   ["phaazon/hop.nvim"] = {
     branch = "v1", -- optional but strongly recommended
-    event = "BufRead", -- I want to use it all the time
+    event = "BufRead",
     config = function()
       require("hop").setup()
     end,
@@ -66,7 +66,6 @@ return {
   ["jvgrootveld/telescope-zoxide"] = {
     module = "telescope._extensions.zoxide",
   },
-  ["goolord/alpha-nvim"] = { disable = true },
   ["catppuccin/nvim"] = {
     as = "catppuccin",
     config = function()
