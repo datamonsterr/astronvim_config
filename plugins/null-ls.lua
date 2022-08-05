@@ -4,7 +4,7 @@ return function(config)
   local formatting = null_ls.builtins.formatting
   config.sources = {
     formatting.stylua,
-    formatting.autopep8,
+    formatting.black,
     formatting.prettierd.with {
       env = {
         PRETTIERD_DEFAULT_CONFIG = vim.fn.expand "~/.config/.prettierrc.json",

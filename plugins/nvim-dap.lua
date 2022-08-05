@@ -9,7 +9,7 @@ return function()
     cppdbg = {
       id = "cppdbg",
       type = "executable",
-      command = vim.fn.expand "~/cpptools/extension/debugAdapters/bin/OpenDebugAD7",
+      command = "OpenDebugAD7",
     },
   }
   dap.configurations = {
