@@ -13,8 +13,29 @@ return function()
         match_paren = true,
         search = true,
       },
-      modules = { -- List of various plugins and additional options
-        -- ...
+      modules = {
+        barbar = false,
+        fern = false,
+        fidget = false,
+        gitgutter = false,
+        glyph_palette = false,
+        illuminate = false,
+        lightspeed = false,
+        lsp_saga = false,
+        lsp_trouble = false,
+        mini = false,
+        modes = false,
+        neogit = false,
+        nvimtree = false,
+        pounce = false,
+        sneak = false,
+        symbol_outline = false,
+      },
+    },
+    groups = {
+      all = {
+        NormalFloat = { bg = "#000000" },
+        WhichKeyFloat = { bg = "#000000" },
       },
     },
   }
