@@ -16,5 +16,9 @@ return {
     "shfmt",
     "stylua",
     "black",
+
+    -- Dap
+    "debugpy",
+    "cpptools",
   },
 }

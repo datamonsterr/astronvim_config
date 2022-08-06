@@ -3,7 +3,7 @@ return function()
   dap.adapters = {
     python = {
       type = "executable",
-      command = "/usr/bin/python",
+      command = "python",
       args = { "-m", "debugpy.adapter" },
     },
     cppdbg = {
@@ -30,11 +30,12 @@ return function()
         type = "cppdbg",
         request = "launch",
         program = function()
-          return vim.fn.input("Path to executable: ", vim.fn.expand "%:p" .. "/", "file")
+          return vim.fn.input("Path to executable: ", vim.fn.expand "%:p", "file")
         end,
         cwd = "${workspaceFolder}",
         stopOnEntry = true,
         runInTerminal = true,
+        externalTerminal = true,
       },
     },
     rust = {
